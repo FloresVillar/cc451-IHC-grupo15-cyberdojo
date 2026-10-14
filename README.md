@@ -17,7 +17,7 @@ El MVP son 15 escenarios (3 roles + escenarios generales, 4 de ellos por voz), e
 | Requisito | En CyberDojo |
 | --- | --- |
 | Interfaz de voz | Llamadas de vishing con TTS + STT, comandos de voz para navegar y sensei que narra el debrief. Siempre hay subtítulos y respuesta por botones o texto. |
-| LLM | Generación y evaluación de escenarios por rol detrás de una capa de abstracción en `src/llm/`, con fallback al banco de escenarios y guardrails de contenido. El proveedor se cambia por `.env` (`LLM_PROVIDER`: anthropic, openai, ollama local o mock). |
+| LLM | Generación y evaluación de escenarios por rol detrás de una capa de abstracción en `src/llm/gateway.js` + `providers.js`, con fallback al banco de escenarios y guardrails de contenido. El proveedor se cambia por `.env` (`LLM_PROVIDER`: anthropic, openai, ollama local o mock). |
 | Plataforma | PWA instalable en laptop y celular, con los escenarios del banco en caché para jugar sin conexión. |
 | Personalización continua | Perfil con aciertos y errores por táctica, ritmo, nivel de humor y check-in emocional. La dificultad se recalcula después de cada combate. |
 | Multiusuario | Salas por código o QR, torneos por equipos y tablero de cinturones en tiempo real. |
@@ -28,10 +28,10 @@ El MVP son 15 escenarios (3 roles + escenarios generales, 4 de ellos por voz), e
 
 | Parte | Estado |
 | --- | --- |
-| Análisis (stakeholders, PACT, RF/RNF, HU, matriz, usabilidad) | En curso: RF/RNF, HU, matriz y usabilidad listos en `docs/`; faltan stakeholders y PACT |
-| Prototipo de fidelidad media (PWA navegable, 15 pantallas) | Pendiente: `src/`, `public/` |
-| Banco de 15 escenarios simulados | Pendiente: `data/escenarios/` |
-| Capa de abstracción LLM (gateway + fallback + guardrails) | Pendiente: `src/llm/` |
+| Análisis (stakeholders, PACT, RF/RNF, HU, matriz, usabilidad) | En curso: stakeholders, RF/RNF, HU, matriz y usabilidad listos en `docs/`; falta PACT |
+| Prototipo de fidelidad media (PWA navegable, 15 pantallas) | Listo: `app/` |
+| Banco de 15 escenarios simulados | Listo: `data/escenarios.json` |
+| Capa de abstracción LLM (gateway + fallback + guardrails) | En curso: esqueleto en `src/llm/` |
 | Backend, base de datos y torneos en tiempo real | Pendiente: Sprints 1–4 |
 
 ## Privacidad y contenido seguro
@@ -45,9 +45,9 @@ El MVP son 15 escenarios (3 roles + escenarios generales, 4 de ellos por voz), e
 
 | Integrante | GitHub | Módulos | Documentos |
 | --- | --- | --- | --- |
-| Esau Flores Villar | [@FloresVillar](https://github.com/FloresVillar) | `src/llm/` | Requerimientos, historias de usuario, matriz de trazabilidad, criterios de usabilidad |
-| Junior Ortega Turpo | [@Junior-75](https://github.com/Junior-75) | `src/voz/`, `src/escenarios/` | PACT, sistemas similares, alternativas de diseño |
-| Elmer Izarra Choque | pendiente | `src/multiusuario/`, `src/perfil/`, `public/` (PWA) | Stakeholders y entrevistas, Gantt, arquitectura C4 |
+| Esau Flores Villar | [@FloresVillar](https://github.com/FloresVillar) | `src/llm/` | Stakeholders, requerimientos, historias de usuario, matriz de trazabilidad, criterios de usabilidad, Gantt, arquitectura C4 |
+| Junior Ortega Turpo | [@Junior-75](https://github.com/Junior-75) | `src/voice/`, `data/` | PACT, sistemas similares, alternativas de diseño |
+| Elmer Izarra Choque | pendiente | `app/` (PWA) | — |
 
 ## Cómo trabajamos
 
@@ -64,23 +64,34 @@ El MVP son 15 escenarios (3 roles + escenarios generales, 4 de ellos por voz), e
 | [Análisis PACT](docs/02-pact.md) | [Criterios de usabilidad](docs/07-criterios-usabilidad.md) |
 | [Requerimientos](docs/03-requerimientos.md) | [Alternativas de diseño](docs/08-alternativas-diseno.md) |
 | [Historias de usuario](docs/04-historias-usuario.md) | [Diagrama de Gantt](docs/09-gantt.md) |
-| [Matriz de trazabilidad](docs/05-matriz-trazabilidad.md) | [Arquitectura C4](docs/arquitectura/) |
+| [Matriz de trazabilidad](docs/05-matriz-trazabilidad.md) | [Arquitectura C4](docs/arquitectura-c4.md) |
 
-El diseño (flujo de pantallas, prototipo y alternativas) está en [`docs/diseno/`](docs/diseno/).
+Las imágenes del diseño (flujo de pantallas, prototipo, alternativas, C4 y Gantt) están en [`docs/img/`](docs/img/) y sus fuentes en [`docs/diagramas/`](docs/diagramas/).
 
 ## Estructura
 
 ```
-docs/      documentación del proyecto (un archivo por punto evaluado)
-public/    manifest, service worker e íconos de la PWA
-src/       código de la aplicación, un módulo por carpeta
-data/      datos simulados: escenarios y empleados ficticios
-tests/     pruebas con Playwright (accesibilidad, teclado y flujos)
+app/       prototipo PWA (index.html, manifest, service worker, escenarios.js)
+data/      datos simulados: escenarios, usuarios y salas
+docs/      documentación (un archivo por punto evaluado), arquitectura-c4.md, instalacion.md
+  diagramas/  fuentes .dot, Gantt (Python) y bocetos de alternativas
+  img/        diagramas renderizados y capturas del prototipo
+src/
+  llm/     gateway, adaptadores, guardrails y demo
+  voice/   envoltorio de Web Speech API
+scripts/   utilidades (regenerar app/escenarios.js)
 ```
 
 ## Instalación
 
-Ver [INSTALL.md](INSTALL.md).
+```bash
+git clone https://github.com/FloresVillar/cc451-IHC-grupo15-cyberdojo.git
+cd cc451-IHC-grupo15-cyberdojo
+npm start            # sirve el proyecto en http://localhost:8080
+# abrir http://localhost:8080/app/
+```
+
+Guía completa: [docs/instalacion.md](docs/instalacion.md).
 
 ## Licencia
 
