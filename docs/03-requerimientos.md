@@ -42,7 +42,7 @@
 | RNF05 | Privacidad | Datos personales mínimos; el audio no se almacena. | Solo se guardan transcripciones si el usuario lo acepta; cumplimiento de la Ley 29733 de protección de datos personales. |
 | RNF06 | Seguridad | Comunicación y credenciales protegidas. | HTTPS obligatorio, JWT con expiración de 1 h, API keys solo en el backend, rate limiting por usuario. |
 | RNF07 | Seguridad del contenido | El LLM no debe producir enlaces funcionales, malware ni datos reales. | Filtro de salida: 100% de enlaces reescritos a dominios `.test`; lista de bloqueo de marcas reales; revisión de 50 generaciones sin fallas. |
-| RNF08 | Mantenibilidad | Cambiar de proveedor LLM sin tocar el código de negocio. | Cambio de proveedor solo editando `.env`; pruebas unitarias de `src/llm/llm-client.js` con 2 proveedores. |
+| RNF08 | Mantenibilidad | Cambiar de proveedor LLM sin tocar el código de negocio. | Cambio de proveedor solo editando `.env`; pruebas unitarias del gateway con 2 proveedores. |
 | RNF09 | Escalabilidad | Soportar torneos simultáneos. | 50 usuarios concurrentes por sala con latencia de actualización del tablero < 1 s. |
 | RNF10 | Disponibilidad | Si el LLM falla, la experiencia no se corta. | Fallback automático al banco de escenarios en < 3 s ante timeout o error. |
 | RNF11 | Lenguaje | Español claro y cercano (Perú). | Textos revisados con prueba de lectura; sin tecnicismos sin explicar. |
