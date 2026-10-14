@@ -1,1 +1,12 @@
-{}
+{
+  "name": "cyberdojo",
+  "version": "0.2.0",
+  "description": "PWA de concientización en ciberseguridad con combates por chat y voz (CC451 - Tema 25)",
+  "license": "MIT",
+  "type": "module",
+  "scripts": {
+    "start": "npx --yes http-server . -p 8080 -c-1",
+    "datos": "node scripts/build-datos.js",
+    "demo:llm": "node src/llm/demo.js"
+  }
+}
