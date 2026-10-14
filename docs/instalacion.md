@@ -46,26 +46,25 @@ En WSL se ejecuta `npm start` desde la terminal de Linux y la URL se abre en el 
 9. Desde el Dojo: **Salas y torneos** → **Unirme** → **Entrar al torneo** → **Tablero de cinturones**.
 10. **Soy administrador**: crear torneo, aprobar escenarios y exportar CSV.
 
-Qué concepto se muestra en cada paso y qué código lo implementa (las funciones están en `app/index.html`):
+Qué requerimiento común de la PC02 se muestra en cada paso y qué código lo implementa (las funciones están en `app/index.html`):
 
-| Paso | Concepto | Código |
-| --- | --- | --- |
-| 1 | Diseño emocional visceral (Norman): estética de dojo y sensei | `senseiSVG()`, `sensei()` |
-| 2 | Prevención y recuperación de errores (Nielsen): mensaje claro si el código no existe (RF01) | `doLogin()` |
-| 3 | Personalización continua y accesibilidad: rol, humor, voz, subtítulos y tamaño de letra en un perfil persistente (RF02, RF10) | `prefs()`, `save()` / `load()` con `localStorage` |
-| 4 | Calibración del nivel inicial (HU02) | `calib()` |
-| 5 | Check-in emocional (RF11) y dificultad adaptativa: sugiere tácticas con acierto < 60% (HU10) | `checkin()`, `suggested()`, `weakTactics()` |
-| 6 | Visibilidad de las señales de alerta, pistas con costo y puntaje (RF05, RF08, RF20) | `inspect()`, `hint()`, `decide()`; escenarios en `app/escenarios.js` |
-| 7 | Debrief sin culpa con el humor elegido (RNF12) y progreso: 3 aciertos suben de nivel, 2 errores bajan, cinturones por puntos | `senseiLine()`, `record()`, `belt()` |
-| 8 | Interfaz de voz no convencional: TTS y reconocimiento de voz con subtítulos y respuestas escritas como alternativa (RF06, RF07) | `speak()` (`speechSynthesis`), `listen()` (`SpeechRecognition`), `reply()`, `voiceCmd()` |
-| 9 | Multiusuario: sala, torneo con marcador en vivo (simulado con temporizador) y tablero con alias (RF14–RF16) | `startTorneo()`, `displayName()` |
-| 10 | Panel del responsable de TI con métricas agregadas y exportación (RF17, RF22) | `csv()` |
+| Paso | Requerimiento PC02 | Qué se ve | Código |
+| --- | --- | --- | --- |
+| 1 | Diseño emocional: nivel visceral | Estética de dojo y sensei | `senseiSVG()`, `sensei()` |
+| 2 | Usabilidad (Nielsen) | Mensaje claro si el código de organización no existe | `doLogin()` |
+| 3 | Personalización continua: preferencias | Rol, humor, voz, subtítulos y tamaño de letra guardados en el perfil | `prefs()`, `save()` / `load()` con `localStorage` |
+| 4 | Personalización continua: nivel inicial | Calibración de 3 preguntas | `calib()` |
+| 5 | Personalización continua: emociones declaradas y errores | Check-in emocional; sugiere las tácticas con acierto < 60% | `checkin()`, `suggested()`, `weakTactics()` |
+| 6 | Diseño emocional: nivel conductual (micro-interacciones) | Inspeccionar señales, pistas con costo, puntaje inmediato | `inspect()`, `hint()`, `decide()` |
+| 7 | Diseño emocional: tono del asistente y nivel reflexivo | Debrief sin culpa con el humor elegido; nivel y cinturón según el desempeño | `senseiLine()`, `record()`, `belt()` |
+| 8 | Interfaz de voz | Llamada con voz sintética, reconocimiento de la respuesta, subtítulos y respuestas escritas | `speak()` (`speechSynthesis`), `listen()` (`SpeechRecognition`), `reply()`, `voiceCmd()` |
+| 9 | Multiusuario: salas | Sala, torneo con marcador en vivo (simulado) y tablero con alias | `startTorneo()`, `displayName()` |
+| 10 | Multiusuario: administración | Métricas agregadas del equipo y exportación CSV | `csv()` |
 
-Fuera de las pantallas:
+Los otros dos requerimientos comunes no tienen pantalla propia:
 
-- **PWA y modo sin conexión (RF21):** `app/sw.js` guarda en caché el shell y los escenarios; `app/manifest.webmanifest` permite instalarla.
-- **Datos simulados:** `app/escenarios.js` se genera desde `data/escenarios.json` con `npm run datos` (`scripts/build-datos.js`).
-- **Capa LLM (RF04, RNF07, RNF10):** el prototipo usa solo el banco de escenarios. El gateway con proveedores, guardrails y fallback está en `src/llm/` y se muestra con `npm run demo:llm`.
+- **PWA:** `app/manifest.webmanifest` la hace instalable y `app/sw.js` guarda en caché el shell y los escenarios para usarla sin conexión.
+- **LLM con capa de abstracción:** el prototipo usa solo el banco de escenarios (`app/escenarios.js`, generado desde `data/escenarios.json` con `npm run datos`). El gateway con proveedores intercambiables, guardrails y fallback está en `src/llm/` y se muestra con `npm run demo:llm`.
 
 La barra superior salta a cualquier pantalla (P01–P15) y **Reiniciar demo** vuelve todo al inicio. También se puede ir directo a una pantalla con `http://localhost:8080/app/#P08`.
 
