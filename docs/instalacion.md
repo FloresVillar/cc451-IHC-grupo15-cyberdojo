@@ -27,18 +27,7 @@ git pull origin dev
 npm start
 ```
 
-`npm start` ejecuta el script `start` definido en `package.json`:
-
-```bash
-npx --yes http-server . -p 8080 -c-1
-```
-
-- `npx --yes http-server`: descarga y ejecuta `http-server`, un servidor web estático de Node, sin instalarlo en el proyecto ni pedir confirmación. No hace falta `npm install`.
-- `.`: sirve la carpeta raíz del repositorio, así el prototipo en `app/` puede leer `data/` y el resto de archivos.
-- `-p 8080`: usa el puerto 8080.
-- `-c-1`: desactiva la caché del servidor, para que cada cambio en los archivos se vea al recargar.
-
-Hace falta un servidor y no basta con abrir el archivo porque el service worker de la PWA (`app/sw.js`) solo funciona sobre `http://localhost` o HTTPS.
+`npm start` levanta un servidor web local en el puerto 8080 con `http-server` (vía `npx`, sin `npm install`). Hace falta porque el service worker de la PWA no funciona abriendo el archivo directamente.
 
 Abre `http://localhost:8080/app/` en Chrome o Edge. Para detener el servidor, `Ctrl + C` en la terminal.
 
@@ -48,7 +37,6 @@ Para la demo:
 
 - La barra superior salta a cualquier pantalla (P01–P15) y reinicia el perfil. También se puede ir directo a una pantalla con `http://localhost:8080/app/#P08`.
 - En la llamada de vishing (P08) hay que permitir el micrófono. Sin micrófono o sin reconocimiento de voz, se responde con botones o texto.
-- También se puede abrir `app/index.html` con doble clic, sin servidor, pero así no se activa el service worker.
 
 Para instalarlo como app: en Chrome, menú ⋮ → "Instalar CyberDojo"; en iPhone, Compartir → "Agregar a inicio".
 
