@@ -9,8 +9,16 @@
 ## 1. Clonar
 
 ```bash
-git clone https://github.com/<usuario>/cyberdojo.git
-cd cyberdojo
+git clone https://github.com/FloresVillar/cc451-IHC-grupo15-cyberdojo.git
+cd cc451-IHC-grupo15-cyberdojo
+git checkout dev
+```
+
+Si ya lo tienes clonado, actualiza antes de ejecutar:
+
+```bash
+git checkout dev
+git pull origin dev
 ```
 
 ## 2. Levantar el prototipo
@@ -19,7 +27,17 @@ cd cyberdojo
 npm start
 ```
 
-Abre `http://localhost:8080/app/`. Para instalarlo como app: en Chrome, menú ⋮ → "Instalar CyberDojo"; en iPhone, Compartir → "Agregar a inicio".
+Abre `http://localhost:8080/app/` en Chrome o Edge. Para detener el servidor, `Ctrl + C` en la terminal.
+
+En WSL se ejecuta `npm start` desde la terminal de Linux y la URL se abre en el navegador de Windows; `localhost` funciona igual.
+
+Para la demo:
+
+- La barra superior salta a cualquier pantalla (P01–P15) y reinicia el perfil. También se puede ir directo a una pantalla con `http://localhost:8080/app/#P08`.
+- En la llamada de vishing (P08) hay que permitir el micrófono. Sin micrófono o sin reconocimiento de voz, se responde con botones o texto.
+- También se puede abrir `app/index.html` con doble clic, sin servidor, pero así no se activa el service worker.
+
+Para instalarlo como app: en Chrome, menú ⋮ → "Instalar CyberDojo"; en iPhone, Compartir → "Agregar a inicio".
 
 > Para probarlo desde el celular en la misma red, usa la IP de la laptop (`http://192.168.x.x:8080/app/`). El micrófono en móviles requiere HTTPS; para eso se puede usar `npx localtunnel --port 8080` o desplegar en GitHub Pages.
 
