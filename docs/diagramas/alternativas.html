@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8"><title>Alternativas de diseño</title>
+<style>
+body{font-family:"Comic Neue","Segoe Print","DejaVu Sans",sans-serif;background:#fff;color:#222;margin:20px}
+.alt{display:inline-flex;gap:18px;align-items:flex-start;padding:16px;border:1px solid #ccc;margin:0 0 30px;background:#fafafa}
+.cap{width:220px;font-size:13px}
+.cap h2{font-size:17px;margin:0 0 6px}
+.f{border:2px solid #333;border-radius:10px;background:#fff;position:relative;overflow:hidden}
+.box{border:1.5px solid #555;border-radius:6px;padding:6px;margin:6px;font-size:11px;background:#fff}
+.x{background:repeating-linear-gradient(45deg,#eee 0 6px,#fff 6px 12px)}
+.btn{display:inline-block;border:1.5px solid #333;border-radius:6px;padding:4px 8px;font-size:11px;margin:2px}
+.dk{background:#333;color:#fff}
+.line{height:6px;background:#ccc;border-radius:3px;margin:4px 0}
+.note{position:absolute;font-size:11px;color:#b53a22;font-style:italic}
+</style></head><body>
+
+<div class="alt" id="alt-a">
+ <div class="cap"><h2>A · Oficina simulada</h2>Escritorio con bandeja, teléfono y chat. Los ataques llegan mezclados con mensajes reales.</div>
+ <div class="f" style="width:620px;height:360px;display:grid;grid-template-columns:150px 1fr 150px">
+  <div style="border-right:1.5px solid #555">
+   <div class="box dk">📥 Bandeja (12)</div>
+   <div class="box">RR.HH. · Capacitación<div class="line"></div></div>
+   <div class="box" style="border-color:#b53a22">Gerencia · URGENTE<div class="line"></div></div>
+   <div class="box">Proveedor · Factura<div class="line"></div></div>
+   <div class="box">CodeHub · Alerta<div class="line"></div></div>
+   <div class="box">Courier · Envío<div class="line"></div></div>
+  </div>
+  <div>
+   <div class="box"><b>De:</b> r.salas@kallpa-gerencia.test<br><b>Asunto:</b> URGENTE transferencia</div>
+   <div class="box" style="height:150px"><div class="line"></div><div class="line"></div><div class="line" style="width:70%"></div><div class="line"></div><div class="line" style="width:50%"></div></div>
+   <div style="margin:6px"><span class="btn">Responder</span><span class="btn">Reenviar</span><span class="btn dk">🚩 Reportar</span></div>
+  </div>
+  <div style="border-left:1.5px solid #555">
+   <div class="box" style="text-align:center">📞 Teléfono<br><span style="font-size:22px">☎</span><br>(sonando)</div>
+   <div class="box">💬 Chat equipo<div class="line"></div><div class="line"></div><div class="line"></div></div>
+   <div class="box x" style="height:90px;text-align:center">reloj del día<br>09:42</div>
+  </div>
+  <span class="note" style="bottom:4px;left:170px">¿y en el celular? → todo muy apretado</span>
+ </div>
+</div>
+
+<div class="alt" id="alt-b">
+ <div class="cap"><h2>B · Dojo narrativo</h2>Camino de combates con sensei. Cada combate abre el correo / chat / llamada y termina en un debrief sin culpa. <b>(elegida)</b></div>
+ <div class="f" style="width:220px;height:400px">
+  <div class="box" style="display:flex;gap:6px;align-items:center"><span style="font-size:22px">🙂</span><span>Sensei: "Hoy toca reforzar autoridad"</span></div>
+  <div class="box">🥋 Cinturón amarillo<div class="line" style="width:60%;background:#b53a22"></div></div>
+  <div style="text-align:center;font-size:11px">— camino de combates —</div>
+  <div class="box">✅ ✉️ El gerente tiene apuro</div>
+  <div class="box">✅ 📞 Banco Andino</div>
+  <div class="box" style="border-width:2.5px">▶ ✉️ Proveedor cambió de banco</div>
+  <div class="box x">🔒 💬 El nuevo del equipo</div>
+  <div class="box x">🔒 📞 RR.HH. planilla</div>
+  <div style="position:absolute;bottom:0;left:0;right:0;border-top:1.5px solid #555;display:flex;justify-content:space-around;padding:6px;font-size:10px"><span>Dojo</span><span>Progreso</span><span>Salas</span><span>Ajustes</span></div>
+ </div>
+ <div class="f" style="width:220px;height:400px">
+  <div class="box"><b>De:</b> facturacion@...<br><b>Asunto:</b> nueva cuenta</div>
+  <div class="box" style="height:110px"><div class="line"></div><div class="line"></div><div class="line" style="width:60%"></div><span class="btn">📎 Carta.pdf</span></div>
+  <div style="margin:6px"><span class="btn">💡 Pista</span><span class="btn">🎙️ Voz</span></div>
+  <div style="position:absolute;bottom:6px;left:6px;right:6px;display:grid;grid-template-columns:1fr 1fr;gap:4px"><span class="btn dk">🚩 Reportar</span><span class="btn">☎ Verificar</span><span class="btn">Responder</span><span class="btn">Legítimo</span></div>
+ </div>
+ <div class="f" style="width:220px;height:400px">
+  <div class="box" style="background:#e6f0e6">✅ Ataque detectado</div>
+  <div class="box" style="display:flex;gap:6px"><span style="font-size:22px">😄</span><span>"Así se hace. Cambios de cuenta se confirman llamando."</span></div>
+  <div class="box">Señales:<br>✔ cambio de cuenta<br>✔ presión<br>• cuenta comprometida</div>
+  <div class="box" style="text-align:right"><b>+90 pts</b></div>
+  <div class="box" style="text-align:center">¿Cómo te quedaste? 😄 🙂 😕 😣</div>
+  <span class="note" style="bottom:8px;left:10px">debrief sin culpa + humor</span>
+ </div>
+</div>
+
+<div class="alt" id="alt-c">
+ <div class="cap"><h2>C · Sensei por voz</h2>Todo es conversación hablada con el sensei. La pantalla solo muestra la onda de voz y subtítulos.</div>
+ <div class="f" style="width:220px;height:400px;background:#2a2a2a;color:#eee">
+  <div style="text-align:center;margin-top:40px;font-size:40px">🙂</div>
+  <div style="text-align:center;font-size:12px">Sensei</div>
+  <div style="display:flex;gap:3px;justify-content:center;align-items:center;height:80px">
+   <i style="width:6px;height:20px;background:#ddd"></i><i style="width:6px;height:45px;background:#ddd"></i><i style="width:6px;height:70px;background:#ddd"></i><i style="width:6px;height:35px;background:#ddd"></i><i style="width:6px;height:55px;background:#ddd"></i><i style="width:6px;height:25px;background:#ddd"></i><i style="width:6px;height:60px;background:#ddd"></i><i style="width:6px;height:30px;background:#ddd"></i>
+  </div>
+  <div class="box" style="background:#3a3a3a;color:#eee;border-color:#777">"Te llega un correo del gerente pidiendo una transferencia urgente. ¿Qué haces?"</div>
+  <div style="position:absolute;bottom:20px;left:0;right:0;text-align:center"><span style="display:inline-block;width:60px;height:60px;border-radius:50%;border:2px solid #eee;line-height:60px;font-size:24px">🎙️</span><br><span style="font-size:10px">mantén para hablar</span></div>
+ </div>
+ <div class="cap" style="width:200px;color:#b53a22;font-style:italic">Problema: ¿cómo inspecciono un remitente o un enlace solo con voz? No sirve en oficina abierta.</div>
+</div>
+</body></html>
