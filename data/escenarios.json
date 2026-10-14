@@ -1,0 +1,203 @@
+{
+  "version": "0.2-mvp",
+  "nota": "Datos simulados. Empresa, personas, bancos y dominios son ficticios. Todos los dominios usan el TLD reservado .test para que ningún enlace sea funcional.",
+  "empresa_ficticia": { "nombre": "Inversiones Kallpa S.A.C.", "dominio": "kallpa.test" },
+  "tacticas": ["urgencia", "autoridad", "verificacion_remitente", "enlaces", "adjuntos", "datos_por_telefono", "acceso_fisico", "falso_positivo"],
+  "escenarios": [
+    {
+      "id": "E01", "titulo": "El gerente tiene apuro", "rol": "contador", "canal": "correo", "dificultad": 2,
+      "tacticas": ["urgencia", "autoridad"], "es_ataque": true,
+      "mensaje": {
+        "de": "Ricardo Salas (Gerente General) <r.salas@kallpa-gerencia.test>",
+        "asunto": "URGENTE - transferencia confidencial",
+        "cuerpo": "Hola, estoy en reunión con el directorio y no puedo hablar. Necesito que hoy antes de las 4 pm hagas una transferencia de S/ 48,500 a la cuenta que te paso abajo. Es confidencial, no lo comentes con nadie. Te explico mañana.",
+        "enlaces": [], "adjuntos": []
+      },
+      "senales": ["Dominio distinto al corporativo (kallpa-gerencia.test)", "Urgencia con hora límite", "Pide confidencialidad y saltarse el proceso", "No se puede verificar por otro canal"],
+      "accion_correcta": "reportar_y_verificar",
+      "debrief": "Clásico fraude del CEO. Nadie te va a sancionar por llamar al gerente a su número de siempre antes de mover S/ 48,500."
+    },
+    {
+      "id": "E02", "titulo": "El proveedor cambió de banco", "rol": "contador", "canal": "correo", "dificultad": 3,
+      "tacticas": ["verificacion_remitente", "adjuntos"], "es_ataque": true,
+      "mensaje": {
+        "de": "Facturación Distribuidora Ayni <facturacion@distribuidoraayni.test>",
+        "asunto": "Actualización de datos bancarios - Factura F001-3381",
+        "cuerpo": "Estimados, por auditoría interna hemos cambiado de entidad bancaria. Adjuntamos la factura del mes y la carta con la nueva cuenta. Agradeceremos realizar el abono a la nueva cuenta desde este pago.",
+        "enlaces": [], "adjuntos": ["Carta_nueva_cuenta.pdf", "F001-3381.pdf"]
+      },
+      "senales": ["Cambio de cuenta bancaria por correo", "El remitente parece real (cuenta comprometida)", "Presión sutil para aplicarlo 'desde este pago'"],
+      "accion_correcta": "verificar_por_otro_canal",
+      "debrief": "Aquí el correo puede venir del proveedor real porque le robaron la cuenta. La regla de oro: cambios de cuenta se confirman llamando al número que ya tenías registrado."
+    },
+    {
+      "id": "E03", "titulo": "Banco Andino al teléfono", "rol": "contador", "canal": "llamada", "dificultad": 2,
+      "tacticas": ["urgencia", "datos_por_telefono"], "es_ataque": true,
+      "guion": [
+        "Buenas tardes, le saluda Marco del área de seguridad de Banco Andino. Hemos detectado un intento de pago sospechoso desde la cuenta empresarial de Kallpa.",
+        "Para bloquearlo necesito que me confirme el código que le acaba de llegar al token por SMS.",
+        "Entiendo su desconfianza, pero si no lo bloqueamos en los próximos dos minutos el pago se procesa."
+      ],
+      "palabras_clave_correctas": ["colgar", "devolver la llamada", "no doy", "no comparto", "número oficial", "verificar"],
+      "senales": ["El banco nunca pide códigos de token", "Urgencia de minutos", "Llamada entrante, no iniciada por ti"],
+      "accion_correcta": "colgar_y_llamar_oficial",
+      "debrief": "Si el banco te llama pidiendo un código, ya sabes que no es el banco. Colgar no es de mala educación, es procedimiento."
+    },
+    {
+      "id": "E04", "titulo": "Notificación tributaria", "rol": "contador", "canal": "correo", "dificultad": 1,
+      "tacticas": ["autoridad", "adjuntos"], "es_ataque": true,
+      "mensaje": {
+        "de": "Recaudación Tributaria Nacional <notificaciones@rtn-avisos.test>",
+        "asunto": "Resolución de cobranza coactiva N° 0231-2026",
+        "cuerpo": "Se le notifica la resolución adjunta. De no regularizar en 24 horas se procederá con el embargo de cuentas. Descargue el expediente comprimido.",
+        "enlaces": ["http://rtn-avisos.test/expediente"], "adjuntos": ["Expediente_0231.zip"]
+      },
+      "senales": ["Adjunto comprimido .zip", "Amenaza de embargo en 24 horas", "Las notificaciones oficiales llegan al buzón electrónico del portal, no por correo con adjunto"],
+      "accion_correcta": "reportar",
+      "debrief": "Una entidad pública no te manda un .zip por correo con amenaza a 24 horas. Ese archivo es el verdadero cobrador."
+    },
+    {
+      "id": "E05", "titulo": "La librería casi igual", "rol": "desarrollador", "canal": "chat", "dificultad": 3,
+      "tacticas": ["verificacion_remitente", "enlaces"], "es_ataque": true,
+      "mensaje": {
+        "de": "#dev-backend · bot-dependencias",
+        "asunto": "PR automático: actualización de dependencias",
+        "cuerpo": "Se propone reemplazar 'request-utils' por 'requests-utlis' (v2.1.0) por una vulnerabilidad crítica. Aprobar y fusionar hoy.",
+        "enlaces": ["https://registro-paquetes.test/requests-utlis"], "adjuntos": []
+      },
+      "senales": ["Nombre con error tipográfico (typosquatting)", "Paquete recién publicado, pocas descargas", "Presión para fusionar sin revisión"],
+      "accion_correcta": "reportar_y_no_fusionar",
+      "debrief": "Una letra cambiada y tu pipeline instala código ajeno. Revisar el nombre exacto y el historial del paquete toma 30 segundos."
+    },
+    {
+      "id": "E06", "titulo": "Token expuesto", "rol": "desarrollador", "canal": "correo", "dificultad": 2,
+      "tacticas": ["urgencia", "enlaces"], "es_ataque": true,
+      "mensaje": {
+        "de": "Seguridad de CodeHub <security@codehub-alerts.test>",
+        "asunto": "[Acción requerida] Se detectó un token personal expuesto",
+        "cuerpo": "Detectamos su token en un repositorio público. Para evitar la suspensión de la cuenta, inicie sesión y rote el token en los próximos 30 minutos.",
+        "enlaces": ["https://codehub-alerts.test/login?next=tokens"], "adjuntos": []
+      },
+      "senales": ["Dominio de alertas distinto al oficial", "Enlace directo a login", "Plazo corto con amenaza de suspensión"],
+      "accion_correcta": "reportar_e_ir_directo_al_sitio",
+      "debrief": "Si te preocupa el token, entra al sitio escribiendo la dirección tú mismo. El enlace del correo es el que quiere tu contraseña."
+    },
+    {
+      "id": "E07", "titulo": "Soporte TI necesita tu MFA", "rol": "desarrollador", "canal": "llamada", "dificultad": 2,
+      "tacticas": ["autoridad", "datos_por_telefono"], "es_ataque": true,
+      "guion": [
+        "Hola, soy Kevin de mesa de ayuda. Estamos migrando las cuentas de VPN y la tuya quedó a medias.",
+        "Te va a llegar una notificación de doble factor, solo dime el número que aparece en pantalla y lo cerramos.",
+        "Es rápido, ya lo hice con todo tu equipo, solo faltas tú."
+      ],
+      "palabras_clave_correctas": ["ticket", "no comparto", "colgar", "verificar", "mesa de ayuda oficial", "no"],
+      "senales": ["Pide un código de MFA", "Prueba social: 'ya lo hizo todo tu equipo'", "Sin ticket ni canal oficial"],
+      "accion_correcta": "negar_y_reportar",
+      "debrief": "Mesa de ayuda no necesita tu código para nada. Si alguien lo pide, el problema no es tu VPN."
+    },
+    {
+      "id": "E08", "titulo": "El nuevo del equipo", "rol": "desarrollador", "canal": "chat", "dificultad": 3,
+      "tacticas": ["autoridad", "verificacion_remitente"], "es_ataque": true,
+      "mensaje": {
+        "de": "Diego R. (externo) · mensaje directo",
+        "asunto": "Acceso a producción",
+        "cuerpo": "Hola! Soy Diego, me acabo de unir como consultor para el proyecto de pagos. Andrea me dijo que tú me podías pasar las credenciales de la BD de producción mientras me dan accesos. Es solo para revisar un log 🙏",
+        "enlaces": [], "adjuntos": []
+      },
+      "senales": ["Cuenta marcada como externa", "Menciona a una jefa para ganar confianza", "Pide credenciales por chat"],
+      "accion_correcta": "verificar_con_jefatura",
+      "debrief": "Ser amable y ser cuidadoso no son opuestos. Le dices que pida acceso por el canal formal y le escribes a Andrea."
+    },
+    {
+      "id": "E09", "titulo": "Visita sin cita", "rol": "recepcion", "canal": "presencial", "dificultad": 1,
+      "tacticas": ["acceso_fisico", "urgencia"], "es_ataque": true,
+      "mensaje": {
+        "de": "Persona en recepción",
+        "asunto": "Técnico del aire acondicionado",
+        "cuerpo": "Buenos días, vengo del mantenimiento del aire acondicionado del tercer piso. Se me hizo tarde y el supervisor me está esperando, ¿me abre el torniquete nomás? Ya está todo coordinado.",
+        "enlaces": [], "adjuntos": []
+      },
+      "senales": ["No figura en la agenda de visitas", "Prisa para evitar el registro", "'Ya está coordinado' sin nombre de contacto"],
+      "accion_correcta": "registrar_y_confirmar",
+      "debrief": "Pedir DNI y llamar al supervisor es tu trabajo, no una falta de respeto. El técnico real espera dos minutos sin problema."
+    },
+    {
+      "id": "E10", "titulo": "El gerente pide un dato", "rol": "recepcion", "canal": "llamada", "dificultad": 2,
+      "tacticas": ["autoridad", "datos_por_telefono"], "es_ataque": true,
+      "guion": [
+        "Aló, habla Ricardo Salas, gerente general. Estoy fuera de Lima y necesito el celular personal y el DNI de la nueva asistente de contabilidad.",
+        "Es para un trámite del seguro, me lo piden ahora mismo.",
+        "Oiga, no tengo tiempo, ¿usted sabe con quién está hablando?"
+      ],
+      "palabras_clave_correctas": ["no puedo", "datos personales", "devolver la llamada", "recursos humanos", "verificar", "anexo"],
+      "senales": ["Pide datos personales de otra persona", "Llama desde un número desconocido", "Usa la autoridad para presionar"],
+      "accion_correcta": "negar_y_derivar",
+      "debrief": "El tono molesto es parte del guion del atacante. Derivar a RR.HH. y devolver la llamada al anexo oficial te protege a ti y a tu compañera."
+    },
+    {
+      "id": "E11", "titulo": "El USB olvidado", "rol": "recepcion", "canal": "presencial", "dificultad": 1,
+      "tacticas": ["acceso_fisico", "adjuntos"], "es_ataque": true,
+      "mensaje": {
+        "de": "Objeto encontrado",
+        "asunto": "USB con etiqueta 'Planilla bonos 2026'",
+        "cuerpo": "Encuentras un USB en el sofá de recepción. Tiene una etiqueta escrita a mano: 'Planilla bonos 2026 - CONFIDENCIAL'. Tienes la laptop de recepción al lado.",
+        "enlaces": [], "adjuntos": []
+      },
+      "senales": ["Dispositivo de origen desconocido", "Etiqueta diseñada para despertar curiosidad"],
+      "accion_correcta": "entregar_a_ti_sin_conectar",
+      "debrief": "La etiqueta está hecha para que lo conectes. Va directo a TI, sin probarlo 'solo para ver de quién es'."
+    },
+    {
+      "id": "E12", "titulo": "Tu paquete está retenido", "rol": "todos", "canal": "sms", "dificultad": 1,
+      "tacticas": ["enlaces", "urgencia"], "es_ataque": true,
+      "mensaje": {
+        "de": "+51 9XX XXX 412",
+        "asunto": "SMS",
+        "cuerpo": "EnvioYa: Su paquete no pudo ser entregado por dirección incompleta. Pague S/ 3.90 para reprogramar: envioya-pe.test/pago",
+        "enlaces": ["https://envioya-pe.test/pago"], "adjuntos": []
+      },
+      "senales": ["Número personal, no remitente de empresa", "Monto pequeño para bajar la guardia", "Enlace a dominio raro"],
+      "accion_correcta": "eliminar_y_reportar",
+      "debrief": "Los S/ 3.90 son el anzuelo; lo que buscan es tu tarjeta completa."
+    },
+    {
+      "id": "E13", "titulo": "Recordatorio de capacitación", "rol": "todos", "canal": "correo", "dificultad": 2,
+      "tacticas": ["falso_positivo"], "es_ataque": false,
+      "mensaje": {
+        "de": "Recursos Humanos <rrhh@kallpa.test>",
+        "asunto": "Recordatorio: capacitación de primeros auxilios - jueves 10 am",
+        "cuerpo": "Hola equipo, les recordamos la capacitación presencial del jueves a las 10 am en la sala 2. No es necesario registrarse, solo asistir. Cualquier duda, al anexo 204.",
+        "enlaces": [], "adjuntos": []
+      },
+      "senales": ["Dominio corporativo correcto", "No pide datos ni clics", "Ofrece un canal de consulta conocido"],
+      "accion_correcta": "marcar_legitimo",
+      "debrief": "No todo es ataque. Saber reconocer lo legítimo evita que el equipo de seguridad se ahogue en falsas alarmas."
+    },
+    {
+      "id": "E14", "titulo": "Encuesta de bienestar con QR", "rol": "todos", "canal": "presencial", "dificultad": 2,
+      "tacticas": ["enlaces", "autoridad"], "es_ataque": true,
+      "mensaje": {
+        "de": "Afiche en el ascensor",
+        "asunto": "Encuesta de bienestar 2026",
+        "cuerpo": "¡Tu opinión importa! Escanea el QR, ingresa con tu usuario y contraseña corporativos y participa en el sorteo de una gift card. — Bienestar Kallpa",
+        "enlaces": ["https://kallpa-bienestar.test/sso"], "adjuntos": []
+      },
+      "senales": ["Pide credenciales corporativas para una encuesta", "El QR esconde el dominio real", "Premio como gancho"],
+      "accion_correcta": "reportar",
+      "debrief": "Un QR es un enlace al que no le puedes ver la cara. Si te pide la clave del trabajo para una encuesta, sospecha."
+    },
+    {
+      "id": "E15", "titulo": "RR.HH. actualiza la planilla", "rol": "todos", "canal": "llamada", "dificultad": 3,
+      "tacticas": ["autoridad", "datos_por_telefono", "urgencia"], "es_ataque": true,
+      "guion": [
+        "Hola, te llamo de Recursos Humanos, soy Lucía. Estamos cerrando la planilla de este mes y tu cuenta sueldo salió con error.",
+        "Para no retrasar tu pago necesito validar el número de tu tarjeta y la fecha de vencimiento.",
+        "Si prefieres te mando un enlace por WhatsApp para que lo llenes ahí, es más rápido."
+      ],
+      "palabras_clave_correctas": ["no", "acercarme", "anexo", "verificar", "correo oficial", "no doy"],
+      "senales": ["RR.HH. no necesita tu tarjeta, solo el número de cuenta y por canal formal", "Amenaza indirecta: retraso del sueldo", "Ofrece pasar a un canal no oficial"],
+      "accion_correcta": "negar_y_verificar",
+      "debrief": "Tocar el sueldo es tocar fibra. Por eso lo usan. Ve en persona o llama al anexo de RR.HH."
+    }
+  ]
+}

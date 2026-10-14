@@ -1,0 +1,18 @@
+{
+  "nota": "Usuarios simulados para pruebas. Nombres y correos ficticios.",
+  "usuarios": [
+    {"id":"u01","nombre":"Rosa Quispe","email":"rosa.quispe@kallpa.test","rol":"contador","equipo":"Finanzas","alias":"Ninja_Contable","nivel":1,"puntos":185,
+     "preferencias":{"humor":1,"voz":true,"subtitulos":true,"tamano_letra":1.15},
+     "stats":{"urgencia":{"ok":2,"total":2},"autoridad":{"ok":1,"total":2},"adjuntos":{"ok":0,"total":1},"datos_por_telefono":{"ok":1,"total":1}},
+     "emociones":[{"fecha":"2026-10-12","antes":"normal","despues":"bien"}]},
+    {"id":"u02","nombre":"Diego Ramírez","email":"diego.ramirez@kallpa.test","rol":"desarrollador","equipo":"TI","alias":null,"nivel":3,"puntos":1120,
+     "preferencias":{"humor":2,"voz":true,"subtitulos":false,"tamano_letra":1},
+     "stats":{"enlaces":{"ok":5,"total":6},"verificacion_remitente":{"ok":3,"total":5},"datos_por_telefono":{"ok":2,"total":2}},
+     "emociones":[]},
+    {"id":"u03","nombre":"Milagros Torres","email":"milagros.torres@kallpa.test","rol":"recepcion","equipo":"Operaciones","alias":null,"nivel":2,"puntos":760,
+     "preferencias":{"humor":1,"voz":false,"subtitulos":true,"tamano_letra":1},
+     "stats":{"acceso_fisico":{"ok":3,"total":4},"autoridad":{"ok":2,"total":4},"datos_por_telefono":{"ok":1,"total":3}},
+     "emociones":[{"fecha":"2026-10-10","antes":"estresado","despues":"normal"}]},
+    {"id":"u04","nombre":"Javier Huamán","email":"javier.huaman@kallpa.test","rol":"admin","equipo":null,"alias":null}
+  ]
+}

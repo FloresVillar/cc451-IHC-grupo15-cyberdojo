@@ -1,0 +1,22 @@
+digraph C4 {
+  graph [rankdir=TB, fontname="DejaVu Sans", bgcolor=white, pad=0.3, nodesep=0.6, ranksep=0.7, label="C4 · Nivel 2: Diagrama de contenedores", labelloc=t, fontsize=16, compound=true];
+  node [shape=box, style="rounded,filled", fontname="DejaVu Sans", fontsize=10, fontcolor=white, color="#0b3d6e", margin="0.18,0.1"];
+  edge [fontname="DejaVu Sans", fontsize=9, color="#555555", fontcolor="#333333"];
+  colab [label="Colaborador\n[Persona]", fillcolor="#08427b"];
+  admin [label="Admin de TI\n[Persona]", fillcolor="#08427b"];
+  subgraph cluster_sys { label="CyberDojo [Sistema]"; style="dashed,rounded"; color="#1168bd"; fontname="DejaVu Sans"; fontsize=12; fontcolor="#1168bd";
+    pwa [label="PWA cliente\n[React + Vite, Service Worker]\n\nUI del dojo, combates, llamada\n(Web Speech API), caché offline.", fillcolor="#438dd5"];
+    api [label="API de aplicación\n[Node.js + Express]\n\nAuth (JWT), perfiles, escenarios,\nevaluación, reglas de dificultad.", fillcolor="#438dd5"];
+    rt  [label="Servicio de torneos\n[Socket.IO]\n\nSalas, marcador en vivo,\ntablero de cinturones.", fillcolor="#438dd5"];
+    gw  [label="LLM Gateway\n[Módulo Node.js]\n\nInterfaz única + adaptadores.\nGuardrails: dominios .test,\nfallback al banco de escenarios.", fillcolor="#438dd5"];
+    db  [label="Base de datos\n[PostgreSQL]\n\nUsuarios, perfiles adaptativos,\nescenarios, resultados, salas.", shape=cylinder, fillcolor="#438dd5"];
+    bank[label="Banco de escenarios\n[JSON versionado]\n\n15 escenarios MVP\n(data/escenarios.json)", shape=folder, fillcolor="#438dd5"];
+  }
+  llm [label="Proveedor LLM\n[Anthropic / OpenAI / Ollama]", fillcolor="#8a8a8a", color="#6b6b6b"];
+  stt [label="STT/TTS en la nube\n[opcional]", fillcolor="#8a8a8a", color="#6b6b6b"];
+  colab -> pwa [label="Usa [HTTPS]"]; admin -> pwa [label="Usa (vista admin)"];
+  pwa -> api [label="REST/JSON [HTTPS]"]; pwa -> rt [label="WebSocket [WSS]"];
+  pwa -> stt [label="Audio (si el navegador\nno tiene Web Speech)", style=dashed];
+  api -> gw [label="generarEscenario()\nevaluarRespuesta()"]; gw -> llm [label="HTTPS / localhost:11434"]; gw -> bank [label="fallback"];
+  api -> db [label="SQL"]; rt -> db [label="SQL"];
+}

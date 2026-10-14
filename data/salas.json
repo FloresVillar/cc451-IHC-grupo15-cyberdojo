@@ -1,0 +1,8 @@
+{
+  "salas": [
+    {"codigo":"K4L9PX","nombre":"Kallpa · Liga de octubre","admin":"u04",
+     "equipos":[{"nombre":"Finanzas","miembros":["u01"],"puntos":320},{"nombre":"TI","miembros":["u02"],"puntos":350},{"nombre":"Operaciones","miembros":["u03"],"puntos":280}],
+     "torneos":[{"id":"T01","nombre":"Copa Kallpa: semana del vishing","inicio":"2026-10-14T15:00:00-05:00","duracion_min":15,"escenarios":["E12","E13","E15"],"estado":"en_curso"}]}
+  ],
+  "cinturones":[{"nombre":"Blanco","min":0},{"nombre":"Amarillo","min":100},{"nombre":"Naranja","min":250},{"nombre":"Verde","min":450},{"nombre":"Azul","min":700},{"nombre":"Marrón","min":1000},{"nombre":"Negro","min":1400}]
+}

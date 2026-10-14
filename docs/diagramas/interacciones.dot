@@ -1,0 +1,27 @@
+digraph G {
+  graph [rankdir=LR, fontname="DejaVu Sans", nodesep=0.35, ranksep=0.55, bgcolor="white", pad=0.3, label="CyberDojo · Diagrama de interacciones entre pantallas (prototipo de fidelidad media)", labelloc=t, fontsize=16];
+  node  [shape=box, style="rounded,filled", fillcolor="#fffdf8", color="#1f1d1a", fontname="DejaVu Sans", fontsize=11, margin="0.15,0.08"];
+  edge  [fontname="DejaVu Sans", fontsize=9, color="#5e584f", fontcolor="#5e584f", arrowsize=0.7];
+
+  subgraph cluster_on { label="Onboarding"; style="rounded,dashed"; color="#b9b1a2"; fontsize=11;
+    P01 [label="P01\nBienvenida"]; P02 [label="P02\nIngreso"]; P03 [label="P03\nRol y preferencias"]; P04 [label="P04\nCalibración"]; }
+  subgraph cluster_core { label="Entrenamiento individual"; style="rounded,dashed"; color="#b9b1a2"; fontsize=11;
+    P05 [label="P05\nDojo (inicio)\n+ check-in emocional", fillcolor="#f6e0da", penwidth=2];
+    P06 [label="P06\nCamino de combates"];
+    P07 [label="P07\nCombate\ncorreo / chat / SMS"]; P08 [label="P08\nLlamada de vishing\n(voz + subtítulos)", fillcolor="#e9e2d2"];
+    P09 [label="P09\nDebrief del sensei"]; P10 [label="P10\nMi progreso"]; P14 [label="P14\nAjustes"]; }
+  subgraph cluster_multi { label="Multiusuario"; style="rounded,dashed"; color="#b9b1a2"; fontsize=11;
+    P11 [label="P11\nSalas"]; P12 [label="P12\nTorneo en curso"]; P13 [label="P13\nTablero de cinturones"]; }
+  subgraph cluster_admin { label="Administrador"; style="rounded,dashed"; color="#b9b1a2"; fontsize=11;
+    P15 [label="P15\nPanel admin\n(torneos · escenarios · métricas)"]; }
+
+  P01 -> P02 [label="Empezar"]; P01 -> P05 [label="Ya tengo cuenta", style=dashed];
+  P02 -> P03 [label="Continuar"]; P03 -> P04 [label="Siguiente"]; P04 -> P05 [label="Entrar al dojo /\nSaltar"];
+  P05 -> P07 [label="Combate sugerido\n(chat)"]; P05 -> P08 [label="Combate sugerido\n(voz)"]; P05 -> P06; P05 -> P11; P05 -> P15 [label="Soy admin"];
+  P06 -> P07 [label="escenario de texto"]; P06 -> P08 [label="escenario de llamada"];
+  P07 -> P09 [label="Reportar / Verificar /\nResponder / Legítimo"]; P08 -> P09 [label="Colgar / Responder /\nRechazar"];
+  P09 -> P07 [label="Siguiente combate", style=dashed]; P09 -> P05 [label="Volver al dojo"]; P09 -> P12 [label="(en torneo)", style=dashed];
+  P11 -> P12 [label="Entrar al torneo"]; P11 -> P13; P12 -> P07 [style=dashed]; P12 -> P08 [style=dashed];
+  P05 -> P10 [label="barra inferior", color="#b53a22", fontcolor="#b53a22"]; P05 -> P14 [label="barra inferior", color="#b53a22", fontcolor="#b53a22"];
+  P10 -> P05 [style=dotted]; P14 -> P05 [style=dotted]; P13 -> P11 [style=dotted]; P15 -> P05 [style=dotted];
+}
