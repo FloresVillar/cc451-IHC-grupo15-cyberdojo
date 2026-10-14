@@ -55,6 +55,7 @@ El MVP son 15 escenarios (3 roles + escenarios generales, 4 de ellos por voz), e
 - `dev` es la rama de integración. Cada integrante crea su rama desde `dev` (por ejemplo `feat/voz-vishing` o `docs/pact`) y la vuelve a unir con un PR hacia `dev`.
 - Cada tarea es un issue del tablero del proyecto (GitHub Projects), asignado a una persona. El PR que la resuelve dice `closes #N`.
 - Cuando `dev` está estable, se abre un PR de `dev` a `main`.
+- Después de clonar, cada integrante activa el hook del repo con `git config core.hooksPath .githooks`. Antes de cada push, el hook trae `origin/dev` y cancela el push si tu rama no tiene todos sus commits; en ese caso haz `git pull origin dev` y vuelve a intentar.
 
 ## Documentación
 
