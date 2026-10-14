@@ -46,25 +46,25 @@ En WSL se ejecuta `npm start` desde la terminal de Linux y la URL se abre en el 
 9. Desde el Dojo: **Salas y torneos** → **Unirme** → **Entrar al torneo** → **Tablero de cinturones**.
 10. **Soy administrador**: crear torneo, aprobar escenarios y exportar CSV.
 
-Qué requerimiento común de la PC02 se muestra en cada paso y qué código lo implementa (las funciones están en `app/index.html`):
+Cada paso recorre la trazabilidad de la [matriz](05-matriz-trazabilidad.md): requerimiento ([03](03-requerimientos.md)) → historia de usuario ([04](04-historias-usuario.md)) → pantalla, junto con el [criterio de usabilidad](07-criterios-usabilidad.md) que se comprueba y el requerimiento común de la PC02 que cubre. Las funciones están en `app/index.html`.
 
-| Paso | Requerimiento PC02 | Qué se ve | Código |
-| --- | --- | --- | --- |
-| 1 | Diseño emocional: nivel visceral | Estética de dojo y sensei | `senseiSVG()`, `sensei()` |
-| 2 | Usabilidad (Nielsen) | Mensaje claro si el código de organización no existe | `doLogin()` |
-| 3 | Personalización continua: preferencias | Rol, humor, voz, subtítulos y tamaño de letra guardados en el perfil | `prefs()`, `save()` / `load()` con `localStorage` |
-| 4 | Personalización continua: nivel inicial | Calibración de 3 preguntas | `calib()` |
-| 5 | Personalización continua: emociones declaradas y errores | Check-in emocional; sugiere las tácticas con acierto < 60% | `checkin()`, `suggested()`, `weakTactics()` |
-| 6 | Diseño emocional: nivel conductual (micro-interacciones) | Inspeccionar señales, pistas con costo, puntaje inmediato | `inspect()`, `hint()`, `decide()` |
-| 7 | Diseño emocional: tono del asistente y nivel reflexivo | Debrief sin culpa con el humor elegido; nivel y cinturón según el desempeño | `senseiLine()`, `record()`, `belt()` |
-| 8 | Interfaz de voz | Llamada con voz sintética, reconocimiento de la respuesta, subtítulos y respuestas escritas | `speak()` (`speechSynthesis`), `listen()` (`SpeechRecognition`), `reply()`, `voiceCmd()` |
-| 9 | Multiusuario: salas | Sala, torneo con marcador en vivo (simulado) y tablero con alias | `startTorneo()`, `displayName()` |
-| 10 | Multiusuario: administración | Métricas agregadas del equipo y exportación CSV | `csv()` |
+| Paso | Requerimiento → HU | Criterio de usabilidad / usuario | PC02 | Código |
+| --- | --- | --- | --- | --- |
+| 1 P01 | RF02 → HU02 | Facilidad de aprendizaje: primer combate en < 5 min sin tutorial | Diseño emocional visceral | `senseiSVG()`, `sensei()` |
+| 2 P02 | RF01, RNF06 → HU01 | Prevención de errores: código inválido con mensaje claro y sugerencia | Usabilidad | `doLogin()` |
+| 3 P03 | RF01, RF02, RNF02 → HU01, HU09, HU16 | Accesibilidad: tamaño de letra y subtítulos (Rosa); alias para no exponerse | Personalización continua | `prefs()`, `save()` / `load()` |
+| 4 P04 | RF02, RF10 → HU02 | Facilidad de aprendizaje: nivel inicial según experiencia (Diego vs. Rosa) | Personalización continua | `calib()` |
+| 5 P05 | RF10, RF11 → HU10, HU11 | Eficiencia: máximo 2 toques hasta un combate; recuperación emocional | Personalización continua | `checkin()`, `suggested()`, `weakTactics()` |
+| 6 P07 | RF05, RF08, RF20 → HU04, HU05, HU21 | Prevención de errores (confirmación en acciones riesgosas); consistencia: barra de acciones fija | Diseño emocional conductual | `inspect()`, `hint()`, `decide()` |
+| 7 P09 | RF09, RF12, RNF12 → HU08, HU09, HU12 | Recuperación emocional: ≥ 80% inicia otro combate tras fallar; tono sin culpa | Diseño emocional reflexivo | `senseiLine()`, `record()`, `belt()` |
+| 8 P08 | RF06, RF07, RF19, RNF03 → HU06, HU07, HU20 | Accesibilidad sin audio (subtítulos y texto); visibilidad del estado del micrófono; entorno ruidoso (Milagros) | Interfaz de voz | `speak()`, `listen()`, `reply()`, `voiceCmd()` |
+| 9 P11–P13 | RF14, RF15, RF16, RNF09 → HU14, HU15, HU16 | Satisfacción; nunca se publican errores individuales (actitud frente al error) | Multiusuario | `startTorneo()`, `displayName()` |
+| 10 P15 | RF17, RF18, RF22 → HU17, HU18, HU19 | Stakeholder responsable de TI (Javier): métricas claras y agregadas | Multiusuario | `csv()` |
 
 Los otros dos requerimientos comunes no tienen pantalla propia:
 
-- **PWA:** `app/manifest.webmanifest` la hace instalable y `app/sw.js` guarda en caché el shell y los escenarios para usarla sin conexión.
-- **LLM con capa de abstracción:** el prototipo usa solo el banco de escenarios (`app/escenarios.js`, generado desde `data/escenarios.json` con `npm run datos`). El gateway con proveedores intercambiables, guardrails y fallback está en `src/llm/` y se muestra con `npm run demo:llm`.
+- **PWA (RF21, RNF04 → HU22):** `app/manifest.webmanifest` la hace instalable y `app/sw.js` guarda en caché el shell y los escenarios para usarla sin conexión.
+- **LLM con capa de abstracción (RF03, RF04, RNF07, RNF10 → HU03, HU23):** el prototipo usa solo el banco de escenarios (`app/escenarios.js`, generado desde `data/escenarios.json` con `npm run datos`). El gateway con proveedores intercambiables, guardrails y fallback está en `src/llm/` y se muestra con `npm run demo:llm`.
 
 La barra superior salta a cualquier pantalla (P01–P15) y **Reiniciar demo** vuelve todo al inicio. También se puede ir directo a una pantalla con `http://localhost:8080/app/#P08`.
 
