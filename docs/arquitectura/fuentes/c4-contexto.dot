@@ -1,0 +1,17 @@
+digraph C4 {
+  graph [rankdir=TB, fontname="DejaVu Sans", bgcolor=white, pad=0.3, nodesep=0.8, ranksep=0.8, label="C4 · Nivel 1: Diagrama de contexto del sistema CyberDojo", labelloc=t, fontsize=16];
+  node [shape=box, style="rounded,filled", fontname="DejaVu Sans", fontsize=11, fontcolor=white, color="#0b3d6e", margin="0.2,0.12"];
+  edge [fontname="DejaVu Sans", fontsize=10, color="#555555", fontcolor="#333333"];
+  colab [label="Colaborador-aprendiz\n[Persona]\n\nContador, desarrollador o recepción.\nEntrena con combates por chat y voz.", fillcolor="#08427b"];
+  admin [label="Responsable de seguridad / TI\n[Persona]\n\nCrea salas y torneos, revisa\nescenarios y ve métricas.", fillcolor="#08427b"];
+  sys [label="CyberDojo\n[Sistema de software]\n\nPWA de concientización en ciberseguridad:\nescenarios generados por LLM, llamadas de vishing,\nperfil adaptativo, torneos y cinturones.", fillcolor="#1168bd", width=4.5];
+  llm [label="Proveedor LLM\n[Sistema externo]\n\nAnthropic / OpenAI (API) u\nOllama local. Genera y evalúa escenarios.", fillcolor="#8a8a8a", color="#6b6b6b"];
+  voz [label="Servicio de voz\n[Sistema externo]\n\nWeb Speech API del navegador o\nSTT/TTS en la nube (Whisper / TTS).", fillcolor="#8a8a8a", color="#6b6b6b"];
+  mail [label="Servicio de correo\n[Sistema externo]\n\nEnvía invitaciones a torneos\ny enlaces de acceso.", fillcolor="#8a8a8a", color="#6b6b6b"];
+  colab -> sys [label="Hace combates, habla en llamadas,\nve progreso y compite [HTTPS/WSS]"];
+  admin -> sys [label="Configura torneos y\nrevisa reportes [HTTPS]"];
+  sys -> llm [label="Pide escenarios y evaluaciones\n[HTTPS/JSON]"];
+  sys -> voz [label="Sintetiza y transcribe voz"];
+  sys -> mail [label="Envía invitaciones [SMTP/API]"];
+  mail -> colab [label="Invitación a sala", style=dashed];
+}
