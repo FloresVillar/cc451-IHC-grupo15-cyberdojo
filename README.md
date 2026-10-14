@@ -10,14 +10,14 @@ Los empleados de una empresa aprenden a reconocer phishing, vishing e ingenierí
 
 Todo debe poder usarlo también una persona ciega, sorda, con discapacidad motriz o neurodivergente, porque los atacantes no eligen a quién llamar.
 
-El MVP son 15 escenarios simulados (5 por rol) y la evaluación de progreso, con datos de empleados simulados.
+El MVP son 15 escenarios (3 roles + escenarios generales, 4 de ellos por voz), evaluación de progreso, perfil adaptativo, salas y torneos por equipos y un panel básico para el administrador, con datos de empleados simulados.
 
 ## Cómo cumple el marco común del proyecto
 
 | Requisito | En CyberDojo |
 | --- | --- |
 | Interfaz de voz | Llamadas de vishing simuladas con TTS; el empleado responde por voz (Web Speech API). Siempre se muestra lo que se entendió y hay botones como alternativa. |
-| LLM | Generación de escenarios por rol y senseis, detrás de una capa de proveedor (Gemini, Groq, Ollama) en `src/llm/`. |
+| LLM | Generación de escenarios por rol y senseis, detrás de una capa de proveedor en `src/llm/` que se cambia por `.env` (`LLM_PROVIDER`: anthropic, openai u ollama local). |
 | Plataforma | PWA: celular o computadora, y se puede reanudar un escenario sin conexión. |
 | Personalización continua | Perfil persistente con errores por tipo de ataque, tiempos de respuesta y temas, que ajusta la dificultad. |
 | Multiusuario | Torneos por equipos y tablero de cinturones en tiempo real. |
