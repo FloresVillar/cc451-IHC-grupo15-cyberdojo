@@ -1,0 +1,463 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#1f1d1a">
+<title>CyberDojo · Prototipo</title>
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icons/icon.svg" type="image/svg+xml">
+<style>
+:root{
+  --paper:#f4efe4; --card:#fffdf8; --ink:#1f1d1a; --muted:#5e584f; --line:#d9d1c2;
+  --accent:#b53a22; --accent-ink:#fff; --ok:#2f6b3a; --okbg:#e3efe2; --warn:#8a5a00; --warnbg:#f8ecd0;
+  --bad:#9b2c1c; --badbg:#f6e0da; --belt:#e8e2d4; --fs:1;
+}
+*{box-sizing:border-box}
+html,body{margin:0;background:#d9d3c6;color:var(--ink);font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+body{font-size:calc(16px * var(--fs))}
+.presenter{max-width:980px;margin:0 auto;padding:10px 16px;display:flex;gap:8px;align-items:center;flex-wrap:wrap;font-size:13px;color:#3b372f}
+.presenter select,.presenter button{font:inherit;padding:4px 8px}
+.phone{max-width:400px;min-height:760px;margin:0 auto 24px;background:var(--paper);border:1px solid #b9b1a2;border-radius:28px;overflow:hidden;position:relative;display:flex;flex-direction:column;box-shadow:0 10px 30px rgba(0,0,0,.12)}
+@media (max-width:440px){.phone{border-radius:0;border:0;min-height:100vh;margin:0}.presenter{display:none}}
+.top{display:flex;align-items:center;gap:10px;padding:14px 16px;border-bottom:1px solid var(--line);background:var(--card)}
+.top h1{font-size:1.05em;margin:0;flex:1}
+.sid{font:11px ui-monospace,monospace;background:var(--ink);color:#fff;border-radius:4px;padding:2px 6px}
+.back{background:none;border:0;font-size:1.3em;cursor:pointer;padding:4px 8px;min-width:44px;min-height:44px}
+main{flex:1;padding:16px;overflow:auto}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px;margin-bottom:12px}
+.muted{color:var(--muted)}
+.small{font-size:.85em}
+h2{font-size:1.25em;margin:.2em 0 .5em}
+h3{font-size:1em;margin:.2em 0 .4em}
+.btn{display:block;width:100%;min-height:48px;border-radius:12px;border:1px solid var(--ink);background:var(--card);color:var(--ink);font:inherit;font-weight:600;cursor:pointer;margin:8px 0;padding:10px 14px;text-align:center}
+.btn.primary{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
+.btn.ghost{border-color:var(--line)}
+.btn:disabled{opacity:.5;cursor:not-allowed}
+.row{display:flex;gap:8px}.row>*{flex:1}
+:focus-visible{outline:3px solid #1d5fd1;outline-offset:2px}
+input[type=text],input[type=email]{width:100%;min-height:46px;border:1px solid var(--line);border-radius:10px;padding:10px;font:inherit;background:#fff}
+label.opt{display:flex;gap:10px;align-items:center;border:1px solid var(--line);border-radius:12px;padding:12px;margin:6px 0;background:var(--card);cursor:pointer}
+label.opt input{width:20px;height:20px}
+.seg{display:flex;border:1px solid var(--ink);border-radius:10px;overflow:hidden}
+.seg button{flex:1;border:0;background:var(--card);font:inherit;padding:10px 4px;min-height:44px;cursor:pointer}
+.seg button[aria-pressed=true]{background:var(--ink);color:#fff}
+.sensei{display:flex;gap:12px;align-items:flex-start}
+.sensei svg{flex:0 0 56px}
+.bubble{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:10px 12px;position:relative}
+.belt{display:inline-flex;align-items:center;gap:6px;font-weight:700}
+.belt i{display:inline-block;width:34px;height:10px;border-radius:3px;border:1px solid #0003}
+.bar{height:10px;background:var(--belt);border-radius:6px;overflow:hidden}
+.bar>span{display:block;height:100%;background:var(--accent)}
+.tag{display:inline-block;font-size:.75em;border:1px solid var(--line);border-radius:999px;padding:2px 8px;margin:2px 4px 2px 0;background:#fff}
+.list button.item{display:flex;width:100%;gap:10px;align-items:center;text-align:left;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:12px;margin:6px 0;font:inherit;cursor:pointer;min-height:56px}
+.item .ico{font-size:1.4em;width:30px;text-align:center}
+.item .grow{flex:1}
+.mail .from{display:block;width:100%;text-align:left;background:none;border:1px dashed var(--line);border-radius:8px;padding:8px;font:inherit;cursor:pointer}
+.mail .from.ins{border-style:solid;border-color:var(--warn);background:var(--warnbg)}
+.chip{display:inline-flex;gap:6px;align-items:center;border:1px solid var(--line);border-radius:8px;padding:8px 10px;margin:4px 6px 4px 0;background:#fff;font:inherit;cursor:pointer;min-height:44px}
+.chip.ins{border-color:var(--warn);background:var(--warnbg)}
+.peek{font:12px ui-monospace,monospace;background:#1f1d1a;color:#fff;border-radius:6px;padding:6px 8px;margin-top:6px;word-break:break-all}
+.actions{display:grid;grid-template-columns:1fr 1fr;gap:8px;padding:12px 16px;border-top:1px solid var(--line);background:var(--card)}
+.actions .btn{margin:0;font-size:.9em}
+.call{background:#1f1d1a;color:#f4efe4;flex:1;display:flex;flex-direction:column;padding:24px 16px}
+.call .who{text-align:center;margin-top:30px}
+.call .avatar{width:84px;height:84px;border-radius:50%;background:#3a352e;margin:0 auto 10px;display:grid;place-items:center;font-size:2em}
+.subs{background:#2d2924;border-radius:12px;padding:12px;margin:16px 0;min-height:90px;font-size:1.05em}
+.callbtns{display:flex;justify-content:space-around;margin-top:auto;padding:20px 0}
+.round{width:70px;height:70px;border-radius:50%;border:0;font-size:1.6em;cursor:pointer;color:#fff}
+.green{background:#2f8a46}.red{background:#c2341f}
+.quick button{display:block;width:100%;text-align:left;background:#2d2924;color:#f4efe4;border:1px solid #4a443b;border-radius:10px;padding:10px;margin:6px 0;font:inherit;cursor:pointer;min-height:44px}
+.mic{display:inline-flex;align-items:center;gap:6px}
+.mic.on::before{content:"";width:10px;height:10px;border-radius:50%;background:#e04a2f;animation:pulse 1s infinite}
+@keyframes pulse{50%{opacity:.3}}
+.result{border-radius:14px;padding:14px;margin-bottom:12px}
+.result.ok{background:var(--okbg);border:1px solid #9cc39f}
+.result.bad{background:var(--badbg);border:1px solid #e0a598}
+.sig{display:flex;gap:8px;align-items:flex-start;margin:6px 0}
+.sig b{min-width:22px}
+.stamp{animation:stamp .35s ease-out}
+@keyframes stamp{0%{transform:scale(1.6);opacity:0}100%{transform:scale(1);opacity:1}}
+.beltup{position:fixed;inset:0;display:grid;place-items:center;background:#0008;z-index:10}
+.beltup .card{text-align:center;animation:stamp .5s ease-out;max-width:320px}
+.modal{position:absolute;inset:0;background:#0007;display:grid;place-items:center;z-index:5;padding:16px}
+.emo{display:flex;justify-content:space-between;gap:6px}
+.emo button{flex:1;font-size:1.6em;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:8px 0;cursor:pointer;min-height:56px}
+.emo small{display:block;font-size:.45em}
+.score{display:flex;justify-content:space-between;align-items:center;padding:8px 0;border-bottom:1px solid var(--line)}
+.score:last-child{border-bottom:0}
+.me{font-weight:700}
+.tabs{display:flex;gap:6px;margin-bottom:10px}
+.tabs button{flex:1;min-height:42px;border:1px solid var(--ink);border-radius:10px;background:var(--card);font:inherit;cursor:pointer}
+.tabs button[aria-selected=true]{background:var(--ink);color:#fff}
+.qr{display:grid;grid-template-columns:repeat(11,10px);gap:1px;margin:8px auto;width:max-content}
+.qr i{width:10px;height:10px;background:#fff}.qr i.k{background:#1f1d1a}
+.nav{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--line);background:var(--card)}
+.nav button{background:none;border:0;padding:8px 0;font:inherit;font-size:.75em;cursor:pointer;min-height:56px}
+.nav button[aria-current=page]{color:var(--accent);font-weight:700}
+.nav span{display:block;font-size:1.4em}
+.sr{position:absolute;left:-9999px}
+</style>
+</head>
+<body>
+<div class="presenter" aria-label="Controles del prototipo">
+  <strong>CyberDojo · prototipo de fidelidad media</strong>
+  <label>Ir a pantalla <select id="jump"></select></label>
+  <button id="reset">Reiniciar demo</button>
+  <span class="muted">La llamada usa la voz del navegador (mejor en Chrome).</span>
+</div>
+<div class="phone" id="phone"></div>
+<div class="sr" aria-live="polite" id="live"></div>
+
+<script src="escenarios.js"></script>
+<script>
+const DATA = window.ESCENARIOS;
+const ESC = DATA.escenarios;
+const BELTS = [
+  {n:'Blanco',c:'#ffffff',min:0},{n:'Amarillo',c:'#f2c94c',min:100},{n:'Naranja',c:'#f2994a',min:250},
+  {n:'Verde',c:'#4f9a5a',min:450},{n:'Azul',c:'#2f6fb0',min:700},{n:'Marrón',c:'#7a4b2a',min:1000},{n:'Negro',c:'#1f1d1a',min:1400}];
+const TAC = {urgencia:'Urgencia',autoridad:'Autoridad',verificacion_remitente:'Remitente',enlaces:'Enlaces',adjuntos:'Adjuntos',datos_por_telefono:'Datos por teléfono',acceso_fisico:'Acceso físico',falso_positivo:'Mensajes legítimos'};
+const CANAL = {correo:'✉️',chat:'💬',sms:'📱',llamada:'📞',presencial:'🚪'};
+const ROLES = {contador:'Contabilidad',desarrollador:'Desarrollo',recepcion:'Recepción',otro:'Otro'};
+const SCREENS = [
+ ['P01','Bienvenida'],['P02','Ingreso'],['P03','Rol y preferencias'],['P04','Calibración'],['P05','Dojo'],
+ ['P06','Camino de combates'],['P07','Combate'],['P08','Llamada de vishing'],['P09','Debrief'],['P10','Mi progreso'],
+ ['P11','Salas'],['P12','Torneo'],['P13','Tablero de cinturones'],['P14','Ajustes'],['P15','Panel administrador']];
+
+const blank = () => ({email:'',rol:'contador',alias:'',useAlias:false,humor:1,voz:true,subs:true,fs:1,nivel:1,
+  puntos:0,stats:{},hist:[],emocion:null,checkinDone:false});
+let U = load() || blank();
+let S = {screen:'P01',esc:null,ins:new Set(),hints:0,turn:0,result:null,torneo:false,adminTab:'torneos',boardTab:'equipos',calib:0,calibOk:0,prevBelt:0};
+let teams = [{n:'Finanzas',p:320,me:true},{n:'TI',p:350},{n:'Operaciones',p:280}];
+let tTimer=null, tLeft=15*60;
+
+function load(){try{return JSON.parse(localStorage.getItem('cyberdojo_perfil'))}catch(e){return null}}
+function save(){try{localStorage.setItem('cyberdojo_perfil',JSON.stringify(U))}catch(e){}}
+const $ = s => document.querySelector(s);
+const esc = s => String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+function say(t){$('#live').textContent=t}
+function belt(p=U.puntos){let b=0;BELTS.forEach((x,i)=>{if(p>=x.min)b=i});return b}
+function beltTag(i){const b=BELTS[i];return `<span class="belt"><i style="background:${b.c}"></i>Cinturón ${b.n}</span>`}
+function displayName(){return U.useAlias&&U.alias?U.alias:(U.email.split('@')[0]||'Tú')}
+
+/* ---------- voz ---------- */
+function speak(text,cb){
+  if(!U.voz||!('speechSynthesis' in window)){cb&&setTimeout(cb,300);return}
+  speechSynthesis.cancel();
+  const u=new SpeechSynthesisUtterance(text);u.lang='es-PE';u.rate=1.02;
+  const v=speechSynthesis.getVoices().find(v=>v.lang&&v.lang.startsWith('es'));if(v)u.voice=v;
+  u.onend=()=>cb&&cb();u.onerror=()=>cb&&cb();speechSynthesis.speak(u);
+}
+function listen(onText){
+  const R=window.SpeechRecognition||window.webkitSpeechRecognition;
+  if(!R){alert('Tu navegador no tiene reconocimiento de voz. Responde con los botones o escribiendo.');return null}
+  const r=new R();r.lang='es-PE';r.interimResults=false;r.maxAlternatives=1;
+  r.onresult=e=>onText(e.results[0][0].transcript);
+  r.onerror=()=>{const m=$('#micbtn');m&&m.classList.remove('on')};
+  r.onend=()=>{const m=$('#micbtn');m&&m.classList.remove('on')};
+  r.start();return r;
+}
+
+/* ---------- personalización ---------- */
+function pool(){return ESC.filter(e=>e.rol===U.rol||e.rol==='todos'||U.rol==='otro')}
+function weakTactics(){
+  return Object.entries(U.stats).map(([t,s])=>[t,s.ok/s.total]).filter(([t,r])=>r<0.6).sort((a,b)=>a[1]-b[1]).map(x=>x[0]);
+}
+function suggested(){
+  const done=new Set(U.hist.map(h=>h.id));
+  const p=pool().filter(e=>!done.has(e.id));
+  const list=p.length?p:pool();
+  const weak=weakTactics();
+  return list.find(e=>e.tacticas.some(t=>weak.includes(t))) ||
+         list.find(e=>e.dificultad===U.nivel) || list[0];
+}
+function record(e,ok,pts){
+  e.tacticas.forEach(t=>{U.stats[t]=U.stats[t]||{ok:0,total:0};U.stats[t].total++;if(ok)U.stats[t].ok++});
+  U.hist.unshift({id:e.id,t:e.titulo,ok,pts,canal:e.canal});
+  const last=U.hist.slice(0,3);
+  if(last.length===3&&last.every(h=>h.ok))U.nivel=Math.min(3,U.nivel+1);
+  if(U.hist.length>=2&&!U.hist[0].ok&&!U.hist[1].ok)U.nivel=Math.max(1,U.nivel-1);
+  S.prevBelt=belt();U.puntos+=pts;save();
+  if(S.torneo){const me=teams.find(t=>t.me);me.p+=pts}
+}
+
+/* ---------- sensei ---------- */
+function senseiSVG(mood='ok'){
+  const mouth=mood==='ok'?'M20 36 Q28 42 36 36':mood==='hmm'?'M21 38 L35 38':'M20 39 Q28 34 36 39';
+  return `<svg width="56" height="56" viewBox="0 0 56 56" aria-hidden="true"><circle cx="28" cy="28" r="26" fill="#efe2c8" stroke="#1f1d1a" stroke-width="2"/><rect x="4" y="14" width="48" height="7" fill="#b53a22"/><path d="M50 17 l6 6 M50 17 l5 -2" stroke="#b53a22" stroke-width="3"/><circle cx="20" cy="29" r="2.5" fill="#1f1d1a"/><circle cx="36" cy="29" r="2.5" fill="#1f1d1a"/><path d="${mouth}" stroke="#1f1d1a" stroke-width="2" fill="none"/><path d="M14 44 Q28 56 42 44" stroke="#1f1d1a" stroke-width="2" fill="#fff"/></svg>`
+}
+function sensei(text,mood){return `<div class="sensei">${senseiSVG(mood)}<div class="bubble">${text}</div></div>`}
+function senseiLine(ok){
+  const L=[[ 'Bien hecho. Detectaste el ataque.','Así se hace: no picaste.','¡Ni el ninja más sigiloso pasa contigo! 🥋'],
+           [ 'Esta vez el atacante ganó. Veamos qué pasó.','Te la jugaron, pasa en las mejores familias.','Caíste con estilo, eso sí. Hasta los maestros resbalan en el tatami. 😅']];
+  return L[ok?0:1][U.humor];
+}
+
+/* ---------- pantallas ---------- */
+function shell(title,body,{back=null,footer='',nav=false}={}){
+  return `<header class="top">${back?`<button class="back" aria-label="Volver" onclick="go('${back}')">←</button>`:''}<h1>${title}</h1><span class="sid">${S.screen}</span></header>
+  <main id="main">${body}</main>${footer}${nav?navbar():''}`;
+}
+function navbar(){
+  const it=[['P05','🏯','Dojo'],['P10','📈','Progreso'],['P11','👥','Salas'],['P14','⚙️','Ajustes']];
+  return `<nav class="nav" aria-label="Navegación principal">${it.map(([id,i,l])=>`<button onclick="go('${id}')" ${S.screen===id?'aria-current="page"':''}><span>${i}</span>${l}</button>`).join('')}</nav>`;
+}
+
+const R = {
+P01(){return shell('CyberDojo',`
+  <div style="text-align:center;margin:30px 0 20px">${senseiSVG('ok').replace('width="56" height="56"','width="120" height="120"')}</div>
+  <h2 style="text-align:center">Entrena tu instinto contra los ataques</h2>
+  <p class="muted" style="text-align:center">Correos, mensajes y llamadas falsas. Practicas aquí para no caer allá. Sin regaños: si te engañan, el sensei te explica cómo fue.</p>
+  <div class="card small">🥋 Combates de 2 a 4 minutos · 📞 Llamadas simuladas por voz · 👥 Torneos por equipos</div>
+  <button class="btn primary" onclick="go('P02')">Empezar</button>
+  <button class="btn ghost" onclick="U.email='demo@kallpa.test';save();go('P05')">Ya tengo cuenta</button>`)},
+P02(){return shell('Ingresar',`
+  <form onsubmit="event.preventDefault();doLogin()">
+  <label for="em"><b>Correo</b></label><input id="em" type="email" required placeholder="nombre@empresa.com" value="${esc(U.email||'rosa.quispe@kallpa.test')}">
+  <p></p><label for="org"><b>Código de organización</b></label><input id="org" type="text" value="KALLPA" aria-describedby="orgh">
+  <p id="orgh" class="small muted">Te lo da el área de TI. Para la demo: KALLPA</p>
+  <p id="err" class="small" style="color:var(--bad)" role="alert"></p>
+  <button class="btn primary" type="submit">Continuar</button></form>`,{back:'P01'})},
+P03(){return shell('Tu rol y preferencias',`
+  <h3>¿En qué área trabajas?</h3>
+  ${Object.entries(ROLES).map(([k,v])=>`<label class="opt"><input type="radio" name="rol" value="${k}" ${U.rol===k?'checked':''} onchange="U.rol=this.value;save()">${v}</label>`).join('')}
+  <h3 style="margin-top:16px">Tono del sensei</h3>${humorSeg()}
+  <h3 style="margin-top:16px">Voz y accesibilidad</h3>${prefs()}
+  <button class="btn primary" onclick="S.calib=0;S.calibOk=0;go('P04')">Siguiente</button>`,{back:'P02'})},
+P04(){
+  const Q=[{t:'Correo de "soporte@micr0soft-login.test": "Su cuenta será eliminada hoy, ingrese aquí".',a:true},
+           {t:'Tu jefa te escribe desde su correo de siempre: "Reunión movida a las 3, misma sala".',a:false},
+           {t:'Llamada: "Soy del banco, dígame el código que le llegó por SMS para cancelar un cargo".',a:true}];
+  if(S.calib>=3){U.nivel=S.calibOk===3?3:S.calibOk===2?2:1;save();
+    return shell('Calibración',`${sensei(`Listo. Empiezas en <b>nivel ${U.nivel}</b>. Esto no es una nota: solo me ayuda a elegir tus primeros combates.`,'ok')}<p></p><button class="btn primary" onclick="go('P05')">Entrar al dojo</button>`)}
+  const q=Q[S.calib];
+  return shell('Calibración',`<p class="small muted">Pregunta ${S.calib+1} de 3</p><div class="bar"><span style="width:${(S.calib)/3*100}%"></span></div><p></p>
+   <div class="card"><b>¿Esto es sospechoso?</b><p>${q.t}</p></div>
+   <div class="row"><button class="btn" onclick="calib(${q.a===true})">Sí, sospechoso</button><button class="btn" onclick="calib(${q.a===false})">No, es normal</button></div>
+   <button class="btn ghost" onclick="S.calib=3;S.calibOk=0;render()">Saltar calibración</button>`,{back:'P03'})},
+P05(){
+  const b=belt(),nx=BELTS[b+1],e=suggested();
+  const pct=nx?Math.round((U.puntos-BELTS[b].min)/(nx.min-BELTS[b].min)*100):100;
+  const weak=weakTactics().map(t=>TAC[t]);
+  return shell('Dojo',`
+   ${sensei(U.emocion==='estresado'?'Hoy vamos con calma: modo práctica, sin reloj.':`Hola, ${esc(displayName())}. ${weak.length?`Hoy toca reforzar: <b>${weak.join(', ')}</b>.`:'¿Listo para un combate?'}`,'ok')}
+   <div class="card" style="margin-top:12px">${beltTag(b)} <span class="muted small">· ${U.puntos} pts · nivel ${U.nivel}</span>
+   <div class="bar" style="margin-top:8px"><span style="width:${pct}%"></span></div>
+   <p class="small muted">${nx?`${nx.min-U.puntos} pts para cinturón ${nx.n}`:'Llegaste al cinturón negro'}</p></div>
+   <div class="card"><span class="tag">Combate sugerido</span><span class="tag">${CANAL[e.canal]} ${e.canal}</span>
+   <h3>${esc(e.titulo)}</h3><p class="small muted">Dificultad ${'●'.repeat(e.dificultad)}${'○'.repeat(3-e.dificultad)} · ${e.tacticas.map(t=>TAC[t]).join(', ')}</p>
+   <button class="btn primary" onclick="start('${e.id}')">Empezar combate</button></div>
+   <button class="btn" onclick="go('P06')">🗺️ Camino de combates</button>
+   <button class="btn" onclick="go('P11')">👥 Salas y torneos</button>
+   <button class="btn ghost small" onclick="go('P15')">Soy administrador</button>
+   ${!U.checkinDone?checkin():''}`,{nav:true})},
+P06(){
+  const done=Object.fromEntries(U.hist.map(h=>[h.id,h.ok]));
+  return shell('Camino de combates',`<p class="small muted">Rol: ${ROLES[U.rol]} · ${pool().length} combates</p><div class="list">
+   ${pool().map(e=>`<button class="item" onclick="start('${e.id}')"><span class="ico" aria-hidden="true">${CANAL[e.canal]}</span><span class="grow"><b>${esc(e.titulo)}</b><br><span class="small muted">${e.canal} · ${'●'.repeat(e.dificultad)}${'○'.repeat(3-e.dificultad)}</span></span><span aria-label="${e.id in done?(done[e.id]?'superado':'por repetir'):'pendiente'}">${e.id in done?(done[e.id]?'✅':'🔁'):'›'}</span></button>`).join('')}
+   </div>`,{back:'P05',nav:true})},
+P07(){
+  const e=S.esc,m=e.mensaje;const fromIns=S.ins.has('from');
+  const risky={correo:'Responder / abrir',chat:'Hacer lo que pide',sms:'Abrir el enlace',presencial:'Hacer lo que pide'}[e.canal];
+  return shell(`${CANAL[e.canal]} ${esc(e.titulo)}`,`
+   ${S.torneo?`<p class="small"><span class="tag">🏆 Torneo</span> ${fmt(tLeft)}</p>`:''}
+   <p class="small muted">Inspecciona lo que te parezca raro y decide qué harías.</p>
+   <div class="card mail">
+    <button class="from ${fromIns?'ins':''}" onclick="inspect('from')" aria-label="Remitente: ${esc(m.de)}. Toca para inspeccionar">
+     <span class="small muted">${e.canal==='presencial'?'Situación':'De'}</span><br><b>${esc(m.de)}</b>${fromIns?' 🔎':''}</button>
+    <h3 style="margin-top:10px">${esc(m.asunto)}</h3>
+    <p>${esc(m.cuerpo)}</p>
+    ${m.enlaces.map((l,i)=>`<button class="chip ${S.ins.has('l'+i)?'ins':''}" onclick="inspect('l${i}')">🔗 ${S.ins.has('l'+i)?'Enlace inspeccionado':'Ver enlace'}</button>${S.ins.has('l'+i)?`<div class="peek">${esc(l)}</div>`:''}`).join('')}
+    ${m.adjuntos.map((a,i)=>`<button class="chip ${S.ins.has('a'+i)?'ins':''}" onclick="inspect('a${i}')">📎 ${esc(a)}</button>${S.ins.has('a'+i)?`<div class="peek">Tipo: ${a.split('.').pop().toUpperCase()} · Origen externo · No se abrirá</div>`:''}`).join('')}
+   </div>
+   <div class="row"><button class="btn ghost" onclick="hint()" ${S.hints>=2?'disabled':''}>💡 Pista (${2-S.hints}) · −10</button>
+   <button class="btn ghost mic" id="micbtn" onclick="voiceCmd()" aria-label="Comando de voz">🎙️ Voz</button></div>
+   <div id="hintbox" aria-live="polite">${S.hints?sensei(hintText(),'hmm'):''}</div>`,
+   {back:S.torneo?'P12':'P06',footer:`<div class="actions" role="group" aria-label="Acciones">
+    <button class="btn primary" onclick="decide('reportar')">🚩 Reportar</button>
+    <button class="btn" onclick="decide('verificar')">☎️ Verificar por otro canal</button>
+    <button class="btn" onclick="if(confirm('¿Seguro? Esto haría lo que pide el mensaje.'))decide('responder')">${risky}</button>
+    <button class="btn" onclick="decide('legitimo')">✔️ Es legítimo</button></div>`})},
+P08(){
+  const e=S.esc;
+  if(S.turn===-1) return `<div class="call"><span class="sid" style="align-self:flex-end">P08</span>
+    <div class="who"><div class="avatar">📞</div><h2>${callerName(e)}</h2><p class="muted" style="color:#bdb5a6">Llamada entrante · +51 1 6${e.id.slice(1)}4 2210</p></div>
+    <p style="text-align:center;color:#bdb5a6">Contesta y escucha. Puedes responder hablando o escribiendo.</p>
+    <div class="callbtns"><button class="round red" aria-label="Rechazar llamada" onclick="endCall('rechazar')">✕</button>
+    <button class="round green" aria-label="Contestar llamada" onclick="answer()">✆</button></div></div>`;
+  const line=e.guion[Math.min(S.turn,e.guion.length-1)];
+  return `<div class="call"><div style="display:flex;justify-content:space-between"><span>${callerName(e)} · <span id="clock">00:${String(8+S.turn*14).padStart(2,'0')}</span></span><span class="sid">P08</span></div>
+   ${U.subs?`<div class="subs" aria-live="polite"><span class="small" style="color:#bdb5a6">Atacante dice:</span><br>${esc(line)}</div>`:'<div class="subs">🔊 Escuchando… (subtítulos desactivados)</div>'}
+   <div id="you" class="small" style="color:#bdb5a6;min-height:20px">${S.lastReply?`Tú: “${esc(S.lastReply)}”`:''}</div>
+   <div class="quick" role="group" aria-label="Respuestas rápidas">
+    <button onclick="reply('No comparto códigos por teléfono, voy a colgar.')">“No comparto códigos por teléfono, voy a colgar.”</button>
+    <button onclick="reply('Le devuelvo la llamada al número oficial.')">“Le devuelvo la llamada al número oficial.”</button>
+    <button onclick="reply('Ya, ahí le doy el dato.')">“Ya, ahí le doy el dato.”</button>
+    <button onclick="reply('¿Me puede repetir?')">“¿Me puede repetir?”</button></div>
+   <form onsubmit="event.preventDefault();reply(this.t.value)" style="display:flex;gap:6px;margin-top:6px"><input name="t" type="text" placeholder="Escribe tu respuesta" aria-label="Escribe tu respuesta"><button class="btn" style="width:auto;margin:0">↵</button></form>
+   <div class="callbtns"><button class="round" style="background:#4a443b" id="micbtn" aria-label="Responder hablando" onclick="talk()">🎙️</button>
+   <button class="round" style="background:#4a443b" aria-label="Repetir lo que dijo" onclick="speak(S.esc.guion[S.turn])">↻</button>
+   <button class="round red" aria-label="Colgar" onclick="endCall('colgar')">✕</button></div></div>`},
+P09(){
+  const e=S.esc,r=S.result;
+  const found=e.senales.map((s,i)=>i<r.seen);
+  return shell('Debrief del sensei',`
+   <div class="result ${r.ok?'ok':'bad'}"><b style="font-size:1.1em">${r.ok?'✅ Ataque detectado':(e.es_ataque?'🎭 Esta vez te la jugaron':'🤔 Era un mensaje legítimo')}</b>
+   <p class="small" style="margin:.3em 0 0">${r.detail}</p></div>
+   ${sensei(`${senseiLine(r.ok)}<br><br>${esc(e.debrief)}`,r.ok?'ok':'hmm')}
+   <div class="card" style="margin-top:12px"><h3>Señales ${e.es_ataque?'de alerta':'de que era legítimo'}</h3>
+    ${e.senales.map((s,i)=>`<div class="sig"><b class="${found[i]?'stamp':''}">${found[i]?'✔':'•'}</b><span>${esc(s)}</span></div>`).join('')}
+    <p class="small muted">✔ = lo revisaste durante el combate</p></div>
+   <div class="card"><h3>Qué hacer la próxima vez</h3><p>${actionText(e)}</p></div>
+   <div class="card" style="display:flex;justify-content:space-between;align-items:center"><span>Puntos de este combate</span><b style="font-size:1.3em">+${r.pts}</b></div>
+   <button class="btn ghost" onclick="speak(document.querySelector('.bubble').innerText)">🔊 Escuchar al sensei</button>
+   <h3>¿Cómo te quedaste?</h3><div class="emo">${['😄','🙂','😕','😣'].map((x,i)=>`<button aria-label="${['Bien','Normal','Confundido','Frustrado'][i]}" onclick="U.post=${i};save();this.parentNode.innerHTML='<p class=small>Gracias, lo tomo en cuenta para el siguiente combate.</p>'">${x}</button>`).join('')}</div>
+   <button class="btn primary" onclick="${S.torneo?"go('P12')":"start(suggested().id)"}">${S.torneo?'Volver al torneo':'Siguiente combate'}</button>
+   <button class="btn" onclick="S.torneo=false;go('P05')">Volver al dojo</button>
+   ${belt()>S.prevBelt?`<div class="beltup" role="dialog" aria-label="Nuevo cinturón" onclick="this.remove()"><div class="card"><div style="font-size:3em">🥋</div><h2>¡Nuevo cinturón!</h2>${beltTag(belt())}<p class="small muted">Toca para continuar · Compartir en la sala</p></div></div>`:''}`)},
+P10(){
+  const b=belt();const tac=Object.keys(TAC).map(t=>{const s=U.stats[t];return [t,s?Math.round(s.ok/s.total*100):null]}).sort((a,b)=>(a[1]??101)-(b[1]??101));
+  return shell('Mi progreso',`
+   <div class="card">${beltTag(b)}<p class="small muted">${U.puntos} pts · ${U.hist.length} combates · ${U.hist.filter(h=>h.ok).length} detectados</p>
+   <div style="display:flex;gap:3px">${BELTS.map((x,i)=>`<i title="${x.n}" style="flex:1;height:12px;border-radius:3px;border:1px solid #0003;background:${i<=b?x.c:'#e8e2d4'}"></i>`).join('')}</div></div>
+   <div class="card"><h3>Acierto por táctica</h3><p class="small muted">Las más débiles primero. El dojo te pondrá más de estas.</p>
+   ${tac.map(([t,p])=>`<div style="margin:8px 0"><div class="small" style="display:flex;justify-content:space-between"><span>${TAC[t]}</span><b>${p==null?'—':p+'%'}</b></div><div class="bar"><span style="width:${p??0}%;background:${p==null?'transparent':p<60?'var(--bad)':'var(--ok)'}"></span></div></div>`).join('')}</div>
+   <div class="card"><h3>Historial</h3>${U.hist.length?U.hist.slice(0,10).map(h=>`<div class="score"><span>${CANAL[h.canal]} ${esc(h.t)}</span><span>${h.ok?'✅':'🔁'} +${h.pts}</span></div>`).join(''):'<p class="small muted">Aún no tienes combates.</p>'}</div>
+   <button class="btn ghost" disabled title="Disponible en Sprint 4">📄 Exportar PDF (próximamente)</button>`,{back:'P05',nav:true})},
+P11(){return shell('Salas',`
+   <div class="card"><h3>Unirme a una sala</h3><div class="row"><input type="text" aria-label="Código de sala" placeholder="Código (ej. K4L9PX)" maxlength="6"><button class="btn" style="flex:0 0 90px;margin:0" onclick="say('Te uniste a la sala');this.textContent='✓'">Unirme</button></div>
+   <button class="btn ghost small">📷 Escanear QR</button></div>
+   <div class="card"><span class="tag">Tu sala</span><h3>Kallpa · Liga de octubre</h3>
+   <p class="small muted">Código K4L9PX · 3 equipos · 18 miembros</p>
+   ${['Rosa Q. (Finanzas) 🟢','Diego R. (TI) 🟢','Milagros T. (Operaciones) 🟢','Ninja_Contable (Finanzas) ⚪'].map(x=>`<div class="score small"><span>${x}</span></div>`).join('')}</div>
+   <div class="card"><span class="tag">🏆 Torneo en curso</span><h3>Copa Kallpa: semana del vishing</h3><p class="small muted">3 combates · 15 minutos · todos reciben el mismo set</p>
+   <button class="btn primary" onclick="startTorneo()">Entrar al torneo</button></div>
+   <button class="btn" onclick="go('P13')">🥋 Tablero de cinturones</button>`,{back:'P05',nav:true})},
+P12(){
+  const ids=['E12','E13','E15'];const done=new Set(U.hist.map(h=>h.id));
+  const st=[...teams].sort((a,b)=>b.p-a.p);
+  return shell('Copa Kallpa',`
+   <div class="card" style="display:flex;justify-content:space-between"><span>⏱️ Tiempo restante</span><b id="tleft">${fmt(tLeft)}</b></div>
+   <div class="card" aria-live="polite"><h3>Marcador en vivo</h3>${st.map((t,i)=>`<div class="score ${t.me?'me':''}"><span>${['🥇','🥈','🥉'][i]} ${t.n}${t.me?' (tu equipo)':''}</span><span>${t.p} pts</span></div>`).join('')}</div>
+   <h3>Combates del torneo</h3><div class="list">${ids.map(id=>{const e=ESC.find(x=>x.id===id);return `<button class="item" onclick="start('${id}')"><span class="ico">${CANAL[e.canal]}</span><span class="grow"><b>${esc(e.titulo)}</b><br><span class="small muted">${e.canal}</span></span><span>${done.has(id)?'✅':'›'}</span></button>`}).join('')}</div>
+   <p class="small muted">Los puntos se suman al equipo. En el tablero nunca se muestran los errores individuales.</p>`,{back:'P11'})},
+P13(){
+  const ind=[['Diego R.','TI',1120],['Ninja_Contable','Finanzas',980],['Milagros T.','Operaciones',760],[displayName()+' (tú)','Finanzas',U.puntos],['Kevin A.','TI',430]].sort((a,b)=>b[2]-a[2]);
+  return shell('Tablero de cinturones',`
+   <div class="tabs" role="tablist"><button role="tab" aria-selected="${S.boardTab==='equipos'}" onclick="S.boardTab='equipos';render()">Equipos</button><button role="tab" aria-selected="${S.boardTab==='ind'}" onclick="S.boardTab='ind';render()">Individual</button></div>
+   <div class="card">${S.boardTab==='equipos'?[...teams].sort((a,b)=>b.p-a.p).map((t,i)=>`<div class="score ${t.me?'me':''}"><span>${i+1}. ${t.n}</span><span>${t.p} pts</span></div>`).join(''):
+     ind.map((x,i)=>`<div class="score ${x[0].includes('(tú)')?'me':''}"><span>${i+1}. ${esc(x[0])} <span class="small muted">${x[1]}</span></span><span>${beltTag(belt(x[2])).replace('Cinturón ','')}</span></div>`).join('')}</div>
+   <p class="small muted">¿Prefieres no aparecer con tu nombre? Activa un alias en Ajustes.</p>`,{back:'P11',nav:true})},
+P14(){return shell('Ajustes',`
+   <h3>Rol</h3><select aria-label="Rol" onchange="U.rol=this.value;save()" style="width:100%;min-height:46px;font:inherit">${Object.entries(ROLES).map(([k,v])=>`<option value="${k}" ${U.rol===k?'selected':''}>${v}</option>`).join('')}</select>
+   <h3 style="margin-top:16px">Tono del sensei</h3>${humorSeg()}
+   <h3 style="margin-top:16px">Voz y accesibilidad</h3>${prefs()}
+   <button class="btn ghost" onclick="U.checkinDone=false;save();go('P05')">Hacer check-in emocional</button>`,{back:'P05',nav:true})},
+P15(){
+  const t=S.adminTab;
+  const body = t==='torneos'?`
+   <div class="card"><h3>Nuevo torneo</h3>
+   <label class="small" for="tn">Nombre</label><input id="tn" type="text" value="Copa Kallpa: semana del phishing">
+   <p class="small"><b>Escenarios por rol</b></p>${['Contabilidad: E01, E02, E04','Desarrollo: E05, E06, E07','Recepción: E09, E10, E11','Todos: E12, E13, E15'].map(x=>`<label class="opt small"><input type="checkbox" checked>${x}</label>`).join('')}
+   <button class="btn primary" onclick="document.getElementById('qrbox').hidden=false">Crear torneo</button>
+   <div id="qrbox" hidden style="text-align:center"><p>Código: <b>Q7M2ZA</b></p>${qr()}<p class="small muted">Comparte el código o el QR con los equipos.</p></div></div>`
+  : t==='escenarios'?`
+   <div class="card"><span class="tag" style="background:var(--warnbg)">Generado por IA · pendiente</span><h3>Factura duplicada del courier</h3>
+   <p class="small">Rol: contabilidad · correo · dificultad 2</p><p class="small muted">"Detectamos un cobro duplicado en su factura FE-2201. Para el reembolso confirme los datos de su tarjeta corporativa en..."</p>
+   <div class="row"><button class="btn" onclick="this.closest('.card').querySelector('.tag').textContent='Aprobado';this.closest('.card').querySelector('.tag').style.background='var(--okbg)'">Aprobar</button><button class="btn ghost">Editar</button></div></div>
+   ${ESC.slice(0,6).map(e=>`<div class="score small"><span>${e.id} · ${esc(e.titulo)}</span><span class="tag" style="background:var(--okbg)">Aprobado</span></div>`).join('')}`
+  : `
+   <div class="card"><h3>Tasa de detección por área</h3>${[['Finanzas',72],['TI',81],['Operaciones',64]].map(([a,p])=>`<div style="margin:8px 0"><div class="small" style="display:flex;justify-content:space-between"><span>${a}</span><b>${p}%</b></div><div class="bar"><span style="width:${p}%"></span></div></div>`).join('')}</div>
+   <div class="card"><h3>Lo más débil este mes</h3><p>📞 Datos por teléfono (vishing): 48% de detección</p><p class="small muted">Sugerencia: programar un torneo de llamadas.</p></div>
+   <p class="small muted">Datos agregados y anónimos. El check-in emocional no se muestra por persona.</p>
+   <button class="btn" onclick="csv()">⬇️ Exportar CSV</button>`;
+  return shell('Panel administrador',`<div class="tabs" role="tablist">${[['torneos','Torneos'],['escenarios','Escenarios'],['metricas','Métricas']].map(([k,v])=>`<button role="tab" aria-selected="${t===k}" onclick="S.adminTab='${k}';render()">${v}</button>`).join('')}</div>${body}`,{back:'P05'})}
+};
+
+function humorSeg(){return `<div class="seg" role="group" aria-label="Tono del sensei">${['Serio','Algo de humor','Chistoso'].map((x,i)=>`<button aria-pressed="${U.humor===i}" onclick="U.humor=${i};save();render()">${x}</button>`).join('')}</div>`}
+function prefs(){return `
+  <label class="opt"><input type="checkbox" ${U.voz?'checked':''} onchange="U.voz=this.checked;save()">Usar voz (llamadas y sensei)</label>
+  <label class="opt"><input type="checkbox" ${U.subs?'checked':''} onchange="U.subs=this.checked;save()">Subtítulos en llamadas</label>
+  <label class="opt"><input type="checkbox" ${U.useAlias?'checked':''} onchange="U.useAlias=this.checked;save()">Aparecer con alias en el tablero</label>
+  <input type="text" aria-label="Alias" placeholder="Alias (ej. Ninja_Contable)" value="${esc(U.alias)}" onchange="U.alias=this.value;save()">
+  <p class="small"><b>Tamaño de letra</b></p><div class="seg" role="group" aria-label="Tamaño de letra">${[[1,'A'],[1.15,'A+'],[1.3,'A++']].map(([v,l])=>`<button aria-pressed="${U.fs===v}" onclick="U.fs=${v};save();render()">${l}</button>`).join('')}</div>`}
+function checkin(){return `<div class="modal" role="dialog" aria-label="Check-in emocional"><div class="card" style="width:100%"><h3>¿Cómo llegas hoy?</h3><p class="small muted">Opcional. Solo lo usa el sensei para ajustar el ritmo.</p>
+  <div class="emo">${[['😄','Con ganas'],['🙂','Normal'],['😴','Cansado'],['😣','Estresado']].map(([e,l])=>`<button onclick="U.emocion='${l.toLowerCase()}';U.checkinDone=true;save();render()">${e}<small>${l}</small></button>`).join('')}</div>
+  <button class="btn ghost" onclick="U.checkinDone=true;save();render()">Saltar</button></div></div>`}
+function qr(){let h='<div class="qr" aria-label="Código QR de la sala">';for(let i=0;i<121;i++){const r=Math.floor(i/11),c=i%11;const f=(r<3&&c<3)||(r<3&&c>7)||(r>7&&c<3);const fr=(r<3&&c<3)||(r<3&&c>7)||(r>7&&c<3);const edge=(r===1&&c===1)||(r===1&&c===9)||(r===9&&c===1);h+=`<i class="${(f&&!edge)||(!f&&((i*37+r*r*11+c*5)%7<3))?'k':''}"></i>`}return h+'</div>'}
+function fmt(s){return `${String(Math.floor(s/60)).padStart(2,'0')}:${String(s%60).padStart(2,'0')}`}
+function callerName(e){return {E03:'Banco Andino - Seguridad',E07:'Mesa de ayuda (?)',E10:'Número desconocido',E15:'Recursos Humanos (?)'}[e.id]||'Desconocido'}
+function actionText(e){
+  const m={reportar_y_verificar:'Reporta el mensaje con el botón 🚩 y confirma con la persona por un canal que ya conozcas (su anexo o celular de siempre).',
+   verificar_por_otro_canal:'Llama al proveedor al número que ya tenías registrado antes de cambiar cualquier dato bancario.',
+   colgar_y_llamar_oficial:'Cuelga y llama tú al número oficial que está en la tarjeta o en la web.',
+   reportar:'Repórtalo con 🚩 sin abrir enlaces ni adjuntos.',reportar_y_no_fusionar:'No apruebes el cambio; revisa el nombre exacto del paquete y repórtalo.',
+   reportar_e_ir_directo_al_sitio:'Repórtalo y entra al sitio escribiendo la dirección tú mismo.',negar_y_reportar:'No compartas el código, termina la llamada y repórtala a seguridad.',
+   verificar_con_jefatura:'Pídele que solicite acceso por el canal formal y confirma con la jefatura.',registrar_y_confirmar:'Pide identificación, registra la visita y confirma con el contacto interno.',
+   negar_y_derivar:'No des datos de otras personas; deriva a RR.HH. y devuelve la llamada al anexo oficial.',entregar_a_ti_sin_conectar:'No lo conectes; entrégalo a TI.',
+   eliminar_y_reportar:'Bórralo y repórtalo; no abras el enlace.',marcar_legitimo:'Puedes seguir normalmente. Si dudas, igual puedes verificar por el anexo indicado.',
+   negar_y_verificar:'No des datos por teléfono; acércate o llama al anexo oficial de RR.HH.'};
+  return m[e.accion_correcta]||'Verifica por un canal conocido y reporta.';
+}
+function hintText(){const e=S.esc;return S.hints===1?`Mira con calma ${e.canal==='presencial'?'quién lo pide y cómo':'el remitente'}.`:`Pista 2: ${e.senales[1]||e.senales[0]}.`}
+
+/* ---------- acciones ---------- */
+window.go=id=>{S.screen=id;render();window.scrollTo(0,0)};
+window.doLogin=()=>{const em=$('#em').value.trim(),org=$('#org').value.trim().toUpperCase();
+  if(org&&org!=='KALLPA'){$('#err').textContent='No encontramos ese código. Pídeselo al área de TI o deja el campo vacío.';return}
+  U.email=em;save();go('P03')};
+window.calib=ok=>{if(ok)S.calibOk++;S.calib++;render()};
+window.start=id=>{const e=ESC.find(x=>x.id===id);S.esc=e;S.ins=new Set();S.hints=0;S.turn=-1;S.lastReply='';
+  window.speechSynthesis&&speechSynthesis.cancel();go(e.canal==='llamada'?'P08':'P07')};
+window.inspect=k=>{S.ins.add(k);render();say('Elemento inspeccionado')};
+window.hint=()=>{if(S.hints<2){S.hints++;render()}};
+window.decide=a=>{
+  const e=S.esc;const ok=e.es_ataque?(a==='reportar'||a==='verificar'):(a==='legitimo');
+  const seen=Math.min(e.senales.length,S.ins.size+(ok?1:0));
+  const pts=ok?Math.max(20,40+e.dificultad*20+S.ins.size*10-S.hints*10):10;
+  S.result={ok,pts,seen,detail:ok?`Elegiste: ${({reportar:'reportar',verificar:'verificar por otro canal',legitimo:'marcar como legítimo'})[a]}.`:
+    (e.es_ataque?'Seguiste la indicación del mensaje. Los +10 son por animarte: así se aprende.':'Lo marcaste como sospechoso. Mejor prevenir, pero aprende a reconocer lo legítimo para no saturar a seguridad.')};
+  if(!e.es_ataque&&!ok&&(a==='reportar'||a==='verificar'))S.result.pts=20;
+  record(e,ok,S.result.pts);go('P09')};
+window.answer=()=>{S.turn=0;render();speak(S.esc.guion[0])};
+window.reply=t=>{if(!t)return;S.lastReply=t;const e=S.esc;const s=t.toLowerCase();
+  const bad=/(le doy|ahí le|el código es|\d{4,}|ya,? ?ahí|te paso|le paso)/.test(s);
+  const good=!bad&&(e.palabras_clave_correctas.some(k=>s.includes(k))||/colgar|oficial|no comparto|no doy|verific/.test(s));
+  if(good)return endCall('ok',t);
+  if(bad)return endCall('cayo',t);
+  if(S.turn<e.guion.length-1){S.turn++;render();speak(e.guion[S.turn])}else endCall('corte',t)};
+window.talk=()=>{const m=$('#micbtn');m&&m.classList.add('on');window.speechSynthesis&&speechSynthesis.cancel();listen(t=>reply(t))};
+window.endCall=(how)=>{window.speechSynthesis&&speechSynthesis.cancel();const e=S.esc;
+  const ok=how==='ok'||how==='colgar'||how==='rechazar';
+  const pts=how==='ok'?60+e.dificultad*20-S.turn*5:how==='colgar'?40+e.dificultad*15:how==='rechazar'?30:how==='corte'?20:10;
+  S.result={ok,pts,seen:ok?Math.min(e.senales.length,S.turn+2):S.turn,
+   detail:{ok:'Te negaste y propusiste verificar por un canal oficial. Perfecto.',colgar:'Colgaste a tiempo. Válido y seguro.',rechazar:'No contestaste un número que no conocías. Válido, pero practica también contestar y negarte.',corte:'El atacante se cansó, pero no llegaste a cortar la conversación tú.',cayo:'Le diste el dato al atacante. Los +10 son por intentarlo.'}[how]};
+  record(e,ok,pts);go('P09')};
+window.voiceCmd=()=>{const m=$('#micbtn');m.classList.add('on');
+  const r=listen(t=>{const s=t.toLowerCase();say('Comando: '+t);
+   if(s.includes('report'))decide('reportar');else if(s.includes('pista'))hint();else if(s.includes('verific'))decide('verificar');else if(s.includes('siguiente'))start(suggested().id);else alert('Escuché: “'+t+'”. Prueba con: reportar, verificar, pista, siguiente.')});
+  if(!r)m.classList.remove('on')};
+window.startTorneo=()=>{S.torneo=true;clearInterval(tTimer);tTimer=setInterval(()=>{tLeft=Math.max(0,tLeft-1);
+  if(tLeft%3===0){const t=teams.filter(x=>!x.me)[Math.floor(Math.random()*2)];t.p+=[0,10,20,40][Math.floor(Math.random()*4)]}
+  const el=$('#tleft');if(el){el.textContent=fmt(tLeft);if(tLeft%3===0&&S.screen==='P12')render()}},1000);go('P12')};
+window.csv=()=>{const rows='area,tasa_deteccion,tactica_mas_debil\nFinanzas,72,datos_por_telefono\nTI,81,verificacion_remitente\nOperaciones,64,acceso_fisico\n';
+  const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([rows],{type:'text/csv'}));a.download='cyberdojo_metricas.csv';a.click()};
+
+function render(){
+  document.documentElement.style.setProperty('--fs',U.fs);
+  const fn=R[S.screen];
+  if((S.screen==='P07'||S.screen==='P08'||S.screen==='P09')&&!S.esc){S.esc=ESC[S.screen==='P08'?2:0];S.turn=-1;S.result={ok:true,pts:80,seen:2,detail:'(vista directa del prototipo)'}}
+  $('#phone').innerHTML=fn();
+  $('#jump').value=S.screen;
+  const h=$('#phone h1,#phone h2');h&&h.setAttribute('tabindex','-1');
+}
+$('#jump').innerHTML=SCREENS.map(([id,n])=>`<option value="${id}">${id} · ${n}</option>`).join('');
+$('#jump').onchange=e=>go(e.target.value);
+$('#reset').onclick=()=>{try{localStorage.removeItem('cyberdojo_perfil')}catch(e){}U=blank();teams=[{n:'Finanzas',p:320,me:true},{n:'TI',p:350},{n:'Operaciones',p:280}];tLeft=900;S.torneo=false;S.esc=null;go('P01')};
+if('speechSynthesis' in window)speechSynthesis.onvoiceschanged=()=>{};
+if('serviceWorker' in navigator&&location.protocol.startsWith('http'))navigator.serviceWorker.register('sw.js').catch(()=>{});
+const hashScreen=location.hash.slice(1);if(/^P\d\d$/.test(hashScreen))S.screen=hashScreen;
+render();
+</script>
+</body>
+</html>

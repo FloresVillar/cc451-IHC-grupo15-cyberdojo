@@ -1,0 +1,13 @@
+{
+  "name": "CyberDojo",
+  "short_name": "CyberDojo",
+  "description": "Dojo de concientización en ciberseguridad con combates por chat y voz.",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#f4efe4",
+  "theme_color": "#1f1d1a",
+  "lang": "es-PE",
+  "icons": [
+    { "src": "icons/icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any maskable" }
+  ]
+}
