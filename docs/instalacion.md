@@ -27,6 +27,19 @@ git pull origin dev
 npm start
 ```
 
+`npm start` ejecuta el script `start` definido en `package.json`:
+
+```bash
+npx --yes http-server . -p 8080 -c-1
+```
+
+- `npx --yes http-server`: descarga y ejecuta `http-server`, un servidor web estático de Node, sin instalarlo en el proyecto ni pedir confirmación. No hace falta `npm install`.
+- `.`: sirve la carpeta raíz del repositorio, así el prototipo en `app/` puede leer `data/` y el resto de archivos.
+- `-p 8080`: usa el puerto 8080.
+- `-c-1`: desactiva la caché del servidor, para que cada cambio en los archivos se vea al recargar.
+
+Hace falta un servidor y no basta con abrir el archivo porque el service worker de la PWA (`app/sw.js`) solo funciona sobre `http://localhost` o HTTPS.
+
 Abre `http://localhost:8080/app/` en Chrome o Edge. Para detener el servidor, `Ctrl + C` en la terminal.
 
 En WSL se ejecuta `npm start` desde la terminal de Linux y la URL se abre en el navegador de Windows; `localhost` funciona igual.
