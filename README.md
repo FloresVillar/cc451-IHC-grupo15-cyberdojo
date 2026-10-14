@@ -66,6 +66,7 @@ El MVP son 15 escenarios (3 roles + escenarios generales, 4 de ellos por voz), e
 | [Requerimientos](docs/03-requerimientos.md) | [Alternativas de diseño](docs/08-alternativas-diseno.md) |
 | [Historias de usuario](docs/04-historias-usuario.md) | [Diagrama de Gantt](docs/09-gantt.md) |
 | [Matriz de trazabilidad](docs/05-matriz-trazabilidad.md) | [Arquitectura C4](docs/arquitectura-c4.md) |
+| [Flujo de pantallas](docs/10-flujo-pantallas.md) | [Simulación del flujo](docs/11-simulacion-flujo.md) |
 
 Las imágenes del diseño (flujo de pantallas, prototipo, alternativas, C4 y Gantt) están en [`docs/img/`](docs/img/) y sus fuentes en [`docs/diagramas/`](docs/diagramas/).
 
