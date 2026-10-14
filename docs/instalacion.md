@@ -33,10 +33,20 @@ Abre `http://localhost:8080/app/` en Chrome o Edge. Para detener el servidor, `C
 
 En WSL se ejecuta `npm start` desde la terminal de Linux y la URL se abre en el navegador de Windows; `localhost` funciona igual.
 
-Para la demo:
+### Recorrido de la demo
 
-- La barra superior salta a cualquier pantalla (P01–P15) y reinicia el perfil. También se puede ir directo a una pantalla con `http://localhost:8080/app/#P08`.
-- En la llamada de vishing (P08) hay que permitir el micrófono. Sin micrófono o sin reconocimiento de voz, se responde con botones o texto.
+1. P01 Bienvenida: **Empezar**.
+2. P02 Ingreso: cualquier correo o código y **Continuar**.
+3. P03 Rol y preferencias: elegir rol, humor y voz; **Siguiente** y **Entrar al dojo**.
+4. P04 Calibración: responder las 3 preguntas o **Saltar calibración**.
+5. P05 Dojo: elegir un emoji del check-in y **Empezar combate**.
+6. P07 Combate de correo: tocar el remitente y **Ver enlace**, pedir **Pista** si se quiere y **Reportar**.
+7. P09 Debrief: **Escuchar al sensei** y **Siguiente combate**.
+8. P08 Llamada de vishing: contestar y responder por voz (permitir el micrófono) o con la frase "No comparto códigos por teléfono, voy a colgar.".
+9. Desde el Dojo: **Salas y torneos** → **Unirme** → **Entrar al torneo** → **Tablero de cinturones**.
+10. **Soy administrador**: crear torneo, aprobar escenarios y exportar CSV.
+
+La barra superior salta a cualquier pantalla (P01–P15) y **Reiniciar demo** vuelve todo al inicio. También se puede ir directo a una pantalla con `http://localhost:8080/app/#P08`.
 
 Para instalarlo como app: en Chrome, menú ⋮ → "Instalar CyberDojo"; en iPhone, Compartir → "Agregar a inicio".
 
