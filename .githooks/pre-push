@@ -1,0 +1,19 @@
+#!/bin/sh
+# Antes de cada push, trae origin/dev y bloquea el push si la rama local
+# no tiene todos los commits de dev remoto (hay que hacer pull primero).
+
+remote="$1"
+
+if ! git fetch --quiet "$remote" dev; then
+    echo "pre-push: no se pudo hacer fetch de $remote/dev; push cancelado." >&2
+    exit 1
+fi
+
+faltan=$(git rev-list --count HEAD.."$remote/dev")
+if [ "$faltan" -gt 0 ]; then
+    echo "pre-push: $remote/dev tiene $faltan commit(s) que tu rama no tiene." >&2
+    echo "Haz primero: git pull $remote dev" >&2
+    exit 1
+fi
+
+exit 0
