@@ -1,0 +1,27 @@
+digraph C4 {
+  graph [rankdir=LR, fontname="DejaVu Sans", bgcolor=white, pad=0.3, nodesep=0.35, ranksep=0.6, label="C4 · Nivel 3: Componentes de la PWA y del API (v0.3)", labelloc=t, fontsize=16];
+  node [shape=box, style="rounded,filled", fontname="DejaVu Sans", fontsize=9.5, fontcolor=white, color="#0b3d6e", margin="0.14,0.08", fillcolor="#85bbf0"];
+  edge [fontname="DejaVu Sans", fontsize=8.5, color="#555555", fontcolor="#333333"];
+  subgraph cluster_pwa { label="PWA cliente (app/)"; style="dashed,rounded"; color="#1168bd"; fontcolor="#1168bd"; fontname="DejaVu Sans";
+    ui [label="Pantallas y acciones\n[app/js/app.js]\nP01–P16, modales, voz global", fontcolor="#1f1d1a"];
+    voz [label="Interfaz de voz\n[app/js/voz.js]\nTTS, STT, intérprete de comandos", fontcolor="#1f1d1a"];
+    emo [label="Retroalimentación afectiva\n[app/js/emocion.js]\nsonidos, vibración, confeti", fontcolor="#1f1d1a"];
+    cli [label="Cliente API + cola offline\n[app/js/api.js]", fontcolor="#1f1d1a"];
+    reg [label="Reglas compartidas\n[app/js/reglas.js]\npuntos, cinturones, dificultad,\ntono emocional, logros", fontcolor="#1f1d1a", fillcolor="#f2c94c"];
+    sw  [label="Service Worker\n[app/sw.js]", fontcolor="#1f1d1a"];
+  }
+  subgraph cluster_api { label="API (src/server/ + src/llm/)"; style="dashed,rounded"; color="#1168bd"; fontcolor="#1168bd"; fontname="DejaVu Sans";
+    rt  [label="Router + Auth JWT + rate limit\n[app.js, auth.js]", fontcolor="#1f1d1a"];
+    per [label="PerfilService / DificultadService\n[app.js → reglas.js]", fontcolor="#1f1d1a"];
+    esc [label="EscenarioService / EvaluacionService\n/ SenseiService [app.js]", fontcolor="#1f1d1a"];
+    sal [label="SalasService + Hub SSE\n[app.js, tiempo-real.js]", fontcolor="#1f1d1a"];
+    adm [label="AdminService\n[métricas k≥3, CSV, revisión IA]", fontcolor="#1f1d1a"];
+    gw  [label="LLM Gateway\n[gateway.js]", fontcolor="#1f1d1a"];
+    prov[label="Adaptadores\n[providers.js]", fontcolor="#1f1d1a"];
+    gr  [label="Guardrails\n[guardrails.js]", fontcolor="#1f1d1a"];
+    st  [label="Store JSON\n[store.js]", fontcolor="#1f1d1a"];
+  }
+  ui -> voz; ui -> emo; ui -> cli; ui -> reg; cli -> rt [label="REST / SSE"]; sw -> ui [style=dashed, label="caché"];
+  rt -> per; rt -> esc; rt -> sal; rt -> adm; per -> reg [label="misma lógica"]; esc -> gw; gw -> prov; gw -> gr;
+  per -> st; sal -> st; adm -> st; esc -> st;
+}

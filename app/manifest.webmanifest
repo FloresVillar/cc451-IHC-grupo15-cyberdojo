@@ -2,12 +2,23 @@
   "name": "CyberDojo",
   "short_name": "CyberDojo",
   "description": "Dojo de concientización en ciberseguridad con combates por chat y voz.",
+  "id": "/app/",
   "start_url": "./index.html",
+  "scope": "./",
   "display": "standalone",
+  "orientation": "portrait",
   "background_color": "#f4efe4",
   "theme_color": "#1f1d1a",
   "lang": "es-PE",
+  "categories": ["education", "productivity"],
   "icons": [
-    { "src": "icons/icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any maskable" }
+    { "src": "icons/icon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "icons/icon-512.png", "sizes": "512x512", "type": "image/png" },
+    { "src": "icons/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" },
+    { "src": "icons/icon.svg", "sizes": "any", "type": "image/svg+xml" }
+  ],
+  "shortcuts": [
+    { "name": "Hablar con el sensei", "url": "./index.html#P16" },
+    { "name": "Mi progreso", "url": "./index.html#P10" }
   ]
 }

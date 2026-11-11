@@ -1,0 +1,33 @@
+{
+  "nota": "Escenarios que generó el LLM y esperan revisión del administrador (RF18). Solo los aprobados se pueden usar en torneos.",
+  "generados": [
+    {
+      "id": "G-DEMO1", "estado": "pendiente", "origen": "anthropic", "semilla": "E04", "generado": true,
+      "titulo": "Factura duplicada del courier", "rol": "contador", "canal": "correo", "dificultad": 2,
+      "tacticas": ["urgencia", "enlaces"], "es_ataque": true,
+      "mensaje": {
+        "de": "Courier Andino Facturación <facturas@courierandino-pagos.test>",
+        "asunto": "Cobro duplicado en factura FE-2201 - reembolso pendiente",
+        "cuerpo": "Detectamos un cobro duplicado en su factura FE-2201. Para procesar el reembolso de S/ 1,280 hoy mismo, confirme los datos de su tarjeta corporativa en el enlace. Pasadas 12 horas el reembolso se anula.",
+        "enlaces": ["https://courierandino-pagos.test/reembolso"], "adjuntos": []
+      },
+      "senales": ["Pide datos de tarjeta por un enlace", "Plazo de 12 horas para presionar", "Dominio distinto al del courier con el que trabajan"],
+      "accion_correcta": "reportar_e_ir_directo_al_sitio",
+      "debrief": "Nadie devuelve dinero pidiéndote la tarjeta por un enlace. Si dudas de un cobro, entra tú al portal del proveedor o llama a tu ejecutivo."
+    },
+    {
+      "id": "G-DEMO2", "estado": "pendiente", "origen": "ollama", "semilla": "E12", "generado": true,
+      "titulo": "Tu bono de movilidad", "rol": "todos", "canal": "sms", "dificultad": 1,
+      "tacticas": ["urgencia", "enlaces"], "es_ataque": true,
+      "mensaje": {
+        "de": "+51 987 000 321",
+        "asunto": "SMS",
+        "cuerpo": "KALLPA RRHH: Tu bono de movilidad de noviembre esta listo. Activalo antes de las 6 pm en https://kallpa-bonos.test/activar o se pierde.",
+        "enlaces": ["https://kallpa-bonos.test/activar"], "adjuntos": []
+      },
+      "senales": ["RR.HH. no envía beneficios por SMS desde un número personal", "Dominio parecido pero distinto a kallpa.test", "Hora límite para presionar"],
+      "accion_correcta": "eliminar_y_reportar",
+      "debrief": "Los beneficios se ven en la intranet, no en un SMS con enlace. Si suena demasiado bueno y urgente, toca verificar."
+    }
+  ]
+}

@@ -1,0 +1,2811 @@
+{
+ "nota": "Historial simulado de 4 semanas para las métricas del administrador. dias_atras se convierte a fecha al crear la base.",
+ "combates": [
+  {
+   "id": "c0001",
+   "usuarioId": "u01",
+   "equipo": "Finanzas",
+   "escenarioId": "E12",
+   "canal": "sms",
+   "tacticas": [
+    "enlaces",
+    "urgencia"
+   ],
+   "es_ataque": true,
+   "ok": true,
+   "accion": "reportar",
+   "puntos": 80,
+   "ms": 132197,
+   "dias_atras": 26
+  },
+  {
+   "id": "c0002",
+   "usuarioId": "u01",
+   "equipo": "Finanzas",
+   "escenarioId": "E04",
+   "canal": "correo",
+   "tacticas": [
+    "autoridad",
+    "adjuntos"
+   ],
+   "es_ataque": true,
+   "ok": true,
+   "accion": "reportar",
+   "puntos": 60,
+   "ms": 76938,
+   "dias_atras": 23
+  },
+  {
+   "id": "c0003",
+   "usuarioId": "u01",
+   "equipo": "Finanzas",
+   "escenarioId": "E01",
+   "canal": "correo",
+   "tacticas": [
+    "urgencia",
+    "autoridad"
+   ],
+   "es_ataque": true,
+   "ok": true,
+   "accion": "reportar",
+   "puntos": 100,
+   "ms": 153476,
+   "dias_atras": 19
+  },
+  {
+   "id": "c0004",
+   "usuarioId": "u01",
+   "equipo": "Finanzas",
+   "escenarioId": "E03",
+   "canal": "llamada",
+   "tacticas": [
+    "urgencia",
+    "datos_por_telefono"
+   ],
+   "es_ataque": true,
+   "ok": true,
+   "accion": "colgar",
+   "puntos": 70,
+   "ms": 60131,
+   "dias_atras": 16
+  },
+  {
+   "id": "c0005",
+   "usuarioId": "u01",
+   "equipo": "Finanzas",
+   "escenarioId": "E03",
+   "canal": "llamada",
+   "tacticas": [
+    "urgencia",
+    "datos_por_telefono"
+   ],
+   "es_ataque": true,
+   "ok": false,
+   "accion": "cayo",
+   "puntos": 10,
+   "ms": 31252,
+   "dias_atras": 12
+  },
+  {
+   "id": "c0006",
+   "usuarioId": "u01",
+   "equipo": "Finanzas",
+   "escenarioId": "E04",
+   "canal": "correo",
+   "tacticas": [
+    "autoridad",
+    "adjuntos"
+   ],
+   "es_ataque": true,
+   "ok": false,
+   "accion": "responder",
+   "puntos": 10,
+   "ms": 108086,
+   "dias_atras": 9
+  },
+  {
+   "id": "c0007",
+   "usuarioId": "u01",
+   "equipo": "Finanzas",
+   "escenarioId": "E15",
+   "canal": "llamada",
+   "tacticas": [
+    "autoridad",
+    "datos_por_telefono",
+    "urgencia"
+   ],
+   "es_ataque": true,
+   "ok": true,
+   "accion": "ok",
+   "puntos": 115,
+   "ms": 136338,
+   "dias_atras": 7
+  },
+  {
+   "id": "c0008",
+   "usuarioId": "u01",
+   "equipo": "Finanzas",
+   "escenarioId": "E12",
+   "canal": "sms",
+   "tacticas": [
+    "enlaces",
+    "urgencia"
+   ],
+   "es_ataque": true,
+   "ok": false,
+   "accion": "responder",
+   "puntos": 10,
+   "ms": 103897,
+   "dias_atras": 2
+  },
+  {
+   "id": "c0009",
+   "usuarioId": "u02",
+   "equipo": "TI",
+   "escenarioId": "E12",
+   "canal": "sms",
+   "tacticas": [
+    "enlaces",
+    "urgencia"
+   ],
+   "es_ataque": true,
+   "ok": false,
+   "accion": "responder",
+   "puntos": 10,
+   "ms": 72276,
+   "dias_atras": 25
+  },
+  {
+   "id": "c0010",
+   "usuarioId": "u02",
+   "equipo": "TI",
+   "escenarioId": "E15",
+   "canal": "llamada",
+   "tacticas": [
+    "autoridad",
+    "datos_por_telefono",
+    "urgencia"
+   ],
+   "es_ataque": true,
+   "ok": true,
+   "accion": "colgar",
+   "puntos": 85,
+   "ms": 87897,
+   "dias_atras": 23
+  },
+  {
+   "id": "c0011",
+   "usuarioId": "u02",
+   "equipo": "TI",
+   "escenarioId": "E15",
+   "canal": "llamada",
+   "tacticas": [
+    "autoridad",
+    "datos_por_telefono",
+    "urgencia"
+   ],
+   "es_ataque": true,
+   "ok": false,
+   "accion": "cayo",
+   "puntos": 10,
+   "ms": 22226,
+   "dias_atras": 22
+  },
+  {
+   "id": "c0012",
+   "usuarioId": "u02",
+   "equipo": "TI",
+   "escenarioId": "E15",
+   "canal": "llamada",
+   "tacticas": [
+    "autoridad",
+    "datos_por_telefono",
+    "urgencia"
+   ],
+   "es_ataque": true,
+   "ok": true,
+   "accion": "ok",
+   "puntos": 115,
+   "ms": 97265,
+   "dias_atras": 19
+  },
+  {
+   "id": "c0013",
+   "usuarioId": "u02",
+   "equipo": "TI",
+   "escenarioId": "E14",
+   "canal": "presencial",
+   "tacticas": [
+    "enlaces",
+    "autoridad"
+   ],
+   "es_ataque": true,
+   "ok": true,
+   "accion": "verificar",
+   "puntos": 100,
+   "ms": 86599,
+   "dias_atras": 16
+  },
+  {
+   "id": "c0014",
+   "usuarioId": "u02",
+   "equipo": "TI",
+   "escenarioId": "E06",
+   "canal": "correo",
+   "tacticas": [
+    "urgencia",
+    "enlaces"
+   ],
+   "es_ataque": true,
+   "ok": false,
+   "accion": "responder",
+   "puntos": 10,
+   "ms": 97966,
+   "dias_atras": 16
+  },
+  {
+   "id": "c0015",
+   "usuarioId": "u02",
+   "equipo": "TI",
+   "escenarioId": "E14",
+   "canal": "presencial",
+   "tacticas": [
+    "enlaces",
+    "autoridad"
+   ],
+   "es_ataque": true,
+   "ok": true,
+   "accion": "reportar",
+   "puntos": 100,
+   "ms": 139825,
+   "dias_atras": 12
+  },
+  {
+   "id": "c0016",
+   "usuarioId": "u02",
+   "equipo": "TI",
+   "escenarioId": "E12",
+   "canal": "sms",
+   "tacticas": [
+    "enlaces",
+    "urgencia"
+   ],
+   "es_ataque": true,
+   "ok": true,
+   "accion": "reportar",
+   "puntos": 70,
+   "ms": 48474,
+   "dias_atras": 12
+  },
+  {
+   "id": "c0017",
+   "usuarioId": "u02",
+   "equipo": "TI",
+   "escenarioId": "E07",
+   "canal": "llamada",
+   "tacticas": [
+    "autoridad",
+    "datos_por_telefono"
+   ],
+   "es_ataque": true,
+   "ok": true,
+   "accion": "colgar",
+   "puntos": 70,
+   "ms": 71005,
+   "dias_atras": 8
+  },
+  {
+   "id": "c0018",
+   "usuarioId": "u02",
+   "equipo": "TI",
+   "escenarioId": "E13",
+   "canal": "correo",
+   "tacticas": [
+    "falso_positivo"
+   ],
+   "es_ataque": false,
+   "ok": true,
+   "accion": "legitimo",
+   "puntos": 90,
+   "ms": 54869,
+   "dias_atras": 6
+  },
+  {
+   "id": "c0019",
+   "usuarioId": "u02",
+   "equipo": "TI",
+   "escenarioId": "E05",
+   "canal": "chat",
+   "tacticas": [
+    "verificacion_remitente",
+    "enlaces"
+   ],
+   "es_ataque": true,
+   "ok": true,
+   "accion": "verificar",
+   "puntos": 100,
+   "ms": 134100,
+   "dias_atras": 5
+  },
+  {
+   "id": "c0020",
+   "usuarioId": "u02",
+   "equipo": "TI",
+   "escenarioId": "E06",
+   "canal": "correo",
+   "tacticas": [
+    "urgencia",
+    "enlaces"
+   ],
+   "es_ataque": true,
+   "ok": true,
+   "accion": "reportar",
+   "puntos": 100,
+   "ms": 32316,
+   "dias_atras": 3
+  },
+  {
+   "id": "c0021",
+   "usuarioId": "u03",
+   "equipo": "Operaciones",
+   "escenarioId": "E12",
+   "canal": "sms",
+   "tacticas": [
+    "enlaces",
+    "urgencia"
+   ],
+   "es_ataque": true,
+   "ok": false,
+   "accion": "responder",
+   "puntos": 10,
+   "ms": 142553,
+   "dias_atras": 26
+  },
+  {
+   "id": "c0022",
+   "usuarioId": "u03",
+   "equipo": "Operaciones",
+   "escenarioId": "E13",
+   "canal": "correo",
+   "tacticas": [
+    "falso_positivo"
+   ],
+   "es_ataque": false,
+   "ok": false,
+   "accion": "reportar",
+   "puntos": 20,
+   "ms": 67084,
+   "dias_atras": 24
+  },
+  {
+   "id": "c0023",
+   "usuarioId": "u03",
+   "equipo": "Operaciones",
+   "escenarioId": "E09",
+   "canal": "presencial",
+   "tacticas": [
+    "acceso_fisico",
+    "urgencia"
+   ],
+   "es_ataque": true,
+   "ok": true,
+   "accion": "reportar",
+   "puntos": 60,
+   "ms": 82775,
+   "dias_atras": 22
+  },
+  {
+   "id": "c0024",
+   "usuarioId": "u03",
+   "equipo": "Operaciones",
+   "escenarioId": "E10",
+   "canal": "llamada",
+   "tacticas": [
+    "autoridad",
+    "datos_por_telefono"
+   ],
+   "es_ataque": true,
+   "ok": true,
+   "accion": "ok",
+   "puntos": 95,
+   "ms": 116921,
+   "dias_atras": 21
+  },
+  {
+   "id": "c0025",
+   "usuarioId": "u03",
+   "equipo": "Operaciones",
+   "escenarioId": "E15",
+   "canal": "llamada",
+   "tacticas": [
+    "autoridad",
+    "datos_por_telefono",
+    "urgencia"
+   ],
+   "es_ataque": true,
+   "ok": false,
+   "accion": "cayo",
+   "puntos": 10,
+   "ms": 119300,
+   "dias_atras": 17
+  },
+  {
+   "id": "c0026",
+   "usuarioId": "u03",
+   "equipo": "Operaciones",
+   "escenarioId": "E12",
+   "canal": "sms",
+   "tacticas": [
+    "enlaces",
+    "urgencia"
+   ],
+   "es_ataque": true,
+   "ok": true,
+   "accion": "verificar",
+   "puntos": 70,
+   "ms": 80333,
+   "dias_atras": 15
+  },
+  {
+   "id": "c0027",
+   "usuarioId": "u03",
+   "equipo": "Operaciones",
+   "escenarioId": "E14",
+   "canal": "presencial",
+   "tacticas": [
+    "enlaces",
+    "autoridad"
+   ],
+   "es_ataque": true,
+   "ok": true,
+   "accion": "verificar",
+   "puntos": 80,
+   "ms": 33814,
+   "dias_atras": 13
+  },
+  {
+   "id": "c0028",
+   "usuarioId": "u03",
+   "equipo": "Operaciones",
+   "escenarioId": "E11",
+   "canal": "presencial",
+   "tacticas": [
+    "acceso_fisico",
+    "adjuntos"
+   ],
+   "es_ataque": true,
+   "ok": true,
+   "accion": "verificar",
+   "puntos": 70,
+   "ms": 28255,
+   "dias_atras": 13
+  },
+  {
+   "id": "c0029",
+   "usuarioId": "u03",
+   "equipo": "Operaciones",
+   "escenarioId": "E11",
+   "canal": "presencial",
+   "tacticas": [
+    "acceso_fisico",
+    "adjuntos"
+   ],
+   "es_ataque": true,
+   "ok": true,
+   "accion": "reportar",
+   "puntos": 70,
+   "ms": 88857,
+   "dias_atras": 11
+  },
+  {
+   "id": "c0030",
+   "usuarioId": "u03",
+   "equipo": "Operaciones",
+   "escenarioId": "E14",
+   "canal": "presencial",
+   "tacticas": [
+    "enlaces",
+    "autoridad"
+   ],
+   "es_ataque": true,
+   "ok": true,
+   "accion": "reportar",
+   "puntos": 80,
+   "ms": 124601,
+   "dias_atras": 8
+  },
+  {
+   "id": "c0031",
+   "usuarioId": "u03",
+   "equipo": "Operaciones",
+   "escenarioId": "E13",
+   "canal": "correo",
+   "tacticas": [
+    "falso_positivo"
+   ],
+   "es_ataque": false,
+   "ok": true,
+   "accion": "legitimo",
+   "puntos": 100,
+   "ms": 123060,
+   "dias_atras": 5
+  },
+  {
+   "id": "c0032",
+   "usuarioId": "u03",
+   "equipo": "Operaciones",
+   "escenarioId": "E09",
+   "canal": "presencial",
+   "tacticas": [
+    "acceso_fisico",
+    "urgencia"
+   ],
+   "es_ataque": true,
+   "ok": false,
+   "accion": "responder",
+   "puntos": 10,
+   "ms": 91095,
+   "dias_atras": 4
+  },
+  {
+   "id": "c0033",
+   "usuarioId": "u03",
+   "equipo": "Operaciones",
+   "escenarioId": "E13",
+   "canal": "correo",
+   "tacticas": [
+    "falso_positivo"
+   ],
+   "es_ataque": false,
+   "ok": false,
+   "accion": "reportar",
+   "puntos": 20,
+   "ms": 73822,
+   "dias_atras": 2
+  },
+  {
+   "id": "c0034",
+   "usuarioId": "u05",
+   "equipo": "Finanzas",
+   "escenarioId": "E15",
+   "canal": "llamada",
+   "tacticas": [
+    "autoridad",
+    "datos_por_telefono",
+    "urgencia"
+   ],
+   "es_ataque": true,
+   "ok": false,
+   "accion": "cayo",
+   "puntos": 10,
+   "ms": 136805,
+   "dias_atras": 26
+  },
+  {
+   "id": "c0035",
+   "usuarioId": "u05",
+   "equipo": "Finanzas",
+   "escenarioId": "E15",
+   "canal": "llamada",
+   "tacticas": [
+    "autoridad",
+    "datos_por_telefono",
+    "urgencia"
+   ],
+   "es_ataque": true,
+   "ok": true,
+   "accion": "colgar",
+   "puntos": 85,
+   "ms": 117063,
+   "dias_atras": 21
+  },
+  {
+   "id": "c0036",
+   "usuarioId": "u05",
+   "equipo": "Finanzas",
+   "escenarioId": "E14",
+   "canal": "presencial",
+   "tacticas": [
+    "enlaces",
+    "autoridad"
+   ],
+   "es_ataque": true,
+   "ok": true,
+   "accion": "reportar",
+   "puntos": 100,
+   "ms": 140856,
+   "dias_atras": 19
+  },
+  {
+   "id": "c0037",
+   "usuarioId": "u05",
+   "equipo": "Finanzas",
+   "escenarioId": "E12",
+   "canal": "sms",
+   "tacticas": [
+    "enlaces",
+    "urgencia"
+   ],
+   "es_ataque": true,
+   "ok": true,
+   "accion": "reportar",
+   "puntos": 60,
+   "ms": 133636,
+   "dias_atras": 15
+  },
+  {
+   "id": "c0038",
+   "usuarioId": "u05",
+   "equipo": "Finanzas",
+   "escenarioId": "E12",
+   "canal": "sms",
+   "tacticas": [
+    "enlaces",
+    "urgencia"
+   ],
+   "es_ataque": true,
+   "ok": false,
+   "accion": "responder",
+   "puntos": 10,
+   "ms": 78465,
+   "dias_atras": 11
+  },
+  {
+   "id": "c0039",
+   "usuarioId": "u05",
+   "equipo": "Finanzas",
+   "escenarioId": "E15",
+   "canal": "llamada",
+   "tacticas": [
+    "autoridad",
+    "datos_por_telefono",
+    "urgencia"
+   ],
+   "es_ataque": true,
+   "ok": true,
+   "accion": "ok",
+   "puntos": 115,
+   "ms": 156837,
+   "dias_atras": 7
+  },
+  {
+   "id": "c0040",
+   "usuarioId": "u05",
+   "equipo": "Finanzas",
+   "escenarioId": "E02",
+   "canal": "correo",
+   "tacticas": [
+    "verificacion_remitente",
+    "adjuntos"
+   ],
+   "es_ataque": true,
+   "ok": true,
+   "accion": "reportar",
+   "puntos": 100,
+   "ms": 80986,
+   "dias_atras": 5
+  },
+  {
+   "id": "c0041",
+   "usuarioId": "u06",
+   "equipo": "Finanzas",
+   "escenarioId": "E12",
+   "canal": "sms",
+   "tacticas": [
+    "enlaces",
+    "urgencia"
+   ],
+   "es_ataque": true,
+   "ok": true,
+   "accion": "verificar",
+   "puntos": 80,
+   "ms": 73771,
+   "dias_atras": 27
+  },
+  {
+   "id": "c0042",
+   "usuarioId": "u06",
+   "equipo": "Finanzas",
+   "escenarioId": "E03",
+   "canal": "llamada",
+   "tacticas": [
+    "urgencia",
+    "datos_por_telefono"
+   ],
+   "es_ataque": true,
+   "ok": true,
+   "accion": "colgar",
+   "puntos": 70,
+   "ms": 88595,
+   "dias_atras": 21
+  },
+  {
+   "id": "c0043",
+   "usuarioId": "u06",
+   "equipo": "Finanzas",
+   "escenarioId": "E01",
+   "canal": "correo",
+   "tacticas": [
+    "urgencia",
+    "autoridad"
+   ],
+   "es_ataque": true,
+   "ok": true,
+   "accion": "reportar",
+   "puntos": 80,
+   "ms": 56180,
+   "dias_atras": 19
+  },
+  {
+   "id": "c0044",
+   "usuarioId": "u06",
+   "equipo": "Finanzas",
+   "escenarioId": "E14",
+   "canal": "presencial",
+   "tacticas": [
+    "enlaces",
+    "autoridad"
+   ],
+   "es_ataque": true,
+   "ok": true,
+   "accion": "reportar",
+   "puntos": 90,
+   "ms": 46090,
+   "dias_atras": 15
+  },
+  {
+   "id": "c0045",
+   "usuarioId": "u06",
+   "equipo": "Finanzas",
+   "escenarioId": "E04",
+   "canal": "correo",
+   "tacticas": [
+    "autoridad",
+    "adjuntos"
+   ],
+   "es_ataque": true,
+   "ok": true,
+   "accion": "verificar",
+   "puntos": 80,
+   "ms": 143804,
+   "dias_atras": 11
+  },
+  {
+   "id": "c0046",
+   "usuarioId": "u06",
+   "equipo": "Finanzas",
+   "escenarioId": "E13",
+   "canal": "correo",
+   "tacticas": [
+    "falso_positivo"
+   ],
+   "es_ataque": false,
+   "ok": true,
+   "accion": "legitimo",
+   "puntos": 80,
+   "ms": 51243,
+   "dias_atras": 7
+  },
+  {
+   "id": "c0047",
+   "usuarioId": "u06",
+   "equipo": "Finanzas",
+   "escenarioId": "E12",
+   "canal": "sms",
+   "tacticas": [
+    "enlaces",
+    "urgencia"
+   ],
+   "es_ataque": true,
+   "ok": true,
+   "accion": "reportar",
+   "puntos": 60,
+   "ms": 143563,
+   "dias_atras": 4
+  },
+  {
+   "id": "c0048",
+   "usuarioId": "u07",
+   "equipo": "Finanzas",
+   "escenarioId": "E13",
+   "canal": "correo",
+   "tacticas": [
+    "falso_positivo"
+   ],
+   "es_ataque": false,
+   "ok": true,
+   "accion": "legitimo",
+   "puntos": 90,
+   "ms": 137672,
+   "dias_atras": 26
+  },
+  {
+   "id": "c0049",
+   "usuarioId": "u07",
+   "equipo": "Finanzas",
+   "escenarioId": "E02",
+   "canal": "correo",
+   "tacticas": [
+    "verificacion_remitente",
+    "adjuntos"
+   ],
+   "es_ataque": true,
+   "ok": false,
+   "accion": "responder",
+   "puntos": 10,
+   "ms": 67578,
+   "dias_atras": 24
+  },
+  {
+   "id": "c0050",
+   "usuarioId": "u07",
+   "equipo": "Finanzas",
+   "escenarioId": "E01",
+   "canal": "correo",
+   "tacticas": [
+    "urgencia",
+    "autoridad"
+   ],
+   "es_ataque": true,
+   "ok": true,
+   "accion": "verificar",
+   "puntos": 100,
+   "ms": 121743,
+   "dias_atras": 21
+  },
+  {
+   "id": "c0051",
+   "usuarioId": "u07",
+   "equipo": "Finanzas",
+   "escenarioId": "E03",
+   "canal": "llamada",
+   "tacticas": [
+    "urgencia",
+    "datos_por_telefono"
+   ],
+   "es_ataque": true,
+   "ok": true,
+   "accion": "ok",
+   "puntos": 95,
+   "ms": 86666,
+   "dias_atras": 19
+  },
+  {
+   "id": "c0052",
+   "usuarioId": "u07",
+   "equipo": "Finanzas",
+   "escenarioId": "E13",
+   "canal": "correo",
+   "tacticas": [
+    "falso_positivo"
+   ],
+   "es_ataque": false,
+   "ok": true,
+   "accion": "legitimo",
+   "puntos": 80,
+   "ms": 76030,
+   "dias_atras": 15
+  },
+  {
+   "id": "c0053",
+   "usuarioId": "u07",
+   "equipo": "Finanzas",
+   "escenarioId": "E12",
+   "canal": "sms",
+   "tacticas": [
+    "enlaces",
+    "urgencia"
+   ],
+   "es_ataque": true,
+   "ok": false,
+   "accion": "responder",
+   "puntos": 10,
+   "ms": 89355,
+   "dias_atras": 13
+  },
+  {
+   "id": "c0054",
+   "usuarioId": "u07",
+   "equipo": "Finanzas",
+   "escenarioId": "E01",
+   "canal": "correo",
+   "tacticas": [
+    "urgencia",
+    "autoridad"
+   ],
+   "es_ataque": true,
+   "ok": true,
+   "accion": "reportar",
+   "puntos": 80,
+   "ms": 122757,
+   "dias_atras": 11
+  },
+  {
+   "id": "c0055",
+   "usuarioId": "u07",
+   "equipo": "Finanzas",
+   "escenarioId": "E15",
+   "canal": "llamada",
+   "tacticas": [
+    "autoridad",
+    "datos_por_telefono",
+    "urgencia"
+   ],
+   "es_ataque": true,
+   "ok": false,
+   "accion": "cayo",
+   "puntos": 10,
+   "ms": 29124,
+   "dias_atras": 9
+  },
+  {
+   "id": "c0056",
+   "usuarioId": "u07",
+   "equipo": "Finanzas",
+   "escenarioId": "E02",
+   "canal": "correo",
+   "tacticas": [
+    "verificacion_remitente",
+    "adjuntos"
+   ],
+   "es_ataque": true,
+   "ok": false,
+   "accion": "responder",
+   "puntos": 10,
+   "ms": 124070,
+   "dias_atras": 6
+  },
+  {
+   "id": "c0057",
+   "usuarioId": "u07",
+   "equipo": "Finanzas",
+   "escenarioId": "E04",
+   "canal": "correo",
+   "tacticas": [
+    "autoridad",
+    "adjuntos"
+   ],
+   "es_ataque": true,
+   "ok": true,
+   "accion": "verificar",
+   "puntos": 70,
+   "ms": 84655,
+   "dias_atras": 4
+  },
+  {
+   "id": "c0058",
+   "usuarioId": "u08",
+   "equipo": "Finanzas",
+   "escenarioId": "E01",
+   "canal": "correo",
+   "tacticas": [
+    "urgencia",
+    "autoridad"
+   ],
+   "es_ataque": true,
+   "ok": false,
+   "accion": "responder",
+   "puntos": 10,
+   "ms": 74957,
+   "dias_atras": 26
+  },
+  {
+   "id": "c0059",
+   "usuarioId": "u08",
+   "equipo": "Finanzas",
+   "escenarioId": "E04",
+   "canal": "correo",
+   "tacticas": [
+    "autoridad",
+    "adjuntos"
+   ],
+   "es_ataque": true,
+   "ok": true,
+   "accion": "verificar",
+   "puntos": 70,
+   "ms": 38268,
+   "dias_atras": 23
+  },
+  {
+   "id": "c0060",
+   "usuarioId": "u08",
+   "equipo": "Finanzas",
+   "escenarioId": "E02",
+   "canal": "correo",
+   "tacticas": [
+    "verificacion_remitente",
+    "adjuntos"
+   ],
+   "es_ataque": true,
+   "ok": false,
+   "accion": "responder",
+   "puntos": 10,
+   "ms": 149765,
+   "dias_atras": 20
+  },
+  {
+   "id": "c0061",
+   "usuarioId": "u08",
+   "equipo": "Finanzas",
+   "escenarioId": "E04",
+   "canal": "correo",
+   "tacticas": [
+    "autoridad",
+    "adjuntos"
+   ],
+   "es_ataque": true,
+   "ok": true,
+   "accion": "reportar",
+   "puntos": 80,
+   "ms": 66007,
+   "dias_atras": 19
+  },
+  {
+   "id": "c0062",
+   "usuarioId": "u08",
+   "equipo": "Finanzas",
+   "escenarioId": "E02",
+   "canal": "correo",
+   "tacticas": [
+    "verificacion_remitente",
+    "adjuntos"
+   ],
+   "es_ataque": true,
+   "ok": true,
+   "accion": "reportar",
+   "puntos": 120,
+   "ms": 153376,
+   "dias_atras": 15
+  },
+  {
+   "id": "c0063",
+   "usuarioId": "u08",
+   "equipo": "Finanzas",
+   "escenarioId": "E14",
+   "canal": "presencial",
+   "tacticas": [
+    "enlaces",
+    "autoridad"
+   ],
+   "es_ataque": true,
+   "ok": true,
+   "accion": "reportar",
+   "puntos": 80,
+   "ms": 89585,
+   "dias_atras": 12
+  },
+  {
+   "id": "c0064",
+   "usuarioId": "u08",
+   "equipo": "Finanzas",
+   "escenarioId": "E04",
+   "canal": "correo",
+   "tacticas": [
+    "autoridad",
+    "adjuntos"
+   ],
+   "es_ataque": true,
+   "ok": true,
+   "accion": "reportar",
+   "puntos": 80,
+   "ms": 91439,
+   "dias_atras": 11
+  },
+  {
+   "id": "c0065",
+   "usuarioId": "u08",
+   "equipo": "Finanzas",
+   "escenarioId": "E02",
+   "canal": "correo",
+   "tacticas": [
+    "verificacion_remitente",
+    "adjuntos"
+   ],
+   "es_ataque": true,
+   "ok": true,
+   "accion": "verificar",
+   "puntos": 110,
+   "ms": 150239,
+   "dias_atras": 8
+  },
+  {
+   "id": "c0066",
+   "usuarioId": "u08",
+   "equipo": "Finanzas",
+   "escenarioId": "E02",
+   "canal": "correo",
+   "tacticas": [
+    "verificacion_remitente",
+    "adjuntos"
+   ],
+   "es_ataque": true,
+   "ok": true,
+   "accion": "reportar",
+   "puntos": 100,
+   "ms": 152670,
+   "dias_atras": 5
+  },
+  {
+   "id": "c0067",
+   "usuarioId": "u08",
+   "equipo": "Finanzas",
+   "escenarioId": "E01",
+   "canal": "correo",
+   "tacticas": [
+    "urgencia",
+    "autoridad"
+   ],
+   "es_ataque": true,
+   "ok": true,
+   "accion": "verificar",
+   "puntos": 100,
+   "ms": 77158,
+   "dias_atras": 2
+  },
+  {
+   "id": "c0068",
+   "usuarioId": "u09",
+   "equipo": "Finanzas",
+   "escenarioId": "E13",
+   "canal": "correo",
+   "tacticas": [
+    "falso_positivo"
+   ],
+   "es_ataque": false,
+   "ok": true,
+   "accion": "legitimo",
+   "puntos": 100,
+   "ms": 82665,
+   "dias_atras": 26
+  },
+  {
+   "id": "c0069",
+   "usuarioId": "u09",
+   "equipo": "Finanzas",
+   "escenarioId": "E13",
+   "canal": "correo",
+   "tacticas": [
+    "falso_positivo"
+   ],
+   "es_ataque": false,
+   "ok": false,
+   "accion": "reportar",
+   "puntos": 20,
+   "ms": 80735,
+   "dias_atras": 24
+  },
+  {
+   "id": "c0070",
+   "usuarioId": "u09",
+   "equipo": "Finanzas",
+   "escenarioId": "E13",
+   "canal": "correo",
+   "tacticas": [
+    "falso_positivo"
+   ],
+   "es_ataque": false,
+   "ok": true,
+   "accion": "legitimo",
+   "puntos": 90,
+   "ms": 48882,
+   "dias_atras": 21
+  },
+  {
+   "id": "c0071",
+   "usuarioId": "u09",
+   "equipo": "Finanzas",
+   "escenarioId": "E04",
+   "canal": "correo",
+   "tacticas": [
+    "autoridad",
+    "adjuntos"
+   ],
+   "es_ataque": true,
+   "ok": true,
+   "accion": "reportar",
+   "puntos": 70,
+   "ms": 64506,
+   "dias_atras": 18
+  },
+  {
+   "id": "c0072",
+   "usuarioId": "u09",
+   "equipo": "Finanzas",
+   "escenarioId": "E13",
+   "canal": "correo",
+   "tacticas": [
+    "falso_positivo"
+   ],
+   "es_ataque": false,
+   "ok": true,
+   "accion": "legitimo",
+   "puntos": 100,
+   "ms": 155318,
+   "dias_atras": 16
+  },
+  {
+   "id": "c0073",
+   "usuarioId": "u09",
+   "equipo": "Finanzas",
+   "escenarioId": "E13",
+   "canal": "correo",
+   "tacticas": [
+    "falso_positivo"
+   ],
+   "es_ataque": false,
+   "ok": true,
+   "accion": "legitimo",
+   "puntos": 80,
+   "ms": 59511,
+   "dias_atras": 13
+  },
+  {
+   "id": "c0074",
+   "usuarioId": "u09",
+   "equipo": "Finanzas",
+   "escenarioId": "E14",
+   "canal": "presencial",
+   "tacticas": [
+    "enlaces",
+    "autoridad"
+   ],
+   "es_ataque": true,
+   "ok": false,
+   "accion": "responder",
+   "puntos": 10,
+   "ms": 121122,
+   "dias_atras": 11
+  },
+  {
+   "id": "c0075",
+   "usuarioId": "u09",
+   "equipo": "Finanzas",
+   "escenarioId": "E02",
+   "canal": "correo",
+   "tacticas": [
+    "verificacion_remitente",
+    "adjuntos"
+   ],
+   "es_ataque": true,
+   "ok": true,
+   "accion": "reportar",
+   "puntos": 120,
+   "ms": 95579,
+   "dias_atras": 9
+  },
+  {
+   "id": "c0076",
+   "usuarioId": "u09",
+   "equipo": "Finanzas",
+   "escenarioId": "E04",
+   "canal": "correo",
+   "tacticas": [
+    "autoridad",
+    "adjuntos"
+   ],
+   "es_ataque": true,
+   "ok": true,
+   "accion": "reportar",
+   "puntos": 70,
+   "ms": 59812,
+   "dias_atras": 7
+  },
+  {
+   "id": "c0077",
+   "usuarioId": "u09",
+   "equipo": "Finanzas",
+   "escenarioId": "E02",
+   "canal": "correo",
+   "tacticas": [
+    "verificacion_remitente",
+    "adjuntos"
+   ],
+   "es_ataque": true,
+   "ok": false,
+   "accion": "responder",
+   "puntos": 10,
+   "ms": 68615,
+   "dias_atras": 4
+  },
+  {
+   "id": "c0078",
+   "usuarioId": "u09",
+   "equipo": "Finanzas",
+   "escenarioId": "E01",
+   "canal": "correo",
+   "tacticas": [
+    "urgencia",
+    "autoridad"
+   ],
+   "es_ataque": true,
+   "ok": true,
+   "accion": "reportar",
+   "puntos": 90,
+   "ms": 38282,
+   "dias_atras": 3
+  },
+  {
+   "id": "c0079",
+   "usuarioId": "u10",
+   "equipo": "TI",
+   "escenarioId": "E14",
+   "canal": "presencial",
+   "tacticas": [
+    "enlaces",
+    "autoridad"
+   ],
+   "es_ataque": true,
+   "ok": false,
+   "accion": "responder",
+   "puntos": 10,
+   "ms": 51817,
+   "dias_atras": 26
+  },
+  {
+   "id": "c0080",
+   "usuarioId": "u10",
+   "equipo": "TI",
+   "escenarioId": "E06",
+   "canal": "correo",
+   "tacticas": [
+    "urgencia",
+    "enlaces"
+   ],
+   "es_ataque": true,
+   "ok": true,
+   "accion": "reportar",
+   "puntos": 80,
+   "ms": 101942,
+   "dias_atras": 23
+  },
+  {
+   "id": "c0081",
+   "usuarioId": "u10",
+   "equipo": "TI",
+   "escenarioId": "E07",
+   "canal": "llamada",
+   "tacticas": [
+    "autoridad",
+    "datos_por_telefono"
+   ],
+   "es_ataque": true,
+   "ok": false,
+   "accion": "cayo",
+   "puntos": 10,
+   "ms": 30634,
+   "dias_atras": 21
+  },
+  {
+   "id": "c0082",
+   "usuarioId": "u10",
+   "equipo": "TI",
+   "escenarioId": "E07",
+   "canal": "llamada",
+   "tacticas": [
+    "autoridad",
+    "datos_por_telefono"
+   ],
+   "es_ataque": true,
+   "ok": true,
+   "accion": "colgar",
+   "puntos": 70,
+   "ms": 71260,
+   "dias_atras": 17
+  },
+  {
+   "id": "c0083",
+   "usuarioId": "u10",
+   "equipo": "TI",
+   "escenarioId": "E05",
+   "canal": "chat",
+   "tacticas": [
+    "verificacion_remitente",
+    "enlaces"
+   ],
+   "es_ataque": true,
+   "ok": true,
+   "accion": "verificar",
+   "puntos": 100,
+   "ms": 30303,
+   "dias_atras": 15
+  },
+  {
+   "id": "c0084",
+   "usuarioId": "u10",
+   "equipo": "TI",
+   "escenarioId": "E15",
+   "canal": "llamada",
+   "tacticas": [
+    "autoridad",
+    "datos_por_telefono",
+    "urgencia"
+   ],
+   "es_ataque": true,
+   "ok": true,
+   "accion": "ok",
+   "puntos": 115,
+   "ms": 80130,
+   "dias_atras": 12
+  },
+  {
+   "id": "c0085",
+   "usuarioId": "u10",
+   "equipo": "TI",
+   "escenarioId": "E13",
+   "canal": "correo",
+   "tacticas": [
+    "falso_positivo"
+   ],
+   "es_ataque": false,
+   "ok": true,
+   "accion": "legitimo",
+   "puntos": 90,
+   "ms": 53750,
+   "dias_atras": 8
+  },
+  {
+   "id": "c0086",
+   "usuarioId": "u10",
+   "equipo": "TI",
+   "escenarioId": "E15",
+   "canal": "llamada",
+   "tacticas": [
+    "autoridad",
+    "datos_por_telefono",
+    "urgencia"
+   ],
+   "es_ataque": true,
+   "ok": true,
+   "accion": "ok",
+   "puntos": 115,
+   "ms": 115775,
+   "dias_atras": 5
+  },
+  {
+   "id": "c0087",
+   "usuarioId": "u10",
+   "equipo": "TI",
+   "escenarioId": "E14",
+   "canal": "presencial",
+   "tacticas": [
+    "enlaces",
+    "autoridad"
+   ],
+   "es_ataque": true,
+   "ok": true,
+   "accion": "verificar",
+   "puntos": 90,
+   "ms": 80777,
+   "dias_atras": 3
+  },
+  {
+   "id": "c0088",
+   "usuarioId": "u11",
+   "equipo": "TI",
+   "escenarioId": "E13",
+   "canal": "correo",
+   "tacticas": [
+    "falso_positivo"
+   ],
+   "es_ataque": false,
+   "ok": false,
+   "accion": "reportar",
+   "puntos": 20,
+   "ms": 56403,
+   "dias_atras": 27
+  },
+  {
+   "id": "c0089",
+   "usuarioId": "u11",
+   "equipo": "TI",
+   "escenarioId": "E07",
+   "canal": "llamada",
+   "tacticas": [
+    "autoridad",
+    "datos_por_telefono"
+   ],
+   "es_ataque": true,
+   "ok": false,
+   "accion": "cayo",
+   "puntos": 10,
+   "ms": 123462,
+   "dias_atras": 24
+  },
+  {
+   "id": "c0090",
+   "usuarioId": "u11",
+   "equipo": "TI",
+   "escenarioId": "E13",
+   "canal": "correo",
+   "tacticas": [
+    "falso_positivo"
+   ],
+   "es_ataque": false,
+   "ok": true,
+   "accion": "legitimo",
+   "puntos": 90,
+   "ms": 125082,
+   "dias_atras": 23
+  },
+  {
+   "id": "c0091",
+   "usuarioId": "u11",
+   "equipo": "TI",
+   "escenarioId": "E14",
+   "canal": "presencial",
+   "tacticas": [
+    "enlaces",
+    "autoridad"
+   ],
+   "es_ataque": true,
+   "ok": true,
+   "accion": "verificar",
+   "puntos": 80,
+   "ms": 21978,
+   "dias_atras": 20
+  },
+  {
+   "id": "c0092",
+   "usuarioId": "u11",
+   "equipo": "TI",
+   "escenarioId": "E05",
+   "canal": "chat",
+   "tacticas": [
+    "verificacion_remitente",
+    "enlaces"
+   ],
+   "es_ataque": true,
+   "ok": true,
+   "accion": "reportar",
+   "puntos": 110,
+   "ms": 39468,
+   "dias_atras": 18
+  },
+  {
+   "id": "c0093",
+   "usuarioId": "u11",
+   "equipo": "TI",
+   "escenarioId": "E06",
+   "canal": "correo",
+   "tacticas": [
+    "urgencia",
+    "enlaces"
+   ],
+   "es_ataque": true,
+   "ok": true,
+   "accion": "verificar",
+   "puntos": 80,
+   "ms": 120088,
+   "dias_atras": 16
+  },
+  {
+   "id": "c0094",
+   "usuarioId": "u11",
+   "equipo": "TI",
+   "escenarioId": "E07",
+   "canal": "llamada",
+   "tacticas": [
+    "autoridad",
+    "datos_por_telefono"
+   ],
+   "es_ataque": true,
+   "ok": false,
+   "accion": "cayo",
+   "puntos": 10,
+   "ms": 66290,
+   "dias_atras": 15
+  },
+  {
+   "id": "c0095",
+   "usuarioId": "u11",
+   "equipo": "TI",
+   "escenarioId": "E15",
+   "canal": "llamada",
+   "tacticas": [
+    "autoridad",
+    "datos_por_telefono",
+    "urgencia"
+   ],
+   "es_ataque": true,
+   "ok": false,
+   "accion": "cayo",
+   "puntos": 10,
+   "ms": 53113,
+   "dias_atras": 11
+  },
+  {
+   "id": "c0096",
+   "usuarioId": "u11",
+   "equipo": "TI",
+   "escenarioId": "E13",
+   "canal": "correo",
+   "tacticas": [
+    "falso_positivo"
+   ],
+   "es_ataque": false,
+   "ok": true,
+   "accion": "legitimo",
+   "puntos": 80,
+   "ms": 102753,
+   "dias_atras": 9
+  },
+  {
+   "id": "c0097",
+   "usuarioId": "u11",
+   "equipo": "TI",
+   "escenarioId": "E08",
+   "canal": "chat",
+   "tacticas": [
+    "autoridad",
+    "verificacion_remitente"
+   ],
+   "es_ataque": true,
+   "ok": true,
+   "accion": "verificar",
+   "puntos": 120,
+   "ms": 147547,
+   "dias_atras": 9
+  },
+  {
+   "id": "c0098",
+   "usuarioId": "u11",
+   "equipo": "TI",
+   "escenarioId": "E06",
+   "canal": "correo",
+   "tacticas": [
+    "urgencia",
+    "enlaces"
+   ],
+   "es_ataque": true,
+   "ok": false,
+   "accion": "responder",
+   "puntos": 10,
+   "ms": 39355,
+   "dias_atras": 7
+  },
+  {
+   "id": "c0099",
+   "usuarioId": "u11",
+   "equipo": "TI",
+   "escenarioId": "E08",
+   "canal": "chat",
+   "tacticas": [
+    "autoridad",
+    "verificacion_remitente"
+   ],
+   "es_ataque": true,
+   "ok": true,
+   "accion": "verificar",
+   "puntos": 100,
+   "ms": 109262,
+   "dias_atras": 5
+  },
+  {
+   "id": "c0100",
+   "usuarioId": "u11",
+   "equipo": "TI",
+   "escenarioId": "E15",
+   "canal": "llamada",
+   "tacticas": [
+    "autoridad",
+    "datos_por_telefono",
+    "urgencia"
+   ],
+   "es_ataque": true,
+   "ok": true,
+   "accion": "colgar",
+   "puntos": 85,
+   "ms": 122422,
+   "dias_atras": 2
+  },
+  {
+   "id": "c0101",
+   "usuarioId": "u12",
+   "equipo": "TI",
+   "escenarioId": "E15",
+   "canal": "llamada",
+   "tacticas": [
+    "autoridad",
+    "datos_por_telefono",
+    "urgencia"
+   ],
+   "es_ataque": true,
+   "ok": false,
+   "accion": "cayo",
+   "puntos": 10,
+   "ms": 99135,
+   "dias_atras": 26
+  },
+  {
+   "id": "c0102",
+   "usuarioId": "u12",
+   "equipo": "TI",
+   "escenarioId": "E13",
+   "canal": "correo",
+   "tacticas": [
+    "falso_positivo"
+   ],
+   "es_ataque": false,
+   "ok": false,
+   "accion": "reportar",
+   "puntos": 20,
+   "ms": 40686,
+   "dias_atras": 24
+  },
+  {
+   "id": "c0103",
+   "usuarioId": "u12",
+   "equipo": "TI",
+   "escenarioId": "E13",
+   "canal": "correo",
+   "tacticas": [
+    "falso_positivo"
+   ],
+   "es_ataque": false,
+   "ok": false,
+   "accion": "reportar",
+   "puntos": 20,
+   "ms": 91131,
+   "dias_atras": 19
+  },
+  {
+   "id": "c0104",
+   "usuarioId": "u12",
+   "equipo": "TI",
+   "escenarioId": "E12",
+   "canal": "sms",
+   "tacticas": [
+    "enlaces",
+    "urgencia"
+   ],
+   "es_ataque": true,
+   "ok": false,
+   "accion": "responder",
+   "puntos": 10,
+   "ms": 51895,
+   "dias_atras": 16
+  },
+  {
+   "id": "c0105",
+   "usuarioId": "u12",
+   "equipo": "TI",
+   "escenarioId": "E12",
+   "canal": "sms",
+   "tacticas": [
+    "enlaces",
+    "urgencia"
+   ],
+   "es_ataque": true,
+   "ok": true,
+   "accion": "verificar",
+   "puntos": 80,
+   "ms": 51964,
+   "dias_atras": 12
+  },
+  {
+   "id": "c0106",
+   "usuarioId": "u12",
+   "equipo": "TI",
+   "escenarioId": "E06",
+   "canal": "correo",
+   "tacticas": [
+    "urgencia",
+    "enlaces"
+   ],
+   "es_ataque": true,
+   "ok": true,
+   "accion": "verificar",
+   "puntos": 90,
+   "ms": 63756,
+   "dias_atras": 10
+  },
+  {
+   "id": "c0107",
+   "usuarioId": "u12",
+   "equipo": "TI",
+   "escenarioId": "E15",
+   "canal": "llamada",
+   "tacticas": [
+    "autoridad",
+    "datos_por_telefono",
+    "urgencia"
+   ],
+   "es_ataque": true,
+   "ok": true,
+   "accion": "ok",
+   "puntos": 115,
+   "ms": 74956,
+   "dias_atras": 7
+  },
+  {
+   "id": "c0108",
+   "usuarioId": "u12",
+   "equipo": "TI",
+   "escenarioId": "E08",
+   "canal": "chat",
+   "tacticas": [
+    "autoridad",
+    "verificacion_remitente"
+   ],
+   "es_ataque": true,
+   "ok": true,
+   "accion": "verificar",
+   "puntos": 100,
+   "ms": 46452,
+   "dias_atras": 4
+  },
+  {
+   "id": "c0109",
+   "usuarioId": "u13",
+   "equipo": "TI",
+   "escenarioId": "E15",
+   "canal": "llamada",
+   "tacticas": [
+    "autoridad",
+    "datos_por_telefono",
+    "urgencia"
+   ],
+   "es_ataque": true,
+   "ok": true,
+   "accion": "colgar",
+   "puntos": 85,
+   "ms": 137902,
+   "dias_atras": 26
+  },
+  {
+   "id": "c0110",
+   "usuarioId": "u13",
+   "equipo": "TI",
+   "escenarioId": "E12",
+   "canal": "sms",
+   "tacticas": [
+    "enlaces",
+    "urgencia"
+   ],
+   "es_ataque": true,
+   "ok": true,
+   "accion": "reportar",
+   "puntos": 60,
+   "ms": 99511,
+   "dias_atras": 25
+  },
+  {
+   "id": "c0111",
+   "usuarioId": "u13",
+   "equipo": "TI",
+   "escenarioId": "E12",
+   "canal": "sms",
+   "tacticas": [
+    "enlaces",
+    "urgencia"
+   ],
+   "es_ataque": true,
+   "ok": true,
+   "accion": "reportar",
+   "puntos": 70,
+   "ms": 79113,
+   "dias_atras": 21
+  },
+  {
+   "id": "c0112",
+   "usuarioId": "u13",
+   "equipo": "TI",
+   "escenarioId": "E08",
+   "canal": "chat",
+   "tacticas": [
+    "autoridad",
+    "verificacion_remitente"
+   ],
+   "es_ataque": true,
+   "ok": false,
+   "accion": "responder",
+   "puntos": 10,
+   "ms": 21747,
+   "dias_atras": 18
+  },
+  {
+   "id": "c0113",
+   "usuarioId": "u13",
+   "equipo": "TI",
+   "escenarioId": "E13",
+   "canal": "correo",
+   "tacticas": [
+    "falso_positivo"
+   ],
+   "es_ataque": false,
+   "ok": true,
+   "accion": "legitimo",
+   "puntos": 80,
+   "ms": 59459,
+   "dias_atras": 16
+  },
+  {
+   "id": "c0114",
+   "usuarioId": "u13",
+   "equipo": "TI",
+   "escenarioId": "E14",
+   "canal": "presencial",
+   "tacticas": [
+    "enlaces",
+    "autoridad"
+   ],
+   "es_ataque": true,
+   "ok": true,
+   "accion": "reportar",
+   "puntos": 100,
+   "ms": 117296,
+   "dias_atras": 14
+  },
+  {
+   "id": "c0115",
+   "usuarioId": "u13",
+   "equipo": "TI",
+   "escenarioId": "E13",
+   "canal": "correo",
+   "tacticas": [
+    "falso_positivo"
+   ],
+   "es_ataque": false,
+   "ok": true,
+   "accion": "legitimo",
+   "puntos": 90,
+   "ms": 86986,
+   "dias_atras": 12
+  },
+  {
+   "id": "c0116",
+   "usuarioId": "u13",
+   "equipo": "TI",
+   "escenarioId": "E12",
+   "canal": "sms",
+   "tacticas": [
+    "enlaces",
+    "urgencia"
+   ],
+   "es_ataque": true,
+   "ok": true,
+   "accion": "reportar",
+   "puntos": 80,
+   "ms": 88260,
+   "dias_atras": 10
+  },
+  {
+   "id": "c0117",
+   "usuarioId": "u13",
+   "equipo": "TI",
+   "escenarioId": "E15",
+   "canal": "llamada",
+   "tacticas": [
+    "autoridad",
+    "datos_por_telefono",
+    "urgencia"
+   ],
+   "es_ataque": true,
+   "ok": true,
+   "accion": "colgar",
+   "puntos": 85,
+   "ms": 114712,
+   "dias_atras": 7
+  },
+  {
+   "id": "c0118",
+   "usuarioId": "u13",
+   "equipo": "TI",
+   "escenarioId": "E12",
+   "canal": "sms",
+   "tacticas": [
+    "enlaces",
+    "urgencia"
+   ],
+   "es_ataque": true,
+   "ok": true,
+   "accion": "reportar",
+   "puntos": 80,
+   "ms": 25855,
+   "dias_atras": 5
+  },
+  {
+   "id": "c0119",
+   "usuarioId": "u13",
+   "equipo": "TI",
+   "escenarioId": "E13",
+   "canal": "correo",
+   "tacticas": [
+    "falso_positivo"
+   ],
+   "es_ataque": false,
+   "ok": true,
+   "accion": "legitimo",
+   "puntos": 100,
+   "ms": 96482,
+   "dias_atras": 3
+  },
+  {
+   "id": "c0120",
+   "usuarioId": "u14",
+   "equipo": "TI",
+   "escenarioId": "E15",
+   "canal": "llamada",
+   "tacticas": [
+    "autoridad",
+    "datos_por_telefono",
+    "urgencia"
+   ],
+   "es_ataque": true,
+   "ok": false,
+   "accion": "cayo",
+   "puntos": 10,
+   "ms": 147536,
+   "dias_atras": 25
+  },
+  {
+   "id": "c0121",
+   "usuarioId": "u14",
+   "equipo": "TI",
+   "escenarioId": "E05",
+   "canal": "chat",
+   "tacticas": [
+    "verificacion_remitente",
+    "enlaces"
+   ],
+   "es_ataque": true,
+   "ok": false,
+   "accion": "responder",
+   "puntos": 10,
+   "ms": 100040,
+   "dias_atras": 24
+  },
+  {
+   "id": "c0122",
+   "usuarioId": "u14",
+   "equipo": "TI",
+   "escenarioId": "E06",
+   "canal": "correo",
+   "tacticas": [
+    "urgencia",
+    "enlaces"
+   ],
+   "es_ataque": true,
+   "ok": true,
+   "accion": "verificar",
+   "puntos": 80,
+   "ms": 150701,
+   "dias_atras": 22
+  },
+  {
+   "id": "c0123",
+   "usuarioId": "u14",
+   "equipo": "TI",
+   "escenarioId": "E15",
+   "canal": "llamada",
+   "tacticas": [
+    "autoridad",
+    "datos_por_telefono",
+    "urgencia"
+   ],
+   "es_ataque": true,
+   "ok": false,
+   "accion": "cayo",
+   "puntos": 10,
+   "ms": 73526,
+   "dias_atras": 18
+  },
+  {
+   "id": "c0124",
+   "usuarioId": "u14",
+   "equipo": "TI",
+   "escenarioId": "E08",
+   "canal": "chat",
+   "tacticas": [
+    "autoridad",
+    "verificacion_remitente"
+   ],
+   "es_ataque": true,
+   "ok": true,
+   "accion": "reportar",
+   "puntos": 100,
+   "ms": 103983,
+   "dias_atras": 16
+  },
+  {
+   "id": "c0125",
+   "usuarioId": "u14",
+   "equipo": "TI",
+   "escenarioId": "E13",
+   "canal": "correo",
+   "tacticas": [
+    "falso_positivo"
+   ],
+   "es_ataque": false,
+   "ok": true,
+   "accion": "legitimo",
+   "puntos": 100,
+   "ms": 139356,
+   "dias_atras": 14
+  },
+  {
+   "id": "c0126",
+   "usuarioId": "u14",
+   "equipo": "TI",
+   "escenarioId": "E12",
+   "canal": "sms",
+   "tacticas": [
+    "enlaces",
+    "urgencia"
+   ],
+   "es_ataque": true,
+   "ok": true,
+   "accion": "verificar",
+   "puntos": 70,
+   "ms": 146070,
+   "dias_atras": 13
+  },
+  {
+   "id": "c0127",
+   "usuarioId": "u14",
+   "equipo": "TI",
+   "escenarioId": "E12",
+   "canal": "sms",
+   "tacticas": [
+    "enlaces",
+    "urgencia"
+   ],
+   "es_ataque": true,
+   "ok": true,
+   "accion": "reportar",
+   "puntos": 60,
+   "ms": 151477,
+   "dias_atras": 9
+  },
+  {
+   "id": "c0128",
+   "usuarioId": "u14",
+   "equipo": "TI",
+   "escenarioId": "E15",
+   "canal": "llamada",
+   "tacticas": [
+    "autoridad",
+    "datos_por_telefono",
+    "urgencia"
+   ],
+   "es_ataque": true,
+   "ok": false,
+   "accion": "cayo",
+   "puntos": 10,
+   "ms": 58847,
+   "dias_atras": 8
+  },
+  {
+   "id": "c0129",
+   "usuarioId": "u14",
+   "equipo": "TI",
+   "escenarioId": "E06",
+   "canal": "correo",
+   "tacticas": [
+    "urgencia",
+    "enlaces"
+   ],
+   "es_ataque": true,
+   "ok": true,
+   "accion": "reportar",
+   "puntos": 80,
+   "ms": 131180,
+   "dias_atras": 4
+  },
+  {
+   "id": "c0130",
+   "usuarioId": "u14",
+   "equipo": "TI",
+   "escenarioId": "E15",
+   "canal": "llamada",
+   "tacticas": [
+    "autoridad",
+    "datos_por_telefono",
+    "urgencia"
+   ],
+   "es_ataque": true,
+   "ok": false,
+   "accion": "cayo",
+   "puntos": 10,
+   "ms": 73512,
+   "dias_atras": 3
+  },
+  {
+   "id": "c0131",
+   "usuarioId": "u15",
+   "equipo": "Operaciones",
+   "escenarioId": "E12",
+   "canal": "sms",
+   "tacticas": [
+    "enlaces",
+    "urgencia"
+   ],
+   "es_ataque": true,
+   "ok": true,
+   "accion": "reportar",
+   "puntos": 70,
+   "ms": 134322,
+   "dias_atras": 25
+  },
+  {
+   "id": "c0132",
+   "usuarioId": "u15",
+   "equipo": "Operaciones",
+   "escenarioId": "E09",
+   "canal": "presencial",
+   "tacticas": [
+    "acceso_fisico",
+    "urgencia"
+   ],
+   "es_ataque": true,
+   "ok": true,
+   "accion": "reportar",
+   "puntos": 80,
+   "ms": 136928,
+   "dias_atras": 25
+  },
+  {
+   "id": "c0133",
+   "usuarioId": "u15",
+   "equipo": "Operaciones",
+   "escenarioId": "E11",
+   "canal": "presencial",
+   "tacticas": [
+    "acceso_fisico",
+    "adjuntos"
+   ],
+   "es_ataque": true,
+   "ok": false,
+   "accion": "responder",
+   "puntos": 10,
+   "ms": 60339,
+   "dias_atras": 22
+  },
+  {
+   "id": "c0134",
+   "usuarioId": "u15",
+   "equipo": "Operaciones",
+   "escenarioId": "E15",
+   "canal": "llamada",
+   "tacticas": [
+    "autoridad",
+    "datos_por_telefono",
+    "urgencia"
+   ],
+   "es_ataque": true,
+   "ok": false,
+   "accion": "cayo",
+   "puntos": 10,
+   "ms": 56906,
+   "dias_atras": 20
+  },
+  {
+   "id": "c0135",
+   "usuarioId": "u15",
+   "equipo": "Operaciones",
+   "escenarioId": "E09",
+   "canal": "presencial",
+   "tacticas": [
+    "acceso_fisico",
+    "urgencia"
+   ],
+   "es_ataque": true,
+   "ok": true,
+   "accion": "verificar",
+   "puntos": 60,
+   "ms": 145397,
+   "dias_atras": 19
+  },
+  {
+   "id": "c0136",
+   "usuarioId": "u15",
+   "equipo": "Operaciones",
+   "escenarioId": "E10",
+   "canal": "llamada",
+   "tacticas": [
+    "autoridad",
+    "datos_por_telefono"
+   ],
+   "es_ataque": true,
+   "ok": false,
+   "accion": "cayo",
+   "puntos": 10,
+   "ms": 76250,
+   "dias_atras": 17
+  },
+  {
+   "id": "c0137",
+   "usuarioId": "u15",
+   "equipo": "Operaciones",
+   "escenarioId": "E09",
+   "canal": "presencial",
+   "tacticas": [
+    "acceso_fisico",
+    "urgencia"
+   ],
+   "es_ataque": true,
+   "ok": false,
+   "accion": "responder",
+   "puntos": 10,
+   "ms": 62640,
+   "dias_atras": 13
+  },
+  {
+   "id": "c0138",
+   "usuarioId": "u15",
+   "equipo": "Operaciones",
+   "escenarioId": "E10",
+   "canal": "llamada",
+   "tacticas": [
+    "autoridad",
+    "datos_por_telefono"
+   ],
+   "es_ataque": true,
+   "ok": false,
+   "accion": "cayo",
+   "puntos": 10,
+   "ms": 118453,
+   "dias_atras": 12
+  },
+  {
+   "id": "c0139",
+   "usuarioId": "u15",
+   "equipo": "Operaciones",
+   "escenarioId": "E12",
+   "canal": "sms",
+   "tacticas": [
+    "enlaces",
+    "urgencia"
+   ],
+   "es_ataque": true,
+   "ok": false,
+   "accion": "responder",
+   "puntos": 10,
+   "ms": 107023,
+   "dias_atras": 11
+  },
+  {
+   "id": "c0140",
+   "usuarioId": "u15",
+   "equipo": "Operaciones",
+   "escenarioId": "E09",
+   "canal": "presencial",
+   "tacticas": [
+    "acceso_fisico",
+    "urgencia"
+   ],
+   "es_ataque": true,
+   "ok": false,
+   "accion": "responder",
+   "puntos": 10,
+   "ms": 65842,
+   "dias_atras": 9
+  },
+  {
+   "id": "c0141",
+   "usuarioId": "u15",
+   "equipo": "Operaciones",
+   "escenarioId": "E09",
+   "canal": "presencial",
+   "tacticas": [
+    "acceso_fisico",
+    "urgencia"
+   ],
+   "es_ataque": true,
+   "ok": true,
+   "accion": "reportar",
+   "puntos": 80,
+   "ms": 48454,
+   "dias_atras": 5
+  },
+  {
+   "id": "c0142",
+   "usuarioId": "u15",
+   "equipo": "Operaciones",
+   "escenarioId": "E13",
+   "canal": "correo",
+   "tacticas": [
+    "falso_positivo"
+   ],
+   "es_ataque": false,
+   "ok": true,
+   "accion": "legitimo",
+   "puntos": 80,
+   "ms": 49020,
+   "dias_atras": 3
+  },
+  {
+   "id": "c0143",
+   "usuarioId": "u15",
+   "equipo": "Operaciones",
+   "escenarioId": "E12",
+   "canal": "sms",
+   "tacticas": [
+    "enlaces",
+    "urgencia"
+   ],
+   "es_ataque": true,
+   "ok": true,
+   "accion": "reportar",
+   "puntos": 70,
+   "ms": 137287,
+   "dias_atras": 2
+  },
+  {
+   "id": "c0144",
+   "usuarioId": "u16",
+   "equipo": "Operaciones",
+   "escenarioId": "E12",
+   "canal": "sms",
+   "tacticas": [
+    "enlaces",
+    "urgencia"
+   ],
+   "es_ataque": true,
+   "ok": true,
+   "accion": "reportar",
+   "puntos": 60,
+   "ms": 103624,
+   "dias_atras": 26
+  },
+  {
+   "id": "c0145",
+   "usuarioId": "u16",
+   "equipo": "Operaciones",
+   "escenarioId": "E13",
+   "canal": "correo",
+   "tacticas": [
+    "falso_positivo"
+   ],
+   "es_ataque": false,
+   "ok": true,
+   "accion": "legitimo",
+   "puntos": 90,
+   "ms": 68662,
+   "dias_atras": 24
+  },
+  {
+   "id": "c0146",
+   "usuarioId": "u16",
+   "equipo": "Operaciones",
+   "escenarioId": "E15",
+   "canal": "llamada",
+   "tacticas": [
+    "autoridad",
+    "datos_por_telefono",
+    "urgencia"
+   ],
+   "es_ataque": true,
+   "ok": false,
+   "accion": "cayo",
+   "puntos": 10,
+   "ms": 136696,
+   "dias_atras": 19
+  },
+  {
+   "id": "c0147",
+   "usuarioId": "u16",
+   "equipo": "Operaciones",
+   "escenarioId": "E10",
+   "canal": "llamada",
+   "tacticas": [
+    "autoridad",
+    "datos_por_telefono"
+   ],
+   "es_ataque": true,
+   "ok": false,
+   "accion": "cayo",
+   "puntos": 10,
+   "ms": 47931,
+   "dias_atras": 16
+  },
+  {
+   "id": "c0148",
+   "usuarioId": "u16",
+   "equipo": "Operaciones",
+   "escenarioId": "E11",
+   "canal": "presencial",
+   "tacticas": [
+    "acceso_fisico",
+    "adjuntos"
+   ],
+   "es_ataque": true,
+   "ok": false,
+   "accion": "responder",
+   "puntos": 10,
+   "ms": 102178,
+   "dias_atras": 13
+  },
+  {
+   "id": "c0149",
+   "usuarioId": "u16",
+   "equipo": "Operaciones",
+   "escenarioId": "E09",
+   "canal": "presencial",
+   "tacticas": [
+    "acceso_fisico",
+    "urgencia"
+   ],
+   "es_ataque": true,
+   "ok": true,
+   "accion": "verificar",
+   "puntos": 60,
+   "ms": 45068,
+   "dias_atras": 9
+  },
+  {
+   "id": "c0150",
+   "usuarioId": "u16",
+   "equipo": "Operaciones",
+   "escenarioId": "E11",
+   "canal": "presencial",
+   "tacticas": [
+    "acceso_fisico",
+    "adjuntos"
+   ],
+   "es_ataque": true,
+   "ok": false,
+   "accion": "responder",
+   "puntos": 10,
+   "ms": 34779,
+   "dias_atras": 6
+  },
+  {
+   "id": "c0151",
+   "usuarioId": "u16",
+   "equipo": "Operaciones",
+   "escenarioId": "E12",
+   "canal": "sms",
+   "tacticas": [
+    "enlaces",
+    "urgencia"
+   ],
+   "es_ataque": true,
+   "ok": true,
+   "accion": "verificar",
+   "puntos": 80,
+   "ms": 156074,
+   "dias_atras": 3
+  },
+  {
+   "id": "c0152",
+   "usuarioId": "u17",
+   "equipo": "Operaciones",
+   "escenarioId": "E15",
+   "canal": "llamada",
+   "tacticas": [
+    "autoridad",
+    "datos_por_telefono",
+    "urgencia"
+   ],
+   "es_ataque": true,
+   "ok": true,
+   "accion": "ok",
+   "puntos": 115,
+   "ms": 48573,
+   "dias_atras": 27
+  },
+  {
+   "id": "c0153",
+   "usuarioId": "u17",
+   "equipo": "Operaciones",
+   "escenarioId": "E14",
+   "canal": "presencial",
+   "tacticas": [
+    "enlaces",
+    "autoridad"
+   ],
+   "es_ataque": true,
+   "ok": true,
+   "accion": "reportar",
+   "puntos": 100,
+   "ms": 53008,
+   "dias_atras": 22
+  },
+  {
+   "id": "c0154",
+   "usuarioId": "u17",
+   "equipo": "Operaciones",
+   "escenarioId": "E15",
+   "canal": "llamada",
+   "tacticas": [
+    "autoridad",
+    "datos_por_telefono",
+    "urgencia"
+   ],
+   "es_ataque": true,
+   "ok": false,
+   "accion": "cayo",
+   "puntos": 10,
+   "ms": 113152,
+   "dias_atras": 19
+  },
+  {
+   "id": "c0155",
+   "usuarioId": "u17",
+   "equipo": "Operaciones",
+   "escenarioId": "E12",
+   "canal": "sms",
+   "tacticas": [
+    "enlaces",
+    "urgencia"
+   ],
+   "es_ataque": true,
+   "ok": true,
+   "accion": "reportar",
+   "puntos": 80,
+   "ms": 41694,
+   "dias_atras": 14
+  },
+  {
+   "id": "c0156",
+   "usuarioId": "u17",
+   "equipo": "Operaciones",
+   "escenarioId": "E12",
+   "canal": "sms",
+   "tacticas": [
+    "enlaces",
+    "urgencia"
+   ],
+   "es_ataque": true,
+   "ok": false,
+   "accion": "responder",
+   "puntos": 10,
+   "ms": 123998,
+   "dias_atras": 11
+  },
+  {
+   "id": "c0157",
+   "usuarioId": "u17",
+   "equipo": "Operaciones",
+   "escenarioId": "E09",
+   "canal": "presencial",
+   "tacticas": [
+    "acceso_fisico",
+    "urgencia"
+   ],
+   "es_ataque": true,
+   "ok": true,
+   "accion": "reportar",
+   "puntos": 60,
+   "ms": 61696,
+   "dias_atras": 7
+  },
+  {
+   "id": "c0158",
+   "usuarioId": "u17",
+   "equipo": "Operaciones",
+   "escenarioId": "E13",
+   "canal": "correo",
+   "tacticas": [
+    "falso_positivo"
+   ],
+   "es_ataque": false,
+   "ok": false,
+   "accion": "reportar",
+   "puntos": 20,
+   "ms": 131954,
+   "dias_atras": 4
+  },
+  {
+   "id": "c0159",
+   "usuarioId": "u18",
+   "equipo": "Operaciones",
+   "escenarioId": "E11",
+   "canal": "presencial",
+   "tacticas": [
+    "acceso_fisico",
+    "adjuntos"
+   ],
+   "es_ataque": true,
+   "ok": false,
+   "accion": "responder",
+   "puntos": 10,
+   "ms": 33666,
+   "dias_atras": 25
+  },
+  {
+   "id": "c0160",
+   "usuarioId": "u18",
+   "equipo": "Operaciones",
+   "escenarioId": "E11",
+   "canal": "presencial",
+   "tacticas": [
+    "acceso_fisico",
+    "adjuntos"
+   ],
+   "es_ataque": true,
+   "ok": false,
+   "accion": "responder",
+   "puntos": 10,
+   "ms": 142947,
+   "dias_atras": 22
+  },
+  {
+   "id": "c0161",
+   "usuarioId": "u18",
+   "equipo": "Operaciones",
+   "escenarioId": "E13",
+   "canal": "correo",
+   "tacticas": [
+    "falso_positivo"
+   ],
+   "es_ataque": false,
+   "ok": true,
+   "accion": "legitimo",
+   "puntos": 90,
+   "ms": 101251,
+   "dias_atras": 18
+  },
+  {
+   "id": "c0162",
+   "usuarioId": "u18",
+   "equipo": "Operaciones",
+   "escenarioId": "E14",
+   "canal": "presencial",
+   "tacticas": [
+    "enlaces",
+    "autoridad"
+   ],
+   "es_ataque": true,
+   "ok": true,
+   "accion": "verificar",
+   "puntos": 80,
+   "ms": 127696,
+   "dias_atras": 15
+  },
+  {
+   "id": "c0163",
+   "usuarioId": "u18",
+   "equipo": "Operaciones",
+   "escenarioId": "E15",
+   "canal": "llamada",
+   "tacticas": [
+    "autoridad",
+    "datos_por_telefono",
+    "urgencia"
+   ],
+   "es_ataque": true,
+   "ok": false,
+   "accion": "cayo",
+   "puntos": 10,
+   "ms": 83075,
+   "dias_atras": 11
+  },
+  {
+   "id": "c0164",
+   "usuarioId": "u18",
+   "equipo": "Operaciones",
+   "escenarioId": "E15",
+   "canal": "llamada",
+   "tacticas": [
+    "autoridad",
+    "datos_por_telefono",
+    "urgencia"
+   ],
+   "es_ataque": true,
+   "ok": true,
+   "accion": "colgar",
+   "puntos": 85,
+   "ms": 60526,
+   "dias_atras": 8
+  },
+  {
+   "id": "c0165",
+   "usuarioId": "u18",
+   "equipo": "Operaciones",
+   "escenarioId": "E12",
+   "canal": "sms",
+   "tacticas": [
+    "enlaces",
+    "urgencia"
+   ],
+   "es_ataque": true,
+   "ok": true,
+   "accion": "reportar",
+   "puntos": 60,
+   "ms": 68959,
+   "dias_atras": 4
+  }
+ ]
+}

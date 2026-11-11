@@ -1,0 +1,30 @@
+{
+  "nota": "Respuestas del sensei cuando no hay LLM disponible (proveedor mock o fallo). Se elige la entrada con más palabras clave en la pregunta.",
+  "faq": [
+    {"claves": ["correo", "phishing", "reconozco", "reconocer", "falso", "sospechoso"],
+     "respuesta": "Mira tres cosas antes de hacer clic: quién lo envía (el dominio exacto, no solo el nombre), qué te pide (dinero, claves, abrir algo) y con qué apuro. Si te pide saltarte el proceso o guardar secreto, es una señal fuerte. En la duda, repórtalo con la bandera roja."},
+    {"claves": ["llamada", "telefono", "teléfono", "vishing", "llaman", "banco"],
+     "respuesta": "Si te llaman pidiendo un código, una clave o un dato de otra persona, cuelga con calma y llama tú al número oficial que ya conoces. Ningún banco ni área de soporte te pedirá el código del token. Colgar no es mala educación, es procedimiento."},
+    {"claves": ["enlace", "link", "url", "clic", "click"],
+     "respuesta": "Antes de abrir un enlace, mantén el dedo o pasa el mouse encima para ver la dirección real. Fíjate en letras cambiadas, guiones extra o dominios raros. Si es un servicio que usas, mejor escribe tú la dirección en el navegador."},
+    {"claves": ["adjunto", "archivo", "zip", "pdf", "descargar"],
+     "respuesta": "Desconfía de adjuntos comprimidos o que piden habilitar macros, sobre todo si llegan con amenaza o urgencia. Si esperabas el archivo, confirma con quien lo envió por otro canal antes de abrirlo."},
+    {"claves": ["usb", "memoria", "pendrive", "dispositivo"],
+     "respuesta": "Una memoria USB encontrada no se conecta, ni siquiera para ver de quién es. Entrégala a TI. Es uno de los trucos más viejos y todavía funciona."},
+    {"claves": ["visita", "presencial", "puerta", "recepcion", "recepción", "técnico"],
+     "respuesta": "Pide identificación, registra la visita y confirma con la persona interna antes de dejar pasar a alguien. Un buen atacante se ve seguro y apurado; tu procedimiento lo frena sin necesidad de ser descortés."},
+    {"claves": ["transferencia", "pago", "cuenta", "factura", "proveedor", "contador", "contabilidad"],
+     "respuesta": "Para contabilidad la regla de oro es: ningún cambio de cuenta bancaria ni transferencia urgente se aprueba solo por correo. Confírmalo llamando al número que ya tenías registrado del proveedor o de la persona."},
+    {"claves": ["desarrollador", "token", "repositorio", "librería", "paquete", "dependencia", "mfa"],
+     "respuesta": "Como desarrollador, revisa el nombre exacto de cada paquete antes de instalarlo, nunca compartas tokens ni códigos MFA por chat o teléfono, y si un token se expuso, revócalo tú desde la consola oficial, no desde un enlace que te enviaron."},
+    {"claves": ["cinturón", "cinturon", "puntos", "nivel", "subir"],
+     "respuesta": "Subes de cinturón sumando puntos en los combates. Ganas más cuando detectas el ataque y revisas las señales sin pedir pistas. La dificultad se ajusta sola: tres aciertos seguidos suben el nivel y dos tropiezos lo bajan."},
+    {"claves": ["caí", "cai", "fallé", "falle", "mal", "error", "equivoqué"],
+     "respuesta": "Caer aquí es justamente para no caer allá. Lo valioso es que ahora conoces la señal que se te pasó. Respira, y cuando quieras hacemos otro combate parecido para fijarlo."},
+    {"claves": ["estres", "estrés", "cansado", "ansiedad", "nervioso"],
+     "respuesta": "Vamos con calma. Puedes hacer combates en modo práctica, sin reloj, y bajar el ritmo de la voz en Ajustes. Un combate corto al día es mejor que muchos con presión."},
+    {"claves": ["reportar", "reporto", "seguridad", "avisar"],
+     "respuesta": "Reportar es siempre una buena decisión: si era legítimo, no pasa nada; si era un ataque, proteges a todo tu equipo. En CyberDojo usa la bandera roja o di 'reportar'."}
+  ],
+  "por_defecto": "Buena pregunta. Mi consejo general: frena, revisa quién te escribe o llama, qué te pide y con qué apuro, y verifica por un canal que ya conozcas. Si quieres, dime de qué tipo de mensaje o llamada se trata y lo vemos juntos."
+}

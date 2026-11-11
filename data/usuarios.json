@@ -1,18 +1,979 @@
 {
-  "nota": "Usuarios simulados para pruebas. Nombres y correos ficticios.",
-  "usuarios": [
-    {"id":"u01","nombre":"Rosa Quispe","email":"rosa.quispe@kallpa.test","rol":"contador","equipo":"Finanzas","alias":"Ninja_Contable","nivel":1,"puntos":185,
-     "preferencias":{"humor":1,"voz":true,"subtitulos":true,"tamano_letra":1.15},
-     "stats":{"urgencia":{"ok":2,"total":2},"autoridad":{"ok":1,"total":2},"adjuntos":{"ok":0,"total":1},"datos_por_telefono":{"ok":1,"total":1}},
-     "emociones":[{"fecha":"2026-10-12","antes":"normal","despues":"bien"}]},
-    {"id":"u02","nombre":"Diego Ramírez","email":"diego.ramirez@kallpa.test","rol":"desarrollador","equipo":"TI","alias":null,"nivel":3,"puntos":1120,
-     "preferencias":{"humor":2,"voz":true,"subtitulos":false,"tamano_letra":1},
-     "stats":{"enlaces":{"ok":5,"total":6},"verificacion_remitente":{"ok":3,"total":5},"datos_por_telefono":{"ok":2,"total":2}},
-     "emociones":[]},
-    {"id":"u03","nombre":"Milagros Torres","email":"milagros.torres@kallpa.test","rol":"recepcion","equipo":"Operaciones","alias":null,"nivel":2,"puntos":760,
-     "preferencias":{"humor":1,"voz":false,"subtitulos":true,"tamano_letra":1},
-     "stats":{"acceso_fisico":{"ok":3,"total":4},"autoridad":{"ok":2,"total":4},"datos_por_telefono":{"ok":1,"total":3}},
-     "emociones":[{"fecha":"2026-10-10","antes":"estresado","despues":"normal"}]},
-    {"id":"u04","nombre":"Javier Huamán","email":"javier.huaman@kallpa.test","rol":"admin","equipo":null,"alias":null}
-  ]
+ "nota": "Usuarios simulados (ficticios) generados con scripts/generar-simulados.js. El admin de la demo es javier.huaman@kallpa.test.",
+ "usuarios": [
+  {
+   "id": "u01",
+   "nombre": "Rosa Quispe",
+   "email": "rosa.quispe@kallpa.test",
+   "rol": "contador",
+   "equipo": "Finanzas",
+   "alias": "Ninja_Contable",
+   "useAlias": true,
+   "humor": 1,
+   "voz": true,
+   "subs": true,
+   "fs": 1.15,
+   "nivel": 1,
+   "puntos": 185,
+   "stats": {
+    "urgencia": {
+     "ok": 2,
+     "total": 2
+    },
+    "autoridad": {
+     "ok": 1,
+     "total": 2
+    },
+    "adjuntos": {
+     "ok": 0,
+     "total": 1
+    },
+    "datos_por_telefono": {
+     "ok": 1,
+     "total": 1
+    }
+   },
+   "emociones": [
+    {
+     "dias_atras": 2,
+     "momento": "antes",
+     "valor": "normal"
+    },
+    {
+     "dias_atras": 2,
+     "momento": "despues",
+     "valor": "bien"
+    }
+   ]
+  },
+  {
+   "id": "u02",
+   "nombre": "Diego Ramírez",
+   "email": "diego.ramirez@kallpa.test",
+   "rol": "desarrollador",
+   "equipo": "TI",
+   "humor": 2,
+   "voz": true,
+   "subs": false,
+   "fs": 1,
+   "alias": "",
+   "useAlias": false,
+   "nivel": 3,
+   "puntos": 1120,
+   "stats": {
+    "enlaces": {
+     "ok": 5,
+     "total": 6
+    },
+    "verificacion_remitente": {
+     "ok": 3,
+     "total": 5
+    },
+    "datos_por_telefono": {
+     "ok": 2,
+     "total": 2
+    }
+   },
+   "emociones": []
+  },
+  {
+   "id": "u03",
+   "nombre": "Milagros Torres",
+   "email": "milagros.torres@kallpa.test",
+   "rol": "recepcion",
+   "equipo": "Operaciones",
+   "humor": 1,
+   "voz": false,
+   "subs": true,
+   "fs": 1,
+   "alias": "",
+   "useAlias": false,
+   "nivel": 2,
+   "puntos": 760,
+   "stats": {
+    "acceso_fisico": {
+     "ok": 3,
+     "total": 4
+    },
+    "autoridad": {
+     "ok": 2,
+     "total": 4
+    },
+    "datos_por_telefono": {
+     "ok": 1,
+     "total": 3
+    }
+   },
+   "emociones": [
+    {
+     "dias_atras": 4,
+     "momento": "antes",
+     "valor": "estresado"
+    },
+    {
+     "dias_atras": 4,
+     "momento": "despues",
+     "valor": "normal"
+    }
+   ]
+  },
+  {
+   "id": "u05",
+   "nombre": "Carlos Mamani",
+   "email": "carlos.mamani@kallpa.test",
+   "rol": "contador",
+   "equipo": "Finanzas",
+   "alias": "",
+   "useAlias": false,
+   "humor": 2,
+   "voz": true,
+   "subs": false,
+   "fs": 1,
+   "nivel": 2,
+   "puntos": 480,
+   "stats": {
+    "autoridad": {
+     "ok": 3,
+     "total": 4
+    },
+    "datos_por_telefono": {
+     "ok": 2,
+     "total": 3
+    },
+    "urgencia": {
+     "ok": 3,
+     "total": 5
+    },
+    "enlaces": {
+     "ok": 2,
+     "total": 3
+    },
+    "verificacion_remitente": {
+     "ok": 1,
+     "total": 1
+    },
+    "adjuntos": {
+     "ok": 1,
+     "total": 1
+    }
+   },
+   "emociones": [
+    {
+     "dias_atras": 21,
+     "momento": "antes",
+     "valor": "estresado"
+    },
+    {
+     "dias_atras": 5,
+     "momento": "despues",
+     "valor": "con ganas"
+    }
+   ]
+  },
+  {
+   "id": "u06",
+   "nombre": "Lucía Paredes",
+   "email": "lucia.paredes@kallpa.test",
+   "rol": "contador",
+   "equipo": "Finanzas",
+   "alias": "",
+   "useAlias": false,
+   "humor": 2,
+   "voz": true,
+   "subs": true,
+   "fs": 1,
+   "nivel": 3,
+   "puntos": 540,
+   "stats": {
+    "enlaces": {
+     "ok": 3,
+     "total": 3
+    },
+    "urgencia": {
+     "ok": 4,
+     "total": 4
+    },
+    "datos_por_telefono": {
+     "ok": 1,
+     "total": 1
+    },
+    "autoridad": {
+     "ok": 3,
+     "total": 3
+    },
+    "adjuntos": {
+     "ok": 1,
+     "total": 1
+    },
+    "falso_positivo": {
+     "ok": 1,
+     "total": 1
+    }
+   },
+   "emociones": [
+    {
+     "dias_atras": 21,
+     "momento": "despues",
+     "valor": "normal"
+    },
+    {
+     "dias_atras": 15,
+     "momento": "antes",
+     "valor": "confundido"
+    },
+    {
+     "dias_atras": 7,
+     "momento": "despues",
+     "valor": "confundido"
+    }
+   ]
+  },
+  {
+   "id": "u07",
+   "nombre": "Andrea Flores",
+   "email": "andrea.flores@kallpa.test",
+   "rol": "contador",
+   "equipo": "Finanzas",
+   "alias": "",
+   "useAlias": false,
+   "humor": 1,
+   "voz": true,
+   "subs": true,
+   "fs": 1,
+   "nivel": 1,
+   "puntos": 555,
+   "stats": {
+    "falso_positivo": {
+     "ok": 2,
+     "total": 2
+    },
+    "verificacion_remitente": {
+     "ok": 0,
+     "total": 2
+    },
+    "adjuntos": {
+     "ok": 1,
+     "total": 3
+    },
+    "urgencia": {
+     "ok": 3,
+     "total": 5
+    },
+    "autoridad": {
+     "ok": 3,
+     "total": 4
+    },
+    "datos_por_telefono": {
+     "ok": 1,
+     "total": 2
+    },
+    "enlaces": {
+     "ok": 0,
+     "total": 1
+    }
+   },
+   "emociones": [
+    {
+     "dias_atras": 21,
+     "momento": "despues",
+     "valor": "normal"
+    },
+    {
+     "dias_atras": 13,
+     "momento": "despues",
+     "valor": "normal"
+    },
+    {
+     "dias_atras": 6,
+     "momento": "despues",
+     "valor": "normal"
+    }
+   ]
+  },
+  {
+   "id": "u08",
+   "nombre": "Jorge Huanca",
+   "email": "jorge.huanca@kallpa.test",
+   "rol": "contador",
+   "equipo": "Finanzas",
+   "alias": "",
+   "useAlias": false,
+   "humor": 1,
+   "voz": false,
+   "subs": true,
+   "fs": 1,
+   "nivel": 3,
+   "puntos": 760,
+   "stats": {
+    "urgencia": {
+     "ok": 1,
+     "total": 2
+    },
+    "autoridad": {
+     "ok": 5,
+     "total": 6
+    },
+    "adjuntos": {
+     "ok": 6,
+     "total": 7
+    },
+    "verificacion_remitente": {
+     "ok": 3,
+     "total": 4
+    },
+    "enlaces": {
+     "ok": 1,
+     "total": 1
+    }
+   },
+   "emociones": [
+    {
+     "dias_atras": 23,
+     "momento": "antes",
+     "valor": "con ganas"
+    },
+    {
+     "dias_atras": 15,
+     "momento": "antes",
+     "valor": "con ganas"
+    },
+    {
+     "dias_atras": 5,
+     "momento": "antes",
+     "valor": "normal"
+    }
+   ]
+  },
+  {
+   "id": "u09",
+   "nombre": "Patricia Rojas",
+   "email": "patricia.rojas@kallpa.test",
+   "rol": "contador",
+   "equipo": "Finanzas",
+   "alias": "",
+   "useAlias": false,
+   "humor": 2,
+   "voz": true,
+   "subs": true,
+   "fs": 1,
+   "nivel": 3,
+   "puntos": 760,
+   "stats": {
+    "falso_positivo": {
+     "ok": 4,
+     "total": 5
+    },
+    "autoridad": {
+     "ok": 3,
+     "total": 4
+    },
+    "adjuntos": {
+     "ok": 3,
+     "total": 4
+    },
+    "enlaces": {
+     "ok": 0,
+     "total": 1
+    },
+    "verificacion_remitente": {
+     "ok": 1,
+     "total": 2
+    },
+    "urgencia": {
+     "ok": 1,
+     "total": 1
+    }
+   },
+   "emociones": [
+    {
+     "dias_atras": 18,
+     "momento": "antes",
+     "valor": "bien"
+    },
+    {
+     "dias_atras": 16,
+     "momento": "antes",
+     "valor": "cansado"
+    },
+    {
+     "dias_atras": 11,
+     "momento": "despues",
+     "valor": "cansado"
+    },
+    {
+     "dias_atras": 4,
+     "momento": "despues",
+     "valor": "confundido"
+    },
+    {
+     "dias_atras": 3,
+     "momento": "antes",
+     "valor": "bien"
+    }
+   ]
+  },
+  {
+   "id": "u10",
+   "nombre": "Kevin Alarcón",
+   "email": "kevin.alarcon@kallpa.test",
+   "rol": "desarrollador",
+   "equipo": "TI",
+   "alias": "KevinSec",
+   "useAlias": true,
+   "humor": 0,
+   "voz": false,
+   "subs": false,
+   "fs": 1,
+   "nivel": 3,
+   "puntos": 680,
+   "stats": {
+    "enlaces": {
+     "ok": 3,
+     "total": 4
+    },
+    "autoridad": {
+     "ok": 4,
+     "total": 6
+    },
+    "urgencia": {
+     "ok": 3,
+     "total": 3
+    },
+    "datos_por_telefono": {
+     "ok": 3,
+     "total": 4
+    },
+    "verificacion_remitente": {
+     "ok": 1,
+     "total": 1
+    },
+    "falso_positivo": {
+     "ok": 1,
+     "total": 1
+    }
+   },
+   "emociones": [
+    {
+     "dias_atras": 8,
+     "momento": "antes",
+     "valor": "estresado"
+    }
+   ]
+  },
+  {
+   "id": "u11",
+   "nombre": "Sofía Vargas",
+   "email": "sofia.vargas@kallpa.test",
+   "rol": "desarrollador",
+   "equipo": "TI",
+   "alias": "",
+   "useAlias": false,
+   "humor": 2,
+   "voz": true,
+   "subs": true,
+   "fs": 1,
+   "nivel": 2,
+   "puntos": 805,
+   "stats": {
+    "falso_positivo": {
+     "ok": 2,
+     "total": 3
+    },
+    "autoridad": {
+     "ok": 4,
+     "total": 7
+    },
+    "datos_por_telefono": {
+     "ok": 1,
+     "total": 4
+    },
+    "enlaces": {
+     "ok": 3,
+     "total": 4
+    },
+    "verificacion_remitente": {
+     "ok": 3,
+     "total": 3
+    },
+    "urgencia": {
+     "ok": 2,
+     "total": 4
+    }
+   },
+   "emociones": [
+    {
+     "dias_atras": 24,
+     "momento": "despues",
+     "valor": "bien"
+    },
+    {
+     "dias_atras": 23,
+     "momento": "despues",
+     "valor": "con ganas"
+    },
+    {
+     "dias_atras": 20,
+     "momento": "antes",
+     "valor": "cansado"
+    },
+    {
+     "dias_atras": 16,
+     "momento": "antes",
+     "valor": "confundido"
+    },
+    {
+     "dias_atras": 9,
+     "momento": "antes",
+     "valor": "confundido"
+    }
+   ]
+  },
+  {
+   "id": "u12",
+   "nombre": "Luis Condori",
+   "email": "luis.condori@kallpa.test",
+   "rol": "desarrollador",
+   "equipo": "TI",
+   "alias": "",
+   "useAlias": false,
+   "humor": 0,
+   "voz": true,
+   "subs": true,
+   "fs": 1,
+   "nivel": 3,
+   "puntos": 445,
+   "stats": {
+    "autoridad": {
+     "ok": 2,
+     "total": 3
+    },
+    "datos_por_telefono": {
+     "ok": 1,
+     "total": 2
+    },
+    "urgencia": {
+     "ok": 3,
+     "total": 5
+    },
+    "falso_positivo": {
+     "ok": 0,
+     "total": 2
+    },
+    "enlaces": {
+     "ok": 2,
+     "total": 3
+    },
+    "verificacion_remitente": {
+     "ok": 1,
+     "total": 1
+    }
+   },
+   "emociones": [
+    {
+     "dias_atras": 26,
+     "momento": "despues",
+     "valor": "estresado"
+    }
+   ]
+  },
+  {
+   "id": "u13",
+   "nombre": "Valeria Chávez",
+   "email": "valeria.chavez@kallpa.test",
+   "rol": "desarrollador",
+   "equipo": "TI",
+   "alias": "",
+   "useAlias": false,
+   "humor": 2,
+   "voz": true,
+   "subs": true,
+   "fs": 1,
+   "nivel": 3,
+   "puntos": 840,
+   "stats": {
+    "autoridad": {
+     "ok": 3,
+     "total": 4
+    },
+    "datos_por_telefono": {
+     "ok": 2,
+     "total": 2
+    },
+    "urgencia": {
+     "ok": 6,
+     "total": 6
+    },
+    "enlaces": {
+     "ok": 5,
+     "total": 5
+    },
+    "verificacion_remitente": {
+     "ok": 0,
+     "total": 1
+    },
+    "falso_positivo": {
+     "ok": 3,
+     "total": 3
+    }
+   },
+   "emociones": [
+    {
+     "dias_atras": 25,
+     "momento": "despues",
+     "valor": "con ganas"
+    },
+    {
+     "dias_atras": 21,
+     "momento": "despues",
+     "valor": "bien"
+    },
+    {
+     "dias_atras": 12,
+     "momento": "despues",
+     "valor": "con ganas"
+    },
+    {
+     "dias_atras": 3,
+     "momento": "antes",
+     "valor": "bien"
+    }
+   ]
+  },
+  {
+   "id": "u14",
+   "nombre": "Renzo Salazar",
+   "email": "renzo.salazar@kallpa.test",
+   "rol": "desarrollador",
+   "equipo": "TI",
+   "alias": "",
+   "useAlias": false,
+   "humor": 2,
+   "voz": true,
+   "subs": false,
+   "fs": 1,
+   "nivel": 3,
+   "puntos": 540,
+   "stats": {
+    "autoridad": {
+     "ok": 1,
+     "total": 5
+    },
+    "datos_por_telefono": {
+     "ok": 0,
+     "total": 4
+    },
+    "urgencia": {
+     "ok": 4,
+     "total": 8
+    },
+    "verificacion_remitente": {
+     "ok": 1,
+     "total": 2
+    },
+    "enlaces": {
+     "ok": 4,
+     "total": 5
+    },
+    "falso_positivo": {
+     "ok": 1,
+     "total": 1
+    }
+   },
+   "emociones": [
+    {
+     "dias_atras": 25,
+     "momento": "antes",
+     "valor": "cansado"
+    },
+    {
+     "dias_atras": 24,
+     "momento": "despues",
+     "valor": "estresado"
+    },
+    {
+     "dias_atras": 18,
+     "momento": "antes",
+     "valor": "con ganas"
+    },
+    {
+     "dias_atras": 13,
+     "momento": "antes",
+     "valor": "con ganas"
+    }
+   ]
+  },
+  {
+   "id": "u15",
+   "nombre": "Gabriela Ccahuana",
+   "email": "gabriela.ccahuana@kallpa.test",
+   "rol": "recepcion",
+   "equipo": "Operaciones",
+   "alias": "",
+   "useAlias": false,
+   "humor": 1,
+   "voz": true,
+   "subs": false,
+   "fs": 1,
+   "nivel": 2,
+   "puntos": 510,
+   "stats": {
+    "enlaces": {
+     "ok": 2,
+     "total": 3
+    },
+    "urgencia": {
+     "ok": 5,
+     "total": 9
+    },
+    "acceso_fisico": {
+     "ok": 3,
+     "total": 6
+    },
+    "adjuntos": {
+     "ok": 0,
+     "total": 1
+    },
+    "autoridad": {
+     "ok": 0,
+     "total": 3
+    },
+    "datos_por_telefono": {
+     "ok": 0,
+     "total": 3
+    },
+    "falso_positivo": {
+     "ok": 1,
+     "total": 1
+    }
+   },
+   "emociones": [
+    {
+     "dias_atras": 13,
+     "momento": "antes",
+     "valor": "bien"
+    },
+    {
+     "dias_atras": 12,
+     "momento": "despues",
+     "valor": "cansado"
+    },
+    {
+     "dias_atras": 11,
+     "momento": "antes",
+     "valor": "normal"
+    },
+    {
+     "dias_atras": 3,
+     "momento": "antes",
+     "valor": "cansado"
+    }
+   ]
+  },
+  {
+   "id": "u16",
+   "nombre": "Miguel Tupac",
+   "email": "miguel.tupac@kallpa.test",
+   "rol": "recepcion",
+   "equipo": "Operaciones",
+   "alias": "",
+   "useAlias": false,
+   "humor": 0,
+   "voz": false,
+   "subs": false,
+   "fs": 1,
+   "nivel": 1,
+   "puntos": 330,
+   "stats": {
+    "enlaces": {
+     "ok": 2,
+     "total": 2
+    },
+    "urgencia": {
+     "ok": 3,
+     "total": 4
+    },
+    "falso_positivo": {
+     "ok": 1,
+     "total": 1
+    },
+    "autoridad": {
+     "ok": 0,
+     "total": 2
+    },
+    "datos_por_telefono": {
+     "ok": 0,
+     "total": 2
+    },
+    "acceso_fisico": {
+     "ok": 1,
+     "total": 3
+    },
+    "adjuntos": {
+     "ok": 0,
+     "total": 2
+    }
+   },
+   "emociones": [
+    {
+     "dias_atras": 24,
+     "momento": "antes",
+     "valor": "confundido"
+    },
+    {
+     "dias_atras": 19,
+     "momento": "antes",
+     "valor": "bien"
+    },
+    {
+     "dias_atras": 16,
+     "momento": "despues",
+     "valor": "con ganas"
+    },
+    {
+     "dias_atras": 13,
+     "momento": "despues",
+     "valor": "cansado"
+    },
+    {
+     "dias_atras": 3,
+     "momento": "antes",
+     "valor": "confundido"
+    }
+   ]
+  },
+  {
+   "id": "u17",
+   "nombre": "Daniela Soto",
+   "email": "daniela.soto@kallpa.test",
+   "rol": "recepcion",
+   "equipo": "Operaciones",
+   "alias": "",
+   "useAlias": false,
+   "humor": 2,
+   "voz": true,
+   "subs": false,
+   "fs": 1,
+   "nivel": 1,
+   "puntos": 395,
+   "stats": {
+    "autoridad": {
+     "ok": 2,
+     "total": 3
+    },
+    "datos_por_telefono": {
+     "ok": 1,
+     "total": 2
+    },
+    "urgencia": {
+     "ok": 3,
+     "total": 5
+    },
+    "enlaces": {
+     "ok": 2,
+     "total": 3
+    },
+    "acceso_fisico": {
+     "ok": 1,
+     "total": 1
+    },
+    "falso_positivo": {
+     "ok": 0,
+     "total": 1
+    }
+   },
+   "emociones": [
+    {
+     "dias_atras": 27,
+     "momento": "antes",
+     "valor": "normal"
+    },
+    {
+     "dias_atras": 22,
+     "momento": "despues",
+     "valor": "normal"
+    },
+    {
+     "dias_atras": 19,
+     "momento": "antes",
+     "valor": "estresado"
+    },
+    {
+     "dias_atras": 7,
+     "momento": "despues",
+     "valor": "estresado"
+    }
+   ]
+  },
+  {
+   "id": "u18",
+   "nombre": "Óscar Navarro",
+   "email": "oscar.navarro@kallpa.test",
+   "rol": "recepcion",
+   "equipo": "Operaciones",
+   "alias": "",
+   "useAlias": false,
+   "humor": 2,
+   "voz": true,
+   "subs": true,
+   "fs": 1,
+   "nivel": 1,
+   "puntos": 345,
+   "stats": {
+    "acceso_fisico": {
+     "ok": 0,
+     "total": 2
+    },
+    "adjuntos": {
+     "ok": 0,
+     "total": 2
+    },
+    "falso_positivo": {
+     "ok": 1,
+     "total": 1
+    },
+    "enlaces": {
+     "ok": 2,
+     "total": 2
+    },
+    "autoridad": {
+     "ok": 2,
+     "total": 3
+    },
+    "datos_por_telefono": {
+     "ok": 1,
+     "total": 2
+    },
+    "urgencia": {
+     "ok": 2,
+     "total": 3
+    }
+   },
+   "emociones": [
+    {
+     "dias_atras": 25,
+     "momento": "antes",
+     "valor": "cansado"
+    },
+    {
+     "dias_atras": 18,
+     "momento": "antes",
+     "valor": "cansado"
+    },
+    {
+     "dias_atras": 15,
+     "momento": "despues",
+     "valor": "bien"
+    }
+   ]
+  },
+  {
+   "id": "u04",
+   "nombre": "Javier Huamán",
+   "email": "javier.huaman@kallpa.test",
+   "rol": "admin",
+   "equipo": null,
+   "alias": "",
+   "useAlias": false
+  }
+ ]
 }

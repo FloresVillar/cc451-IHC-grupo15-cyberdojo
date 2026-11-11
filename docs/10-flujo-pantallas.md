@@ -1,6 +1,6 @@
 # Diagrama de flujo de pantallas
 
-El prototipo está en `cyberdojo/app/index.html`. Es una PWA navegable (abre en el navegador, se puede instalar) que simula el flujo completo con los 15 escenarios del banco. La llamada de vishing usa la Web Speech API del navegador: habla el atacante y, si el navegador lo permite, escucha la respuesta; si no, se responde con botones o texto.
+La PWA está en `app/` (v0.3, PC03). Se sirve con `npm start` y se conecta al API del servidor; también funciona sin conexión con el banco local. La llamada de vishing y el sensei usan la Web Speech API del navegador: hablan y, si el navegador lo permite, escuchan la respuesta con transcripción en vivo; si no, se responde con botones o texto. Desde cualquier pantalla (menos la llamada) el botón 🎙️ acepta comandos de voz.
 
 **Pantallas:**
 
@@ -20,8 +20,11 @@ El prototipo está en `cyberdojo/app/index.html`. Es una PWA navegable (abre en 
 | P12 | Torneo en curso | Combates del torneo y marcador de equipos. |
 | P13 | Tablero de cinturones | Ranking por equipos / individual con alias. |
 | P14 | Ajustes | Preferencias y accesibilidad. |
-| P15 | Panel administrador | Crear torneo, revisar escenarios, métricas. |
+| P15 | Panel administrador | Métricas, revisión de escenarios de IA, creación de torneos. |
+| P16 | Sensei por voz *(PC03)* | Conversación por voz con el asistente (STT + LLM + TTS). |
 
 ## Diagrama de interacciones entre pantallas
 
-![Diagrama de interacciones entre las 15 pantallas](img/interacciones.png)
+![Diagrama de interacciones entre las 16 pantallas](img/interacciones.png)
+
+Capturas de cada pantalla funcionando: [`img/pc03/`](img/pc03/).

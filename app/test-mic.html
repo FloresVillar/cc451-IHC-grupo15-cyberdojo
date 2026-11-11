@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Prueba de micrófono</title>
+<style>
+body{font-family:system-ui,sans-serif;max-width:560px;margin:24px auto;padding:0 16px;background:#f4efe4;color:#1f1d1a}
+button{font:inherit;padding:10px 16px;border-radius:10px;border:1px solid #1f1d1a;background:#fff;cursor:pointer;margin:4px 6px 4px 0}
+.barra{height:22px;background:#ddd;border-radius:8px;overflow:hidden;margin:8px 0}
+#nivel{height:100%;width:0;background:#2f8a46;transition:width .08s}
+#log{background:#1f1d1a;color:#e8e2d4;border-radius:10px;padding:10px;font:13px ui-monospace,monospace;min-height:160px;white-space:pre-wrap}
+h2{margin-top:22px}
+</style></head><body>
+<h1>Prueba de micrófono</h1>
+<p>Dos pruebas independientes. Habla con normalidad después de tocar cada botón.</p>
+
+<h2>1) ¿El navegador capta sonido del micrófono?</h2>
+<button id="b1">Probar micrófono</button><span id="d1"></span>
+<div class="barra"><div id="nivel"></div></div>
+<p id="r1"></p>
+
+<h2>2) ¿Funciona el reconocimiento de voz?</h2>
+<button id="b2">Probar reconocimiento</button>
+<p id="r2"></p>
+
+<h2>Registro</h2>
+<div id="log"></div>
+
+<script>
+const $ = s => document.querySelector(s), log = t => { $('#log').textContent += new Date().toLocaleTimeString() + '  ' + t + '\n'; };
+log('Navegador: ' + navigator.userAgent.replace(/.*(Chrome|Edg)\//, '$1 ').split(' ').slice(0, 2).join(' '));
+log('SpeechRecognition disponible: ' + !!(window.SpeechRecognition || window.webkitSpeechRecognition));
+log('En línea: ' + navigator.onLine);
+
+$('#b1').onclick = async () => {
+  try {
+    const st = await navigator.mediaDevices.getUserMedia({ audio: true });
+    const pista = st.getAudioTracks()[0];
+    $('#d1').textContent = 'Usando: ' + pista.label;
+    log('Micrófono en uso: ' + pista.label);
+    const ctx = new AudioContext(), an = ctx.createAnalyser(); an.fftSize = 512;
+    ctx.createMediaStreamSource(st).connect(an);
+    const buf = new Uint8Array(an.fftSize); let max = 0; const t0 = Date.now();
+    (function tick() {
+      an.getByteTimeDomainData(buf);
+      let pico = 0; for (const v of buf) pico = Math.max(pico, Math.abs(v - 128));
+      const pct = Math.min(100, pico * 2.2); max = Math.max(max, pct);
+      $('#nivel').style.width = pct + '%';
+      if (Date.now() - t0 < 6000) return requestAnimationFrame(tick);
+      st.getTracks().forEach(t => t.stop()); ctx.close();
+      $('#r1').textContent = max > 8 ? '✅ El navegador SÍ capta tu voz (nivel máximo ' + Math.round(max) + '%).' : '❌ No se capta sonido (nivel máximo ' + Math.round(max) + '%). Revisa el micrófono elegido en Windows y en Chrome.';
+      log('Nivel máximo en 6 s: ' + Math.round(max) + '%');
+    })();
+    $('#r1').textContent = 'Habla durante 6 segundos…';
+  } catch (e) { $('#r1').textContent = '❌ ' + e.name + ': ' + e.message; log('getUserMedia falló: ' + e.name + ' ' + e.message); }
+};
+
+$('#b2').onclick = () => {
+  const Rec = window.SpeechRecognition || window.webkitSpeechRecognition;
+  if (!Rec) return ($('#r2').textContent = '❌ Este navegador no tiene reconocimiento de voz.');
+  const r = new Rec(); r.lang = 'es-PE'; r.interimResults = true; r.continuous = false;
+  let hubo = false;
+  for (const ev of ['start', 'audiostart', 'soundstart', 'speechstart', 'speechend', 'soundend', 'audioend', 'end', 'nomatch'])
+    r['on' + ev] = () => { log('evento: ' + ev); if (ev === 'speechstart') hubo = true; if (ev === 'end') $('#r2').textContent = hubo ? '✅ El reconocimiento funciona.' : '❌ Terminó sin oír voz.'; };
+  r.onresult = e => { const t = [...e.results].map(x => x[0].transcript).join(' '); log('texto: "' + t + '"' + (e.results[e.results.length - 1].isFinal ? ' (final)' : '')); $('#r2').textContent = 'Oí: ' + t; };
+  r.onerror = e => { log('ERROR: ' + e.error); $('#r2').textContent = '❌ Error: ' + e.error; };
+  $('#r2').textContent = 'Habla ahora…'; log('--- inicio reconocimiento ---');
+  try { r.start(); } catch (e) { log('start falló: ' + e.message); }
+};
+</script></body></html>

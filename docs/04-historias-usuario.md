@@ -107,3 +107,9 @@
 
 **HU24 – Exportar mi progreso.** Como colaborador, quiero descargar mi progreso, para tener constancia de mi capacitación.
 - Puedo exportar un PDF con cinturón, combates realizados y fecha.
+
+**HU25 – Preguntarle al sensei por voz.** *(agregada en PC03)* Como colaborador, quiero preguntarle al sensei en voz alta por qué algo era sospechoso, para entender sin tener que leer explicaciones largas.
+- Desde el debrief o la barra inferior abro el sensei, toco el micrófono y hago mi pregunta; veo la transcripción mientras hablo.
+- El sensei responde en máximo 3 oraciones, en voz alta y por escrito, usando el contexto del último combate.
+- Si el LLM no está disponible, responde con el banco de respuestas sin dejarme esperando más de 6 s.
+- Cualquier frase dicha con el botón de voz global que no sea un comando se envía como pregunta al sensei.
