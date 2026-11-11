@@ -1,12 +1,20 @@
 {
   "name": "cyberdojo",
-  "version": "0.2.0",
-  "description": "PWA de concientización en ciberseguridad con combates por chat y voz (CC451 - Tema 25)",
+  "version": "0.3.0",
+  "description": "PWA de concientización en ciberseguridad con combates por chat y voz, LLM y torneos por equipos (CC451 - Tema 25)",
   "license": "MIT",
   "type": "module",
+  "engines": { "node": ">=18.17" },
   "scripts": {
-    "start": "npx --yes http-server . -p 8080 -c-1",
+    "start": "node src/server/index.js",
+    "dev": "node --watch src/server/index.js",
+    "test": "node --test",
     "datos": "node scripts/build-datos.js",
+    "simulados": "node scripts/generar-simulados.js",
+    "reset": "node scripts/reset-db.js",
     "demo:llm": "node src/llm/demo.js"
+  },
+  "optionalDependencies": {
+    "qrcode": "^1.5.4"
   }
 }
