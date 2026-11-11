@@ -30,6 +30,7 @@
 | RF20 | El sistema debe ofrecer hasta 2 pistas por escenario, con un pequeño costo en puntos. | Baja |
 | RF21 | El sistema debe permitir jugar escenarios del banco sin conexión y sincronizar el progreso al reconectar. | Media |
 | RF22 | El sistema debe permitir exportar el reporte de progreso (usuario) y el reporte del equipo (admin) en PDF o CSV. | Baja |
+| RF23 | El sistema debe ofrecer un asistente conversacional (el sensei) al que se le pregunta por voz o texto y responde en voz alta usando el LLM, con el contexto del último combate y del perfil. *(agregado en PC03)* | Media |
 
 ## Requerimientos no funcionales (RNF)
 
