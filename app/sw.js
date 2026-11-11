@@ -1,6 +1,6 @@
 // Service worker (RF21, RNF04): guarda la app y el banco de escenarios para entrenar sin conexión.
-// Estrategia: archivos de la app = caché primero y se actualizan en segundo plano; /api nunca se cachea.
-const CACHE = 'cyberdojo-v0.3.0';
+// Estrategia: archivos de la app = red primero (siempre la versión nueva) y caché si no hay conexión; /api nunca se cachea.
+const CACHE = 'cyberdojo-v0.3.7';
 const ASSETS = ['./', './index.html', './escenarios.js', './manifest.webmanifest', './icons/icon.svg', './icons/icon-192.png', './icons/icon-512.png',
   './css/estilos.css', './js/reglas.js', './js/voz.js', './js/emocion.js', './js/api.js', './js/app.js'];
 
@@ -11,9 +11,8 @@ self.addEventListener('activate', e => e.waitUntil(
 self.addEventListener('fetch', e => {
   const url = new URL(e.request.url);
   if (e.request.method !== 'GET' || url.pathname.startsWith('/api/') || url.origin !== location.origin) return;
-  e.respondWith(caches.open(CACHE).then(async cache => {
-    const enCache = await cache.match(e.request, { ignoreSearch: true });
-    const deRed = fetch(e.request).then(r => { if (r.ok) cache.put(e.request, r.clone()); return r; }).catch(() => enCache);
-    return enCache || deRed;
-  }));
+  e.respondWith(caches.open(CACHE).then(cache =>
+    fetch(e.request, { cache: 'no-cache' })
+      .then(r => { if (r.ok) cache.put(e.request, r.clone()); return r; })
+      .catch(async () => (await cache.match(e.request, { ignoreSearch: true })) || Response.error())));
 });
