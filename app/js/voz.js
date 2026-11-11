@@ -6,7 +6,20 @@
   const Rec = g.SpeechRecognition || g.webkitSpeechRecognition;
   let actual = null;
   let ultimoTexto = '';
-
+  // Estado visible de la voz: inactivo | hablando (habla la app) | escuchando (micrófono abierto) | voz (te está oyendo)
+  let estado = 'inactivo';
+  const TEXTOS = {
+    inactivo: '⚫ Micrófono apagado: tócalo para hablar',
+    hablando: '🔊 Está hablando… espera tu turno',
+    escuchando: '🟢 Micrófono abierto: habla ahora',
+    voz: '🗣️ Te estoy oyendo…',
+  };
+  function ponerEstado(e) {
+    estado = e;
+    if (!g.document) return;
+    document.body.dataset.voz = e;
+    document.querySelectorAll('.estadovoz').forEach(el => { el.textContent = TEXTOS[e]; });
+  }
   const normal = s => String(s).toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '').replace(/[¿?¡!.,]/g, '').trim();
 
   function vozEspanol(preferida) {
@@ -29,14 +42,17 @@
         const u = new SpeechSynthesisUtterance(String(texto).replace(/[\u{1F300}-\u{1FAFF}☀-➿]/gu, ''));
         u.lang = 'es-PE'; u.rate = rate; u.pitch = pitch;
         const v = vozEspanol('es-ES'); if (v) u.voice = v;
-        let fin = false; const listo = () => { if (!fin) { fin = true; res(); } };
+        let fin = false; const listo = () => { if (!fin) { fin = true; if (estado === 'hablando') ponerEstado('inactivo'); res(); } };
+        u.onstart = () => { if (!actual) ponerEstado('hablando'); };
         u.onend = listo; u.onerror = listo;
         setTimeout(listo, 600 + texto.length * 90); // algunos navegadores no disparan onend
         speechSynthesis.speak(u);
       });
     },
 
-    callar() { if (VOZ.disponibleTTS()) speechSynthesis.cancel(); },
+    callar() { if (VOZ.disponibleTTS()) speechSynthesis.cancel(); if (estado === 'hablando') ponerEstado('inactivo'); },
+    get estado() { return estado; },
+    textoEstado: () => TEXTOS[estado],
 
     /** Escucha una frase. onParcial recibe el texto mientras se habla (subtítulo en vivo). */
     escuchar({ onParcial } = {}) {
@@ -46,22 +62,34 @@
         VOZ.callar();
         const r = new Rec();
         r.lang = 'es-PE'; r.interimResults = true; r.maxAlternatives = 1; r.continuous = false;
-        let final = '';
+        let final = '', enviado = false;
         r.onresult = e => {
           let parcial = '';
           for (let i = e.resultIndex; i < e.results.length; i++) {
             if (e.results[i].isFinal) final += e.results[i][0].transcript; else parcial += e.results[i][0].transcript;
           }
+          if (actual === r) ponerEstado('voz');
           onParcial && onParcial(final + parcial);
+          // Frase terminada: se envía ya, sin esperar a que el navegador cierre el micrófono (ahorra 1-2 s).
+          if (final.trim() && !parcial && !enviado) {
+            enviado = true; actual = null; ponerEstado('inactivo');
+            try { r.stop(); } catch (e) { /* nada */ }
+            res(final.trim());
+          }
         };
-        r.onerror = e => { actual = null; rej(new Error(e.error || 'error')); };
-        r.onend = () => { actual = null; final.trim() ? res(final.trim()) : rej(new Error('no-speech')); };
+        // Apenas el micrófono capta sonido o voz, el indicador cambia (antes de tener texto).
+        r.onstart = () => { if (actual === r) ponerEstado('escuchando'); };
+        r.onsoundstart = r.onspeechstart = () => { if (actual === r) ponerEstado('voz'); };
+        r.onspeechend = () => { if (actual === r) ponerEstado('escuchando'); };
+        r.onerror = e => { if (enviado) return; if (actual === r) { actual = null; ponerEstado('inactivo'); } rej(new Error(e.error || 'error')); };
+        r.onend = () => { if (enviado) return; if (actual === r) { actual = null; ponerEstado('inactivo'); } final.trim() ? res(final.trim()) : rej(new Error('no-speech')); };
         actual = r;
-        try { r.start(); } catch (e) { actual = null; rej(e); }
+        ponerEstado('escuchando');
+        try { r.start(); } catch (e) { actual = null; ponerEstado('inactivo'); rej(e); }
       });
     },
 
-    detener() { if (actual) { try { actual.abort(); } catch (e) { /* nada */ } actual = null; } },
+    detener() { if (actual) { const r = actual; actual = null; try { r.abort(); } catch (e) { /* nada */ } ponerEstado('inactivo'); } },
     escuchando: () => !!actual,
 
     /**
@@ -93,4 +121,5 @@
 
   if (VOZ.disponibleTTS()) speechSynthesis.onvoiceschanged = () => {};
   g.VOZ = VOZ;
+  if (g.document) document.addEventListener('DOMContentLoaded', () => ponerEstado(estado));
 })(window);

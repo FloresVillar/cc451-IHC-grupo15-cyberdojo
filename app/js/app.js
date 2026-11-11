@@ -87,9 +87,23 @@ const sensei = (text, mood) => `<div class="sensei">${senseiSVG(mood)}<div class
 
 /* ---------------- estructura ---------------- */
 function shell(title, body, { back = null, footer = '', nav = false } = {}) {
-  return `<header class="top">${back ? `<button class="back" aria-label="Volver" onclick="go('${back}')">←</button>` : ''}<h1>${title}</h1><span class="sid">${S.screen}</span></header>
+  return `<header class="top">${back ? `<button class="back" aria-label="Volver" onclick="go('${back}')">←</button>` : ''}<h1>${title}</h1>${userChip()}<span class="sid">${S.screen}</span></header>
   <main id="main">${body}</main>${footer}${nav ? navbar() : ''}`;
 }
+// Botón de usuario activo (arriba a la derecha): iniciales + nombre. Al tocarlo abre la ficha de la cuenta.
+// Nombre real de la cuenta (no el alias del tablero): así se distingue quién tiene la sesión abierta.
+const nombreReal = () => (U.nombre ? U.nombre.split(' ')[0] : ((U.email || '').split('@')[0].split('.')[0] || 'Cuenta'));
+function userChip() {
+  if (!U.email && !API.tieneSesion()) return '';
+  const nombre = nombreReal();
+  return `<button class="userchip" onclick="verUsuario()" aria-label="Usuario activo: ${esc(nombre)}. Toca para ver tu cuenta" title="${esc(U.email || nombre)}"><span class="av" aria-hidden="true">${esc(nombre.charAt(0).toUpperCase())}</span><span class="un">${esc(nombre)}</span></button>`;
+}
+window.verUsuario = () => {
+  const nombre = U.nombre || nombreReal();
+  modal('👤 Cuenta activa', `<p style="margin:0 0 6px"><b>${esc(nombre)}</b>${U.useAlias && U.alias ? ` <span class="small muted">(alias en el tablero: ${esc(U.alias)})</span>` : ''}</p>
+    <p class="small muted" style="margin:0">${esc(U.email || 'sin correo')}<br>Rol: ${esc(ROLES[U.rol] || U.rol)} · Nivel ${U.nivel || 1}<br>${API.enLinea ? '🟢 Conectado al servidor' : '🟠 Sin conexión (modo local)'}</p>`,
+    [{ t: 'Cerrar sesión', fn: () => salir() }, { t: 'Ajustes', ghost: true, fn: () => go('P14') }, { t: 'Cerrar', ghost: true }]);
+};
 function navbar() {
   const it = [['P05', '🏯', 'Dojo'], ['P10', '📈', 'Progreso'], ['P16', '🧘', 'Sensei'], ['P11', '👥', 'Salas'], ['P14', '⚙️', 'Ajustes']];
   return `<nav class="nav" aria-label="Navegación principal">${it.map(([id, i, l]) => `<button onclick="go('${id}')" ${S.screen === id ? 'aria-current="page"' : ''}><span aria-hidden="true">${i}</span>${l}</button>`).join('')}</nav>`;
@@ -206,7 +220,7 @@ P08() {
   const line = e.guion[Math.min(S.turn, e.guion.length - 1)];
   const stt = VOZ.disponibleSTT() && U.voz;
   return `<div class="call"><div style="display:flex;justify-content:space-between"><span>${esc(callerName(e))} · turno ${S.turn + 1}/${e.guion.length}</span><span class="sid">P08</span></div>
-   ${U.subs ? `<div class="subs" aria-live="polite"><span class="small" style="color:#bdb5a6">Atacante dice:</span><br>${esc(line)}</div>` : '<div class="subs">🔊 Escuchando… (subtítulos desactivados)</div>'}
+   ${U.subs ? `<div class="subs" aria-live="polite"><span class="small" style="color:#bdb5a6">Atacante dice:</span><br>${esc(line)}</div>` : '<div class="subs">🔊 Escucha al atacante… (subtítulos desactivados)</div>'}
    <div id="you" class="small" style="color:#bdb5a6;min-height:22px" aria-live="polite">${S.parcial ? `<span class="parcial">🎙️ ${esc(S.parcial)}</span>` : S.lastReply ? `Tú: “${esc(S.lastReply)}”` : ''}</div>
    <div class="quick" role="group" aria-label="Respuestas rápidas">
     <button onclick="reply('No comparto códigos por teléfono, voy a colgar.')">“No comparto códigos por teléfono, voy a colgar.”</button>
@@ -214,7 +228,8 @@ P08() {
     <button onclick="reply('Ya, ahí le doy el dato.')">“Ya, ahí le doy el dato.”</button>
     <button onclick="reply('¿Me puede repetir de qué área es?')">“¿Me puede repetir de qué área es?”</button></div>
    <form onsubmit="event.preventDefault();reply(this.t.value)" style="display:flex;gap:6px;margin-top:6px"><input name="t" type="text" placeholder="Escribe tu respuesta" aria-label="Escribe tu respuesta"><button class="btn" style="width:auto;margin:0" aria-label="Enviar">↵</button></form>
-   <div class="callbtns"><button class="round ${VOZ.escuchando() ? 'on' : ''}" style="background:${VOZ.escuchando() ? '#c2341f' : '#4a443b'}" id="micbtn" aria-label="${stt ? 'Responder hablando' : 'Reconocimiento de voz no disponible'}" onclick="talk()" ${stt ? '' : 'disabled'}>🎙️</button>
+   ${stt ? `<p class="estadovoz" aria-live="polite">${VOZ.textoEstado()}</p>` : ''}
+   <div class="callbtns"><button class="round micvoz" id="micbtn" aria-label="${stt ? 'Micrófono: tócalo para hablar o para detener' : 'Reconocimiento de voz no disponible'}" onclick="talk()" ${stt ? '' : 'disabled'}>🎙️</button>
    <button class="round" style="background:#4a443b" aria-label="Repetir lo que dijo" onclick="repetirLinea()">↻</button>
    <button class="round red" aria-label="Colgar" onclick="endCall('colgar')">✕</button></div>
    ${S.cargando.evaluar ? '<p class="small" style="text-align:center;color:#bdb5a6"><span class="cargando"></span> El sensei analiza tu respuesta…</p>' : ''}</div>`;
@@ -359,7 +374,8 @@ P16() {
    ${sensei(`Pregúntame lo que quieras sobre ataques, señales o tu progreso. ${stt ? 'Toca el micrófono y habla.' : 'Escribe tu pregunta (tu navegador no reconoce voz).'}${e ? `<br><span class="small muted">Contexto: “${esc(e.titulo)}”</span>` : ''}`, 'ok')}
    <div class="chat" id="chat" aria-live="polite" style="margin:12px 0">${S.chat.map(m => `<div class="msg ${m.de}">${esc(m.t)}${m.origen ? `<small>${m.origen === 'reglas' ? 'respuesta sin IA' : 'IA: ' + esc(m.origen)}</small>` : ''}</div>`).join('')}
    ${S.cargando.sensei ? '<div class="msg sensei"><span class="cargando"></span> Pensando…</div>' : ''}${S.parcial && S.screen === 'P16' ? `<div class="msg yo" style="opacity:.6">${esc(S.parcial)}…</div>` : ''}</div>
-   <button class="micgrande ${VOZ.escuchando() ? 'on' : ''}" id="micsensei" onclick="preguntarVoz()" aria-label="${VOZ.escuchando() ? 'Escuchando, toca para detener' : 'Hablar con el sensei'}" ${stt ? '' : 'disabled'}>🎙️</button>
+   <button class="micgrande micvoz" id="micsensei" onclick="preguntarVoz()" aria-label="Micrófono: tócalo para preguntar al sensei o para detener" ${stt ? '' : 'disabled'}>🎙️</button>
+   ${stt ? `<p class="estadovoz claro" aria-live="polite">${VOZ.textoEstado()}</p>` : ''}
    <form onsubmit="event.preventDefault();preguntar(this.q.value);this.q.value=''" style="display:flex;gap:6px"><input name="q" type="text" placeholder="Escribe tu pregunta" aria-label="Escribe tu pregunta"><button class="btn" style="width:auto;margin:0" aria-label="Enviar">↵</button></form>
    <div class="sugs" style="margin-top:10px">${sugs.map(q => `<button onclick="preguntar(this.textContent)">${esc(q)}</button>`).join('')}</div>`, { back: 'P05', nav: true });
 },
@@ -507,6 +523,7 @@ window.combateIA = async () => {
     const e = r.escenario;
     if (!buscarEsc(e.id)) EXTRA[e.id] = e;
     if (!e.generado) toast('La IA no respondió (' + (r.motivo || 'sin LLM configurado') + '). Te doy un combate del banco.', 'warn');
+    if (!e.generado) toast('La IA no está disponible ahora; te doy un combate del banco que encaja contigo.', 'warn');
     start(e.id);
   } catch (e) { toast(e.message, 'warn'); render(); }
 };
@@ -576,12 +593,26 @@ window.reply = async t => {
   if (ev.decidido) return endCall(ev.seguro ? 'ok' : 'cayo', ev.comentario);
   if (S.turn < e.guion.length - 1) { S.turn++; render(); decirLinea(); } else endCall('corte');
 };
+// Traduce el error del reconocimiento de voz a un mensaje que diga qué hacer.
+function msgVoz(codigo) {
+  console.warn('[voz] error de reconocimiento:', codigo);
+  const m = {
+    'sin-stt': 'Tu navegador no reconoce voz: responde con los botones o escribiendo.',
+    'not-allowed': 'El micrófono está bloqueado. Toca el candado junto a la dirección y permite el micrófono.',
+    'service-not-allowed': 'El navegador no permite el reconocimiento de voz en este sitio. Revisa los permisos del micrófono.',
+    'audio-capture': 'No encuentro un micrófono. Conéctalo o elige otro en la configuración de Windows.',
+    'network': 'El reconocimiento de voz de Chrome no pudo conectarse a internet (usa los servidores de Google). Revisa tu conexión o usa Edge.',
+    'language-not-supported': 'El navegador no soporta el idioma de voz. Responde con botones o escribiendo.',
+    'no-speech': 'No te escuché nada. Revisa que el micrófono correcto esté activo y habla de nuevo.',
+  }[codigo];
+  return m || `No te escuché bien (${codigo}). Habla de nuevo o escribe tu respuesta.`;
+}
 window.talk = auto => {
   if (VOZ.escuchando()) { VOZ.detener(); render(); return; }
   S.usoVoz = true;
   VOZ.escuchar({ onParcial: p => { S.parcial = p; const y = $('#you'); if (y) y.innerHTML = `<span class="parcial">🎙️ ${esc(p)}</span>`; } })
     .then(txt => { S.parcial = ''; const cmd = VOZ.interpretar(txt); if (cmd.tipo === 'accion' && cmd.accion === 'colgar') return endCall('colgar'); if (cmd.tipo === 'accion' && cmd.accion === 'repetir') return repetirLinea(); reply(txt); })
-    .catch(err => { S.parcial = ''; if (S.screen === 'P08') render(); if (!auto && err.message !== 'aborted') toast(err.message === 'sin-stt' ? 'Tu navegador no reconoce voz: responde con los botones o escribiendo.' : 'No te escuché bien. Habla de nuevo o escribe tu respuesta.', 'warn'); });
+    .catch(err => { S.parcial = ''; if (S.screen === 'P08') render(); if (!auto && err.message !== 'aborted') toast(msgVoz(err.message), 'warn'); });
   render();
 };
 window.endCall = async (how, comentario) => {
@@ -613,7 +644,7 @@ window.preguntarVoz = () => {
   if (VOZ.escuchando()) { VOZ.detener(); render(); return; }
   VOZ.escuchar({ onParcial: p => { S.parcial = p; render(); } })
     .then(t => { S.parcial = ''; const c = VOZ.interpretar(t); if (c.tipo === 'nav' && c.destino !== 'P16') return go(c.destino); preguntar(t); })
-    .catch(err => { S.parcial = ''; render(); if (err.message !== 'aborted') toast('No te escuché bien. Intenta otra vez o escribe.', 'warn'); });
+    .catch(err => { S.parcial = ''; render(); if (err.message !== 'aborted') toast(msgVoz(err.message), 'warn'); });
   render();
 };
 
